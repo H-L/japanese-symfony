@@ -1,8 +1,6 @@
 japanese-symfony
 ================
 
-Symfony version: 2.8.17
-
 # Team & Collaborators
 
 Our team is called カワイイTV (KAWAII TV ).
