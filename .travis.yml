@@ -1,7 +1,7 @@
 # Project language
 language: php
 php:
-  - '^7.0'
+  - '7.0'
 
 # Start mysql service
 services:
