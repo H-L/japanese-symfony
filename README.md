@@ -1,6 +1,8 @@
 japanese-symfony
 ================
 
+[![Build Status](https://travis-ci.com/H-L/japanese-symfony.png)](https://travis-ci.com/H-L/japanese-symfony/)
+
 # Team & Collaborators
 
 Our team is called カワイイTV (KAWAII TV ).
