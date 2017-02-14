@@ -1,3 +1,8 @@
+# Which branches to install
+branches:
+  only:
+  - master
+
 # Project language
 language: php
 php:
@@ -16,8 +21,10 @@ cache:
 matrix:
   # Fast finish allows to set the build as "finished" even if the "allow_failures" matrix elements are not finished yet.
   fast_finish: true
+  include:
+  - php: '7.0'
   allow_failures:
-    - php: hhvm
+    - php: '7.0'
 
 # Define an environment variable
 env:
