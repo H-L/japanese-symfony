@@ -1,7 +1,7 @@
 japanese-symfony
 ================
 
-[![Build Status](https://travis-ci.com/H-L/japanese-symfony.png)](https://travis-ci.com/H-L/japanese-symfony/)
+![Build Status](https://travis-ci.com/H-L/japanese-symfony.svg?token=shXpjoDpc1SDKZQqur1f&branch=master)
 
 # Team & Collaborators
 
