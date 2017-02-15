@@ -80,13 +80,7 @@ abstract class CoffeeShopItem
      * @ORM\Column(name="profilePicture", type="string", length=255, nullable=true)
      */
     private $profilePicture;
-
-    /**
-     * @ORM\OneToMany(targetEntity="TimeSlot", mappedBy="root")
-     */
-    private $timeSlots;
-
-
+    
     /**
      * Get id
      *
