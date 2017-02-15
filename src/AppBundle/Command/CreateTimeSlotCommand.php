@@ -24,26 +24,29 @@ class CreateTimeSlotCommand extends ContainerAwareCommand
         $employeeRepository = $em->getRepository('AppBundle:Employee');
         
         $helper = $this->getHelper('question');
-        $question = new Question('<fg=yellow>TimeSlot start time [ [0, 0, 0] ] </> : ', [0, 0]);
-        $question1 = new Question('<fg=yellow>TimeSlot end time [ [23, 59, 59] ]</> : ', [23, 59]);
-        $question2 = new Question('<fg=yellow>TimeSlot day of the week</> : ', 0);
-        $question3 = new Question('<fg=yellow>Id of the Employee ?</> :' , null);
+        $question = new Question('<fg=yellow>TimeSlot start time hour (from 0 to 23) </> : ', 0);
+        $question1 = new Question('<fg=yellow>TimeSlot start time minute (from 0 to 59) </> : ', 0);
+        $question2 = new Question('<fg=yellow>TimeSlot end time hour (from 0 to 23)</> : ', 23);
+        $question3 = new Question('<fg=yellow>TimeSlot end time minute (from 0 to 59)</> : ', 23);
+        $question4 = new Question('<fg=yellow>TimeSlot day of the week</> : ', 0);
+        $question5 = new Question('<fg=yellow>Id of the Employee ?</> :' , null);
 
-        $startTime = $helper->ask($input, $output, $question);
-        $endTime = $helper->ask($input, $output, $question1);
-        $dayOfTheWeek = $helper->ask($input, $output, $question2);
-        $employeeId = $helper->ask($input, $output, $question3);
+        $startTimeHour = intval($helper->ask($input, $output, $question));
+        $startTimeMinute = intval($helper->ask($input, $output, $question1));
+        $endTimeHour = intval($helper->ask($input, $output, $question2));
+        $endTimeMinute = intval($helper->ask($input, $output, $question3));
+        $dayOfTheWeek = intval($helper->ask($input, $output, $question4));
+        $employeeId = $helper->ask($input, $output, $question5);
 
         $timeSlot = new TimeSlot();
-        $timeSlot->setStartTime($startTime);
-        $timeSlot->setEndTime($endTime);
+        $timeSlot->setStartTime([$startTimeHour, $startTimeMinute]);
+        $timeSlot->setEndTime([$endTimeHour, $endTimeMinute]);
         $timeSlot->setDayOfWeek($dayOfTheWeek);
         $timeSlot->setEmployee($employeeRepository->find($employeeId));
-        
+
         $em->persist($timeSlot);
         $em->flush();
 
         $output->writeln('<info>TimeSlot successfully generated!</info>');
     }
-
 }

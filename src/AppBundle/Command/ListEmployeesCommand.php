@@ -20,17 +20,14 @@ class ListEmployeesCommand extends ContainerAwareCommand
     {
         $em = $this->getContainer()->get('doctrine.orm.entity_manager');
         $employeeRepository = $em->getRepository('AppBundle:Employee');
-        $employees = $employeeRepository->find(1);
-
-        var_dump($employees);
-        die;
+        $employees = $employeeRepository->findAll();
+        
         $output->writeln([
             '<info>Employees</info>',
             '<info>============</info>',
         ]);
-        foreach ($employees as $type) {
-            $output->writeln('<info>* '.$type->getName().'</info>');
+        foreach ($employees as $employee) {
+            $output->writeln('<info>* id :'.$employee->getId().' name : '.$employee->getName().'</info>');
         }
     }
-
 }

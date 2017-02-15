@@ -72,7 +72,7 @@ class TimeSlot
      * @param array $startTime
      * @return TimeSlot
      */
-    public function setStartTime($startTime)
+    public function setStartTime(array $startTime)
     {
         $this->startTime = $startTime;
 
@@ -95,7 +95,7 @@ class TimeSlot
      * @param array $endTime
      * @return TimeSlot
      */
-    public function setEndTime($endTime)
+    public function setEndTime(array $endTime)
     {
         $this->endTime = $endTime;
 

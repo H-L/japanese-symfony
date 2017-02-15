@@ -80,7 +80,7 @@ abstract class CoffeeShopItem
      * @ORM\Column(name="profilePicture", type="string", length=255, nullable=true)
      */
     private $profilePicture;
-    
+
     /**
      * Get id
      *
