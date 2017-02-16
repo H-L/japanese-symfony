@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Index</h1>
+
+    {{ dump(images) }}
+    {{ dump(gallery) }}
+
+    {#<div class="main-gallery">#}
+    {#{% for image in images %}#}
+    {#<p>{{ dump(image) }}</p>#}
+    {#<p>{{ image.name }}</p>#}
+    {#<img src="{{ asset(image.path) | imagine_filter('my_thumb') }}" alt="">#}
+    {#{% endfor %}#}
+    {#</div>#}
+
+    {#{% for gallery in galleries %}#}
+    {#<div class="generated-gallery">#}
+    {#<p>{{ dump(gallery) }}</p>#}
+    {#</div>#}
+    {#{% endfor %}#}
+
+{% endblock %}
