@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Employee
+ * Maid
  *
- * @ORM\Table(name="employee")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeeRepository")
+ * @ORM\Table(name="maid")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MaidRepository")
  */
-class Employee extends CoffeeShopItem
+class Maid extends CoffeeShopItem
 {
     /**
      * @var string
@@ -63,7 +63,7 @@ class Employee extends CoffeeShopItem
     private $twitterUrl;
 
     /**
-     * @ORM\OneToMany(targetEntity="TimeSlot", mappedBy="employee")
+     * @ORM\OneToMany(targetEntity="TimeSlot", mappedBy="maid")
      */
     private $timeSlots;
     
@@ -71,7 +71,7 @@ class Employee extends CoffeeShopItem
      * Set lastName
      *
      * @param string $lastName
-     * @return Employee
+     * @return Maid
      */
     public function setLastName($lastName)
     {
@@ -94,7 +94,7 @@ class Employee extends CoffeeShopItem
      * Set restaurants
      *
      * @param string $restaurants
-     * @return Employee
+     * @return Maid
      */
     public function setRestaurants($restaurants)
     {
@@ -117,7 +117,7 @@ class Employee extends CoffeeShopItem
      * Set maidName
      *
      * @param string $maidName
-     * @return Employee
+     * @return Maid
      */
     public function setMaidName($maidName)
     {
@@ -140,7 +140,7 @@ class Employee extends CoffeeShopItem
      * Set favoriteThings
      *
      * @param string $favoriteThings
-     * @return Employee
+     * @return Maid
      */
     public function setFavoriteThings($favoriteThings)
     {
@@ -163,7 +163,7 @@ class Employee extends CoffeeShopItem
      * Set blogUrl
      *
      * @param string $blogUrl
-     * @return Employee
+     * @return Maid
      */
     public function setBlogUrl($blogUrl)
     {
@@ -186,7 +186,7 @@ class Employee extends CoffeeShopItem
      * Set twitterUrl
      *
      * @param string $twitterUrl
-     * @return Employee
+     * @return Maid
      */
     public function setTwitterUrl($twitterUrl)
     {

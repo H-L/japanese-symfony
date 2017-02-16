@@ -14,13 +14,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for employee in employees %}
+                {% for maid in maids %}
                     <tr>
-                        <td><a href="{{ path('_maid_show', { 'id': employee.id }) }}">{{ employee.id }}</a></td>
-                        <td>{{ employee.name }}</td>
+                        <td><a href="{{ path('_show', { 'id': maid.id }) }}">{{ maid.id }}</a></td>
+                        <td>{{ maid.name }}</td>
                         <td>
-                            <a href="{{ path('_maid_show', { 'id': employee.id }) }}"><button type="button" class="btn btn-lg btn-primary">Show</button></a>
-                            <a href="{{ path('_maid_edit', { 'id': employee.id }) }}"><button type="button" class="btn btn-lg btn-warning">Edit</button></a>
+                            <a href="{{ path('_show', { 'id': maid.id }) }}"><button type="button" class="btn btn-lg btn-primary">Show</button></a>
+                            <a href="{{ path('_edit', { 'id': maid.id }) }}"><button type="button" class="btn btn-lg btn-warning">Edit</button></a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -29,7 +29,7 @@
 
             <ul class="list-group">
                 <li class="list-group-item">
-                    <a href="{{ path('_maid_new') }}"><button type="button" class="btn btn-lg btn-success">Create a new maid</button></a>
+                    <a href="{{ path('_new') }}"><button type="button" class="btn btn-lg btn-success">Create a new maid</button></a>
                 </li>
             </ul>
         </div>

@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\VarDumper\VarDumper;
 
-class EmployeeType extends AbstractType
+class MaidType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class EmployeeType extends AbstractType
     {
         $legalStartDate = intval(date('Y', strtotime('-15 years')));
         $average = intval(date('Y', strtotime('-25 years')));
-        $old = intval(date('Y', strtotime('-100 years')));
+        $old = intval(date('Y', strtotime('-60 years')));
 
         $builder
             ->add('name')
@@ -33,18 +33,12 @@ class EmployeeType extends AbstractType
             ->add('phone')
             ->add('email')
             ->add('description')
-        ;
-        
-        if($options['maid'] === true) {
-            $builder
-                ->add('maidName')
-                ->add('bloodType')
-                ->add('favoriteThings')
-                ->add('blogUrl')
-                ->add('twitterUrl')
+            ->add('maidName')
+            ->add('bloodType')
+            ->add('favoriteThings')
+            ->add('blogUrl')
+            ->add('twitterUrl')
             ;
-
-        }
     }
 
     /**
@@ -53,8 +47,7 @@ class EmployeeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Employee',
-            'maid' => false,
+            'data_class' => 'AppBundle\Entity\Maid',
         ));
     }
 
@@ -63,7 +56,7 @@ class EmployeeType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_employee';
+        return 'appbundle_maid';
     }
 
 

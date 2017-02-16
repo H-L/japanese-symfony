@@ -50,10 +50,10 @@ class TimeSlot
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Employee", inversedBy="timeSlots")
-     * @ORM\JoinColumn(name="id_employee", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Maid", inversedBy="timeSlots")
+     * @ORM\JoinColumn(name="id_maid", referencedColumnName="id")
      */
-    private $employee;
+    private $maid;
 
 
     /**
@@ -154,17 +154,17 @@ class TimeSlot
     /**
      * @return mixed
      */
-    public function getEmployee()
+    public function getMaid()
     {
-        return $this->employee;
+        return $this->maid;
     }
 
     /**
-     * @param mixed $employee
+     * @param mixed $maid
      */
-    public function setEmployee($employee)
+    public function setMaid($maid)
     {
-        $this->employee = $employee;
+        $this->maid = $maid;
     }
     
 }

@@ -12,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="CoffeeShopItem")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap( {"employee" = "Employee", "restaurant" = "Restaurant"} )
+ * @ORM\DiscriminatorMap( {"maid" = "Maid", "restaurant" = "Restaurant"} )
  */
 abstract class CoffeeShopItem
 {
