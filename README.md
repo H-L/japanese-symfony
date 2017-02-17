@@ -17,12 +17,40 @@ cd japanese-symfony
 composer install
 
 # Installing DB and update it
+#We created a command to initialise a little work database :
+php app/console app:initialise:db
+
+#else if you just want an empty database
 php app/console doctrine:database:create
 php app/console doctrine:schema:update
 
-# Launch the server
-php app/console server:run
+# Launch the server : will sync assets and lauch symfony server
+gulp sync
+
+#else if you want just the symfony server
+php app/console/
 ```
+# Front End
+The project works sass and gulp. The views are in Resources/views and the scss files are in Resources/scss.
+After running `gulp sync`, scss files with compile automatically.
+
+For views, public site views are in Resources/views/default. All views extends scss/base.html.twig, which contains header and footer.
+A folder by page is done, with a main file page/page.html.twig, and optionnal other views. This other views of /page must be included in the main file.
+
+# Commits
+Commit messages must follow this guide : [gitmoji | An emoji guide for your commit messages](https://gitmoji.carloscuesta.me/)
+with in addtion :pray: for merge conflict commits.
+
+you can also add brackets to precise the subject of the commit.
+exemple : `git commit -m ":lipstick: [maid-page] made css for search bar"`
+
+# Branches
+Call uour branches with clear, short names. You can add a 'flag' to indicate the purpose of the branch :
+-New : new feature
+-Fix : fixing a bug
+-Hotfix : critical quick fix
+
+exemple : `git checkout -b New-Maid_entity`
 
 # Custom commands
 
