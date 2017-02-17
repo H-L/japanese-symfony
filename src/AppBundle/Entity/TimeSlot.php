@@ -21,19 +21,36 @@ class TimeSlot
      */
     private $id;
 
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="startTime", type="array")
-     */
-    private $startTime;
 
     /**
-     * @var array
+     * @var int
      *
-     * @ORM\Column(name="endTime", type="array")
+     * @ORM\Column(name="start_hour", type="integer")
      */
-    private $endTime;
+    private $startHour;
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="start_minute", type="integer")
+     */
+    private $startMinute;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="end_hour", type="integer")
+     */
+    private $endHour;
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="end_minute", type="integer")
+     */
+    private $endMinute;
 
     /**
      * @var int
@@ -55,7 +72,21 @@ class TimeSlot
      */
     private $maid;
 
-
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="start_time", type="array")
+     */
+    private $startTime;
+    
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="end_time", type="array")
+     */
+    private $endTime;
+    
+    
     /**
      * Get id
      *
@@ -67,14 +98,45 @@ class TimeSlot
     }
 
     /**
+     * @return int
+     */
+    public function getStartHour()
+    {
+        return $this->startHour;
+    }
+
+    /**
+     * @param int $startHour
+     */
+    public function setStartHour($startHour)
+    {
+        $this->startHour = $startHour;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStartMinute()
+    {
+        return $this->startMinute;
+    }
+
+    /**
+     * @param int $startMinute
+     */
+    public function setStartMinute($startMinute)
+    {
+        $this->startMinute = $startMinute;
+    }
+
+    /**
      * Set startTime
-     *
-     * @param array $startTime
+     * 
      * @return TimeSlot
      */
-    public function setStartTime(array $startTime)
+    public function setStartTime()
     {
-        $this->startTime = $startTime;
+        $this->startTime = [$this->getStartHour(), $this->getStartMinute()];
 
         return $this;
     }
@@ -90,14 +152,45 @@ class TimeSlot
     }
 
     /**
+     * @return int
+     */
+    public function getEndHour()
+    {
+        return $this->endHour;
+    }
+
+    /**
+     * @param int $endHour
+     */
+    public function setEndHour($endHour)
+    {
+        $this->endHour = $endHour;
+    }
+
+    /**
+     * @return int
+     */
+    public function getEndMinute()
+    {
+        return $this->endMinute;
+    }
+
+    /**
+     * @param int $endMinute
+     */
+    public function setEndMinute($endMinute)
+    {
+        $this->endMinute = $endMinute;
+    }
+
+    /**
      * Set endTime
      *
-     * @param array $endTime
      * @return TimeSlot
      */
-    public function setEndTime(array $endTime)
+    public function setEndTime()
     {
-        $this->endTime = $endTime;
+        $this->endTime = [$this->getEndHour(), $this->getEndMinute()];
 
         return $this;
     }
@@ -165,6 +258,11 @@ class TimeSlot
     public function setMaid($maid)
     {
         $this->maid = $maid;
+    }
+
+    public function __construct()
+    {
+        
     }
     
 }

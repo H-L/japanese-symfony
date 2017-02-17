@@ -236,9 +236,10 @@ class Maid extends CoffeeShopItem
     {
         $this->timeSlots = $timeSlots;
     }
-
+    
     public function __construct()
     {
         $this->timeSlots = new ArrayCollection();
     }
+
 }

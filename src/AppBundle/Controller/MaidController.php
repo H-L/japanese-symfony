@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Maid controller.
  *
- * @Route("/maids")
+ * @Route("/maid")
  */
 class MaidController extends Controller
 {
@@ -66,9 +66,10 @@ class MaidController extends Controller
     public function showAction(Maid $maid)
     {
         $deleteForm = $this->createDeleteForm($maid);
-
+        
         return $this->render('maid/show.html.twig', array(
             'maid' => $maid,
+            'timeSlots' => $maid->getTimeSlots(),
             'delete_form' => $deleteForm->createView(),
         ));
     }

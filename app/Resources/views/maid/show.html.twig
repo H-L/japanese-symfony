@@ -3,22 +3,81 @@
 {% block body %}
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h1>Maid</h1>
+            <h1>Maid informations</h1>
         </div>
         <div class="panel-body">
 
             <table class="table">
                 <tbody>
-                <tr>
-                    <th>Id</th>
-                    <td>{{ maid.id }}</td>
-                </tr>
-                <tr>
-                    <th>Name</th>
-                    <td>{{ maid.name }}</td>
-                </tr>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ maid.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Last name</th>
+                        <td>{{ maid.lastName }}</td>
+                    </tr>
+                    <tr>
+                        <th>Birth date</th>
+                        <td>{{ maid.birthDate | date('d/m/Y') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>{{ maid.address }}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>{{ maid.Phone }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ maid.email}}</td>
+                    </tr>
+
                 </tbody>
             </table>
+         </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1>Maid public profile ♥️  ✨ </h1>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Maid name</th>
+                        <td>{{ maid.maidName }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ maid.description}}</td>
+                    </tr>
+                    <tr>
+                        <th>Blood type</th>
+                        <td>{{ maid.bloodType}}</td>
+                    </tr>
+                    <tr>
+                        <th>FavoriteThings</th>
+                        <td>{{ maid.favoriteThings}}</td>
+                    </tr>
+                    <tr>
+                        <th>Blog</th>
+                        <td>{{ maid.blogUrl}}</td>
+                    </tr>
+                    <tr>
+                        <th>Twitter</th>
+                        <td>{{ maid.twitterUrl}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+            <ul>
+                {% for slot in timeSlots %}
+                    <li>{{ slot.startTime[0] }}h{{ slot.startTime[1] }} {{ slot.endTime[0] }}h{{ slot.endTime[1] }}</li>
+                {% endfor %}
+            </ul>
 
             <ul class="list-group">
                 <li class="list-group-item">
@@ -36,3 +95,6 @@
         </div>
     </div>
 {% endblock %}
+
+
+
