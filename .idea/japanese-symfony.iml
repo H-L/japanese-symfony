@@ -55,5 +55,6 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="library" name="japanese-symfony node_modules" level="project" />
   </component>
 </module>

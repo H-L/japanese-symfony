@@ -2,9 +2,12 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Image;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Form\ImageType;
 
 class DefaultController extends Controller
 {
@@ -28,9 +31,7 @@ class DefaultController extends Controller
         $gallery = $em->getRepository('AppBundle:Gallery')->find(1);
         $images = $gallery->getImages()->toArray();
 
-        // replace this example code with whatever you need
         return $this->render('galleries/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
             'images' => $images,
             'gallery' => $gallery,
         ));

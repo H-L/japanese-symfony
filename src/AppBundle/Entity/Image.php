@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Image
@@ -25,6 +26,8 @@ class Image
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank(message="Please, upload the product image.")
+     * @Assert\Image()
      */
     private $name;
 
@@ -34,7 +37,6 @@ class Image
      * @ORM\Column(name="path", type="string", length=255)
      */
     private $path;
-
 
     /**
      * Get id
