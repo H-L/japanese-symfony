@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 
 // Added after CRUD generation
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 
 /**
  * Image controller.
@@ -132,10 +134,15 @@ class ImageController extends Controller
      */
     public function deleteAction(Request $request, Image $image)
     {
+
         $form = $this->createDeleteForm($image);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Removing Image from repo
+            $fs = new Filesystem();
+            $fs->remove(array($image->getName(), $image->getPath(), 'activity.log'));
+
             $em = $this->getDoctrine()->getManager();
             $em->remove($image);
             $em->flush($image);
