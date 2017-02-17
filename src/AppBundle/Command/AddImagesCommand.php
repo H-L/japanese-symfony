@@ -1,0 +1,93 @@
+<?php
+
+namespace AppBundle\Command;
+
+use AppBundle\AppBundle;
+use PHPUnit\Util\Filesystem;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Question\Question;
+
+// Added after Command generation
+use AppBundle\Entity\Image;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\Filesystem\Filesystem as FS;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\HttpFoundation\File\File;
+
+class AddImagesCommand extends ContainerAwareCommand
+{
+    /**
+     * {@inheritdoc}
+     */
+    protected function configure()
+    {
+        $this
+            ->setName('app:add_images')
+            ->setDescription('Add an image or an image repository to DB and local Directory')
+            ->setHelp('Add path to the Images directory ')
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $helper = $this->getHelper('question');
+
+        $question = new Question('Path Image directory you want to import<fg=yellow>[./web/assets/images]</> :', $this->getContainer()->getParameter('load_images'));
+
+        $path = $helper->ask($input, $output, $question);
+
+        // Looking for all files in the specified directory.
+        $finder = new Finder();
+        $finder->files()->in($path);
+        $fs = new FS();
+
+        // Get all Images Names registered in the DB.
+        $em = $this->getContainer()->get('doctrine.orm.default_entity_manager');
+        $inDbImages = $em->getRepository('AppBundle:Image')->findAll();
+
+        $inDbImagesNames = [];
+        $mimeTypes = ['image/jpeg', 'image/png', 'image/svg+xml', 'image/tiff'];
+
+        foreach ($inDbImages as $inDbImage){
+            array_push($inDbImagesNames, $inDbImage->getName());
+        }
+
+        foreach ($finder as $file) {
+
+            $testedFile = new File($file->getRealPath());
+//            $output->writeln(dump($testedFile->getMimeType()));
+            if (!in_array($testedFile->getMimeType(), $mimeTypes)){
+                $output->writeln('<error>Not an Image (jpeg, png, svg, tiff) :</error> '.$testedFile->getFilename());
+                continue;
+            }
+
+            // If file already exist, try to add next file in the loop.
+            if (in_array($file->getFilename(), $inDbImagesNames)){
+                $output->writeln('<error>Image already exist :</error> '.$file->getFilename());
+                continue;
+            }
+
+            // Otherwise copy/paste the image in images_directory and register it in the DB.
+            $image = new Image();
+            $finalPath = $this->getContainer()->getParameter('images_directory').$file->getFilename();
+
+            $fs->copy($file->getRealPath(), $finalPath);
+
+            // Setting $image properties and flush it to the DB via Doctrine.
+            $image->setName($file->getFilename());
+            $image->setPath($this->getContainer()->getParameter('path_for_images_dir').$file->getFilename());
+
+            $em = $this->getContainer()->get('doctrine')->getManager();
+            $em->persist($image);
+            $em->flush($image);
+
+            $output->writeln('<info>Added : </info>'.$file->getFilename());
+        }
+    }
+}

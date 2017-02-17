@@ -7,7 +7,8 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    images_directory: '%kernel.root_dir%/../web/uploads/images'
+    images_directory: '%kernel.root_dir%/../web/uploads/images/'
+    load_images: '%kernel.root_dir%/../web/assets/images/'
     path_for_images_dir: 'uploads/images/'
 
 framework:

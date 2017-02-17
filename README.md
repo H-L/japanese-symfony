@@ -24,6 +24,13 @@ php app/console doctrine:schema:update
 php app/console server:run
 ```
 
+# Custom Commands
+
+```bash
+# Create/import Images from local dir to DB and copy images in web/uploads/images
+php app/console app:add_images
+```
+
 # Team & Collaborators
 
 Our team is called カワイイTV (KAWAII TV ).

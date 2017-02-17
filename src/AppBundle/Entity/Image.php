@@ -26,7 +26,7 @@ class Image
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
-     * @Assert\NotBlank(message="Please, upload the product image.")
+     * @Assert\NotBlank(message="Please, upload the image.")
      * @Assert\Image()
      */
     private $name;

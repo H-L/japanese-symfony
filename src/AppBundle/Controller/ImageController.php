@@ -56,7 +56,7 @@ class ImageController extends Controller
             $file = $image->getName();
 
             // Create an unique name for each images
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $fileName = $file->getClientOriginalName();
 
             // Set the image path based. The path is configurable in config.yml
             $filePath = $this->getParameter('path_for_images_dir').$fileName;
