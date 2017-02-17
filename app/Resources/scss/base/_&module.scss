@@ -1,2 +1,6 @@
-@import 'bootstrap-override';
-@import '../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+@import "reset";
+@import "variables";
+@import "fonts";
+@import "font-awesome/font-awesome";
+@import "mixins";
+

@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Maid controller.
  *
- * @Route("/maid")
+ * @Route("back-office/maid")
  */
 class MaidController extends Controller
 {
@@ -26,7 +26,7 @@ class MaidController extends Controller
         $em = $this->getDoctrine()->getManager();
         $maids = $em->getRepository('AppBundle:Maid')->findAll();
 
-        return $this->render('maid/index.html.twig', array(
+        return $this->render('back-office/maid/index.html.twig', array(
             'maids' => $maids,
         ));
     }
@@ -51,7 +51,7 @@ class MaidController extends Controller
             return $this->redirectToRoute('_show', array('id' => $maid->getId()));
         }
 
-        return $this->render('maid/new.html.twig', array(
+        return $this->render('back-office/maid/new.html.twig', array(
             'maid' => $maid,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class MaidController extends Controller
     {
         $deleteForm = $this->createDeleteForm($maid);
         
-        return $this->render('maid/show.html.twig', array(
+        return $this->render('back-office/maid/show.html.twig', array(
             'maid' => $maid,
             'timeSlots' => $maid->getTimeSlots(),
             'delete_form' => $deleteForm->createView(),

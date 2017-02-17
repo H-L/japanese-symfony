@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Restaurant
@@ -13,38 +14,41 @@ use Doctrine\ORM\Mapping as ORM;
 class Restaurant extends CoffeeShopItem
 {
     /**
-     * @var string
-     *
-     * @ORM\Column(name="employees", type="string", length=255)
+     * @ORM\OneToMany(targetEntity="Maid", mappedBy="restaurant")
      */
-    private $employees;
+    private $maids;
 
     /**
      * @ORM\OneToMany(targetEntity="TimeSlot", mappedBy="restaurant")
      */
     private $timeSlots;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Restaurant", mappedBy="maids")
+     */
+    private $events;
     
     /**
-     * Set employees
+     * Set maids
      *
-     * @param string $employees
+     * @param mixed $maids
      * @return Restaurant
      */
-    public function setEmployees($employees)
+    public function setMaids($maids)
     {
-        $this->employees = $employees;
+        $this->maids = $maids;
 
         return $this;
     }
 
     /**
-     * Get employees
+     * Get maids
      *
-     * @return string 
+     * @return mixed
      */
-    public function getEmployees()
+    public function getMaids()
     {
-        return $this->employees;
+        return $this->maids;
     }
 
     /**
@@ -63,8 +67,25 @@ class Restaurant extends CoffeeShopItem
         $this->timeSlots = $timeSlots;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
+
+    /**
+     * @param mixed $events
+     */
+    public function setEvents($events)
+    {
+        $this->events = $events;
+    }
+    
     public function __construct()
     {
         $this->timeSlots = new ArrayCollection();
+        $this->events = new ArrayCollection();
     }
 }

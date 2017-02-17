@@ -20,6 +20,14 @@ gulp.task('scss', function() {
         .pipe(gulp.dest('web/css'))
 });
 
+gulp.task('bo-scss', function() {
+    return gulp.src('app/Resources/back-office-scss/bo-main.scss')
+        .pipe(sass())
+        .pipe(postcss(processors))
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(gulp.dest('web/css'))
+});
+
 gulp.task('scripts', function () {
     return gulp.src('app/Resources/js/**')
         .pipe(concat('main.js'))
@@ -36,7 +44,7 @@ var logStdOutAndErr = function (err, stdout, stderr) {
     console.log(stdout + stderr);
 };
 
-gulp.task('sync', ['server','scss', 'scripts'], function() {
+gulp.task('sync', ['server','scss','bo-scss', 'scripts'], function() {
     gulp.watch("app/Resources/scss/**/*.scss", ['scss']);
     gulp.watch("app/Resources/js/**", ['scripts']);
 });

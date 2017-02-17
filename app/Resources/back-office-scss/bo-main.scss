@@ -1,5 +1,7 @@
-/* base files : reset, mixins, functions, fonts... */
+/* base files : reset... */
 @import "base/&module";
+/* mixins, functions, fonts */
+@import "utils/&module";
 /* components */
 @import "components/&module";
 /* bigger parts: header, footer */

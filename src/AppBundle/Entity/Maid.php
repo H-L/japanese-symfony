@@ -21,11 +21,9 @@ class Maid extends CoffeeShopItem
     private $lastName;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="restaurants", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="Restaurant", inversedBy="maids")
      */
-    private $restaurants;
+    private $restaurant;
 
     /**
      * @var string
@@ -66,7 +64,7 @@ class Maid extends CoffeeShopItem
      * @ORM\OneToMany(targetEntity="TimeSlot", mappedBy="maid")
      */
     private $timeSlots;
-    
+
     /**
      * Set lastName
      *
@@ -83,7 +81,7 @@ class Maid extends CoffeeShopItem
     /**
      * Get lastName
      *
-     * @return string 
+     * @return string
      */
     public function getLastName()
     {
@@ -91,26 +89,26 @@ class Maid extends CoffeeShopItem
     }
 
     /**
-     * Set restaurants
+     * Set restaurant
      *
-     * @param string $restaurants
+     * @param mixed $restaurant
      * @return Maid
      */
-    public function setRestaurants($restaurants)
+    public function setRestaurant($restaurant)
     {
-        $this->restaurants = $restaurants;
+        $this->restaurant = $restaurant;
 
         return $this;
     }
 
     /**
-     * Get restaurants
+     * Get restaurant
      *
-     * @return string 
+     * @return mixed
      */
-    public function getRestaurants()
+    public function getRestaurant()
     {
-        return $this->restaurants;
+        return $this->restaurant;
     }
 
     /**
