@@ -12,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="CoffeeShopItem")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap( {"employee" = "Employee", "restaurant" = "Restaurant"} )
+ * @ORM\DiscriminatorMap( {"maid" = "Maid", "restaurant" = "Restaurant"} )
  */
 abstract class CoffeeShopItem
 {
@@ -80,12 +80,6 @@ abstract class CoffeeShopItem
      * @ORM\Column(name="profilePicture", type="string", length=255, nullable=true)
      */
     private $profilePicture;
-
-    /**
-     * @ORM\OneToMany(targetEntity="TimeSlot", mappedBy="root")
-     */
-    private $timeSlots;
-
 
     /**
      * Get id

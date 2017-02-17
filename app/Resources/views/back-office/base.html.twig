@@ -4,10 +4,18 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('css/bo-main.css') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+        <script
+                src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+                integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+                crossorigin="anonymous">
+
+        </script>
+        <script src="{{ asset('js/main.js') }}"></script>
     </body>
 </html>

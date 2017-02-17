@@ -1,33 +1,33 @@
 <?php
 namespace AppBundle\Command;
 
-use AppBundle\Entity\Employee;
+use AppBundle\Entity\Maid;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
-class CreateEmployeeCommand extends ContainerAwareCommand
+class CreateMaidCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this
-            ->setName('app:employee:add')
-            ->setDescription('Allows tou to create a new Employee')
-            ->setHelp("Give the parameters and let the app create a new Employee");
+            ->setName('app:maid:add')
+            ->setDescription('Allows tou to create a new Maid')
+            ->setHelp("Give the parameters and let the app create a new Maid");
     }
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $helper = $this->getHelper('question');
-        $question = new Question('<fg=yellow>Employee name</> : ');
-        $question1 = new Question('<fg=yellow>Employee address</> : ');
-        $question2 = new Question('<fg=yellow>Employee phone</> : ');
-        $question3 = new Question('<fg=yellow>Employee email</> : ');
-        $question4 = new Question('<fg=yellow>Employee birthdate (j-M-Y)</> : ');
-        $question5 = new Question('<fg=yellow>Employee description [null]</> : ', null);
-        $question6 = new Question('<fg=yellow>Is the Employee a Maid ? [false]</> : ', false);
-        $question12 = new Question('<fg=yellow>Employee last name </> : ', false);
+        $question = new Question('<fg=yellow>Maid name</> : ');
+        $question1 = new Question('<fg=yellow>Maid address</> : ');
+        $question2 = new Question('<fg=yellow>Maid phone</> : ');
+        $question3 = new Question('<fg=yellow>Maid email</> : ');
+        $question4 = new Question('<fg=yellow>Maid birthdate (j-M-Y)</> : ');
+        $question5 = new Question('<fg=yellow>Maid description [null]</> : ', null);
+        $question6 = new Question('<fg=yellow>Is the Maid a Maid ? [false]</> : ', false);
+        $question12 = new Question('<fg=yellow>Maid last name </> : ', false);
 
         $name = $helper->ask($input, $output, $question);
         $lastname = $helper->ask($input, $output, $question12);
@@ -39,7 +39,7 @@ class CreateEmployeeCommand extends ContainerAwareCommand
         $description = $helper->ask($input, $output, $question5);
         $isMaid = $helper->ask($input, $output, $question6);
 
-        $employee = new Employee();
+        $maid = new Maid();
 
         if ($isMaid == true) {
             $question7 = new Question('<fg=yellow>Maid nickname [Maid]</> : ', 'Maid');
@@ -54,26 +54,26 @@ class CreateEmployeeCommand extends ContainerAwareCommand
             $blogUrl = $helper->ask($input, $output, $question10);
             $twitterUrl = $helper->ask($input, $output, $question11);
 
-            $employee->setMaidName($maidName);
-            $employee->setBloodType($bloodType);
-            $employee->setFavoriteThings($favoriteThings);
-            $employee->setBlogUrl($blogUrl);
-            $employee->setTwitterUrl($twitterUrl);
+            $maid->setMaidName($maidName);
+            $maid->setBloodType($bloodType);
+            $maid->setFavoriteThings($favoriteThings);
+            $maid->setBlogUrl($blogUrl);
+            $maid->setTwitterUrl($twitterUrl);
         }
 
-        $employee->setName($name);
-        $employee->setLastName($lastname);
-        $employee->setAddress($address);
-        $employee->setPhone($phone);
-        $employee->setEmail($email);
-        $employee->setBirthDate($birthdate);
-        $employee->setDescription($description);
+        $maid->setName($name);
+        $maid->setLastName($lastname);
+        $maid->setAddress($address);
+        $maid->setPhone($phone);
+        $maid->setEmail($email);
+        $maid->setBirthDate($birthdate);
+        $maid->setDescription($description);
 
         $em = $this->getContainer()->get('doctrine.orm.entity_manager');
-        $em->persist($employee);
+        $em->persist($maid);
         $em->flush();
 
-        $output->writeln('<info>Employee '.$name.' successfully generated!</info>');
+        $output->writeln('<info>Maid '.$name.' successfully generated!</info>');
     }
 }
 

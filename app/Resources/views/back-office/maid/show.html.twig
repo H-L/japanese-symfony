@@ -1,0 +1,100 @@
+{% extends 'back-office/base.html.twig' %}
+
+{% block body %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1>Maid informations</h1>
+        </div>
+        <div class="panel-body">
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ maid.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Last name</th>
+                        <td>{{ maid.lastName }}</td>
+                    </tr>
+                    <tr>
+                        <th>Birth date</th>
+                        <td>{{ maid.birthDate | date('d/m/Y') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>{{ maid.address }}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>{{ maid.Phone }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ maid.email}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+         </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1>Maid public profile ♥️  ✨ </h1>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Maid name</th>
+                        <td>{{ maid.maidName }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ maid.description}}</td>
+                    </tr>
+                    <tr>
+                        <th>Blood type</th>
+                        <td>{{ maid.bloodType}}</td>
+                    </tr>
+                    <tr>
+                        <th>FavoriteThings</th>
+                        <td>{{ maid.favoriteThings}}</td>
+                    </tr>
+                    <tr>
+                        <th>Blog</th>
+                        <td>{{ maid.blogUrl}}</td>
+                    </tr>
+                    <tr>
+                        <th>Twitter</th>
+                        <td>{{ maid.twitterUrl}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+            <ul>
+                {% for slot in timeSlots %}
+                    <li>{{ slot.startTime[0] }}h{{ slot.startTime[1] }} {{ slot.endTime[0] }}h{{ slot.endTime[1] }}</li>
+                {% endfor %}
+            </ul>
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="{{ path('_index') }}"><button type="button" class="btn btn-lg btn-primary">Back to the list</button></a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ path('_edit', { 'id': maid.id }) }}"><button type="button" class="btn btn-lg btn-warning">Edit</button></a>
+                </li>
+                <li class="list-group-item">
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete" class="btn btn-lg btn-danger" />
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+
+
