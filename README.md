@@ -17,18 +17,18 @@ cd japanese-symfony
 composer install
 
 # Installing DB and update it
-#We created a command to initialise a little work database :
-php app/console app:initialise:db
-
-#else if you just want an empty database
+#if you just want an empty database
 php app/console doctrine:database:create
 php app/console doctrine:schema:update
+
+#else We created a command to initialise a little work database :
+php app/console app:initialise:db
 
 # Launch the server : will sync assets and lauch symfony server
 gulp sync
 
 #else if you want just the symfony server
-php app/console/
+php app/console server:run
 ```
 # Front End
 The project works sass and gulp. The views are in Resources/views and the scss files are in Resources/scss.
@@ -57,11 +57,11 @@ exemple : `git checkout -b New-Maid_entity`
 Here is a list of custom commands we made to create/list our DB items easily :
 
 ```bash
-# Create an employee
-php app/console app:employee:add
+# Create a Maid
+php app/console app:maid:add
 
-# Listing employees
-php app/console app:employee:list
+# Listing Maids
+php app/console app:maid:list
 
 # Create a restaurant
 php app/console app:restaurant:add
