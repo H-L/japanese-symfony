@@ -27,8 +27,11 @@ php app/console app:initialise:db
 # Launch the server : will sync assets and lauch symfony server
 gulp sync
 
-#else if you want just the symfony server
+#Just the symfony server
 php app/console server:run
+
+#Just the assets
+gulp watch
 ```
 # Front End
 The project works sass and gulp. The views are in Resources/views and the scss files are in Resources/scss.
@@ -54,6 +57,7 @@ exemple : `git checkout -b New-Maid_entity`
 
 # Test Users
 The command `php app/console app:initialise:db` creates two test users.
+
 username : testUser
 email : test@user.com
 password : testpass
