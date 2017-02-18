@@ -21,7 +21,7 @@ composer install
 php app/console doctrine:database:create
 php app/console doctrine:schema:update
 
-#else We created a command to initialise a little work database :
+#We also created a command to initialise a little work database :
 php app/console app:initialise:db
 
 # Launch the server : will sync assets and lauch symfony server
@@ -51,6 +51,16 @@ Call uour branches with clear, short names. You can add a 'flag' to indicate the
 -Hotfix : critical quick fix
 
 exemple : `git checkout -b New-Maid_entity`
+
+# Test Users
+The command `php app/console app:initialise:db` creates two test users.
+username : testUser
+email : test@user.com
+password : testpass
+
+username : adminUser
+email : adminUser@user.com
+password : adminpass
 
 # Custom commands
 

@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\DependencyInjection\Tests\A;
 
 class InitialiseDBCommand extends ContainerAwareCommand
 {
@@ -23,6 +24,9 @@ class InitialiseDBCommand extends ContainerAwareCommand
     {
         $dropCommand = $this->getApplication()->find('doctrine:schema:drop');
         $createCommand = $this->getApplication()->find('doctrine:schema:create');
+        $createUserCommand = $this->getApplication()->find('fos:user:create');
+        $promoteUserCommand = $this->getApplication()->find('fos:user:promote');
+
         $dropArguments = array(
             'command' => 'doctrine:schema:drop',
             '--force'  => true,
@@ -30,10 +34,35 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $createArguments = array(
             'command' => 'doctrine:schema:create',
         );
+        $userCreateArguments = array(
+            'command' => 'fos:user:create',
+            'username' => 'testUser',
+            'email' => 'test@user.com',
+            'password'=> 'testpass'
+        );
+        $userCreateArguments2 = array(
+            'command' => 'fos:user:create',
+            'username' => 'adminUser',
+            'email' => 'admin@user.com',
+            'password'=> 'adminpass'
+        );
+        $userPromoteArguments = array(
+            'command' => 'fos:user:promote',
+            'username' => 'adminUser',
+            'role' => 'ROLE_ADMIN'
+        );
+
         $dropInput = new ArrayInput($dropArguments);
         $createInput = new ArrayInput($createArguments);
+        $createUserInput = new ArrayInput($userCreateArguments);
+        $createUserInput2 = new ArrayInput($userCreateArguments2);
+        $promoteUserInput = new ArrayInput($userPromoteArguments);
+
         $dropReturnCode = $dropCommand->run($dropInput, $output);
         $createReturnCode = $createCommand->run($createInput, $output);
+        $userCreateReturnCode = $createUserCommand->run($createUserInput, $output);
+        $userCreateReturnCode2 = $createUserCommand->run($createUserInput2, $output);
+        $userPromoteArguments = $promoteUserCommand->run($promoteUserInput, $output);
 
         $restaurant = new Restaurant();
         $restaurant->setName('athome 1');
@@ -112,7 +141,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $em->persist($maid1);
         $em->flush();
 
-        $output->writeln('<info> Maids successfully generated!</info>');
+        $output->writeln('<info> Database successfully generated!</info>');
     }
 }
 
