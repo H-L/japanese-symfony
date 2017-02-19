@@ -1,0 +1,37 @@
+header {
+  nav {
+    height: 95px;
+    list-style: none;
+    background-color: #F4B1B6;
+    background-image: url('http://alexandrechich.fr/rubbon.png');
+    width: 100%;
+  }
+}
+  
+.header__nav {
+  height: 90px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  li {width: 150px;}
+}
+
+.nav__link {
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  position: relative;
+  &:hover:after {
+    content:'';
+    position: absolute;
+    width: 20px;
+    height: 25px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-image: url('http://alexandrechich.fr/shape2.png');
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+  }
+}
