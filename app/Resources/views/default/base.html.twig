@@ -11,18 +11,43 @@
         <header>
             <nav>
                 <ul class="header__nav">
-                    <li><a class="nav__link" href="{{ path('_home') }}">LOGO HOME</a></li>
-                    <li><a class="nav__link" href="{{ path('_home') }}">ACCUEIL</a></li>
-                    <li><a class="nav__link" href="{{ path('_maid') }}">MAIDS</a></li>
-                    <li><a class="nav__link" href="#">SERVICES</a></li>
-                    <li><a class="nav__link" href="#">CONTACT</a></li>
+                    <li><a class="nav__link--logo" href="{{ path('_home') }}"> LOGO </a></li>
+                    <li><a class="nav__link" href="{{ path('_home') }}"> HOME </a></li>
+                    <li><a class="nav__link" href="{{ path('_maid') }}"> MAIDS </a></li>
+                    <li><a class="nav__link" href="#"> SERVICES </a></li>
+                    <li><a class="nav__link" href="#"> CONTACT </a></li>
                     <!-- <li><a href="{{ path('_event') }}">EVENTS</a></li> -->
                 </ul>
             </nav>
         </header>
         {% block body %}{% endblock %}
         <footer>
-            footer
+            <div class="footer__map"></div>
+            <div class="footer__container">
+                <ul>
+                    <li class="logo_Tei"></li>
+                    <li>
+                        <div class="footer__content--title"> Contact </div>
+                        <div class="footer__content--content">01 69 43 52 17<br> contact@teishutsucafe.com</div>
+                    </li>
+                    <li>
+                        <div class="footer__content--title"> Services </div>
+                        <div class="footer__content--content">Reservation<br>My own maid</div>
+                    </li>
+                    <li>
+                        <div class="footer__content--title"> Social Media </div>
+                        <div class="footer__content--content">
+                            <div class="logo logo-tw"></div>
+                            <div class="logo logo-fb"></div>
+                            <div class="logo logo-insta"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer_legal">
+                <div> Copyright 2017 Teishutsu Cafe | Website by Hetic Kawaii </div>
+                <div> Mentions Légales • Conditions Générales de Ventes </div>
+            </div>
         </footer>
         {% block javascripts %}{% endblock %}
         <script

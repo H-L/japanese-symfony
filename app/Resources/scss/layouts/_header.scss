@@ -1,4 +1,5 @@
 header {
+  font-family: Nunito;
   nav {
     height: 95px;
     list-style: none;
@@ -17,6 +18,23 @@ header {
   li {width: 150px;}
 }
 
+.nav__link--logo {
+  position: relative;
+  color: transparent;
+  &:after {
+    content: '';
+    position: absolute;
+    background-image: url('../imgs/logoTei.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    left: -70px;
+    top: -5px;
+    width: 70px;
+    height: 35px;
+
+  }
+}
+
 .nav__link {
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
@@ -25,12 +43,12 @@ header {
   &:hover:after {
     content:'';
     position: absolute;
-    width: 20px;
+    width: 36px;
     height: 25px;
-    left: 0;
+    left: -1px;
     right: 0;
     margin: auto;
-    background-image: url('http://alexandrechich.fr/shape2.png');
+    background-image: url('../imgs/shape2.png');
     background-repeat: no-repeat;
     background-position: 50% 100%;
   }
