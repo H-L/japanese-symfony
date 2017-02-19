@@ -53,4 +53,14 @@ class DefaultController extends Controller
             'events' => $events,
         ));
     }
+
+    /**
+     * @Route("/services", name="_services")
+     */
+    public function serviceAction()
+    {
+        return $this->render('default/services/services.html.twig', array(
+
+        ));
+    }
 }
