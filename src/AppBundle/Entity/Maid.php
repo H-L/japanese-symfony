@@ -61,9 +61,9 @@ class Maid extends CoffeeShopItem
     private $twitterUrl;
 
     /**
-     * @ORM\OneToMany(targetEntity="TimeSlot", mappedBy="maid")
+     * @ORM\OneToMany(targetEntity="Timeslot", mappedBy="maid")
      */
-    private $timeSlots;
+    private $timeslots;
 
     /**
      * Set lastName
@@ -222,22 +222,22 @@ class Maid extends CoffeeShopItem
     /**
      * @return mixed
      */
-    public function getTimeSlots()
+    public function getTimeslots()
     {
-        return $this->timeSlots;
+        return $this->timeslots;
     }
 
     /**
-     * @param mixed $timeSlots
+     * @param mixed $timeslots
      */
-    public function setTimeSlots($timeSlots)
+    public function setTimeslots($timeslots)
     {
-        $this->timeSlots = $timeSlots;
+        $this->timeslots = $timeslots;
     }
     
     public function __construct()
     {
-        $this->timeSlots = new ArrayCollection();
+        $this->timeslots = new ArrayCollection();
     }
 
 }

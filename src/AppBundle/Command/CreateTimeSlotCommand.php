@@ -1,20 +1,20 @@
 <?php
 namespace AppBundle\Command;
 
-use AppBundle\Entity\TimeSlot;
+use AppBundle\Entity\Timeslot;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
-class CreateTimeSlotCommand extends ContainerAwareCommand
+class CreateTimeslotCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this
-            ->setName('app:timeSlot:add')
-            ->setDescription('Allows tou to create a new TimeSlot')
-            ->setHelp("Give the parameters and let the app create a new TimeSlot")
+            ->setName('app:timeslot:add')
+            ->setDescription('Allows tou to create a new Timeslot')
+            ->setHelp("Give the parameters and let the app create a new Timeslot")
         ;
     }
 
@@ -24,11 +24,11 @@ class CreateTimeSlotCommand extends ContainerAwareCommand
         $maidRepository = $em->getRepository('AppBundle:Maid');
         
         $helper = $this->getHelper('question');
-        $question = new Question('<fg=yellow>TimeSlot start time hour (from 0 to 23) </> : ', 0);
-        $question1 = new Question('<fg=yellow>TimeSlot start time minute (from 0 to 59) </> : ', 0);
-        $question2 = new Question('<fg=yellow>TimeSlot end time hour (from 0 to 23)</> : ', 23);
-        $question3 = new Question('<fg=yellow>TimeSlot end time minute (from 0 to 59)</> : ', 23);
-        $question4 = new Question('<fg=yellow>TimeSlot day of the week</> : ', 0);
+        $question = new Question('<fg=yellow>Timeslot start time hour (from 0 to 23) </> : ', 0);
+        $question1 = new Question('<fg=yellow>Timeslot start time minute (from 0 to 59) </> : ', 0);
+        $question2 = new Question('<fg=yellow>Timeslot end time hour (from 0 to 23)</> : ', 23);
+        $question3 = new Question('<fg=yellow>Timeslot end time minute (from 0 to 59)</> : ', 23);
+        $question4 = new Question('<fg=yellow>Timeslot day of the week</> : ', 0);
         $question5 = new Question('<fg=yellow>Id of the Maid ?</> :' , null);
 
         $startTimeHour = intval($helper->ask($input, $output, $question));
@@ -38,15 +38,19 @@ class CreateTimeSlotCommand extends ContainerAwareCommand
         $dayOfTheWeek = intval($helper->ask($input, $output, $question4));
         $maidId = $helper->ask($input, $output, $question5);
 
-        $timeSlot = new TimeSlot();
-        $timeSlot->setStartTime([$startTimeHour, $startTimeMinute]);
-        $timeSlot->setEndTime([$endTimeHour, $endTimeMinute]);
-        $timeSlot->setDayOfWeek($dayOfTheWeek);
-        $timeSlot->setMaid($maidRepository->find($maidId));
+        $timeslot = new Timeslot();
+        $timeslot->setStartHour($startTimeHour);
+        $timeslot->setStartMinute($startTimeMinute);
+        $timeslot->setEndHour($endTimeHour);
+        $timeslot->setEndMinute($endTimeMinute);
+        $timeslot->setStartTime(array($startTimeHour, $startTimeMinute));
+        $timeslot->setEndTime(array($endTimeHour, $endTimeMinute));
+        $timeslot->setDayOfWeek($dayOfTheWeek);
+        $timeslot->setMaid($maidRepository->find($maidId));
 
-        $em->persist($timeSlot);
+        $em->persist($timeslot);
         $em->flush();
 
-        $output->writeln('<info>TimeSlot successfully generated!</info>');
+        $output->writeln('<info>Timeslot successfully generated!</info>');
     }
 }

@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
-class TimeSlotType extends AbstractType
+class TimeslotType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -69,7 +69,7 @@ class TimeSlotType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\TimeSlot'
+            'data_class' => 'AppBundle\Entity\Timeslot'
         ));
     }
 

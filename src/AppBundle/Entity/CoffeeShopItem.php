@@ -276,30 +276,30 @@ abstract class CoffeeShopItem
     }
 
     /**
-     * Set timeSlots
+     * Set timeslots
      *
-     * @param TimeSlot mixed
+     * @param Timeslot mixed
      * @return CoffeShopItem
      */
-    public function setTimeSlots($timeSlots)
+    public function setTimeslots($timeslots)
     {
-        $this->timeSlots = $timeSlots;
+        $this->timeslots = $timeslots;
 
         return $this;
     }
 
     /**
-     * Get timeSlots
+     * Get timeslots
      *
      * @return mixed
      */
-    public function getTimeSlots()
+    public function getTimeslots()
     {
-        return $this->timeSlots;
+        return $this->timeslots;
     }
 
     public function __construct()
     {
-        $this->timeSlots = new ArrayCollection();
+        $this->timeslots = new ArrayCollection();
     }
 }

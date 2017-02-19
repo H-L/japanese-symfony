@@ -4,7 +4,7 @@ namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class TimeSlotControllerTest extends WebTestCase
+class TimeslotControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()

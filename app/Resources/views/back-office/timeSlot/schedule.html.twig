@@ -1,0 +1,5 @@
+{% for slot in timeslots %}
+    <div class="time-slot edit-form-create" data-path="{{ path('timeslot_form_edit', { 'id': slot.id }) }}">
+        {{ slot.startTime[0] }}h{{ slot.startTime[1] }} {{ slot.endTime[0] }}h{{ slot.endTime[1] }} {{ slot.dayOfWeek }}
+    </div>
+{% endfor %}

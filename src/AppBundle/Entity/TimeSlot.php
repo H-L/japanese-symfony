@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * TimeSlot
+ * Timeslot
  *
  * @ORM\Table(name="time_slot")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TimeSlotRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TimeslotRepository")
  */
-class TimeSlot
+class Timeslot
 {
     /**
      * @var int
@@ -60,14 +60,14 @@ class TimeSlot
     private $dayOfWeek;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Restaurant", inversedBy="timeSlots")
+     * @ORM\ManyToOne(targetEntity="Restaurant", inversedBy="timeslots")
      * @ORM\JoinColumn(name="id_restaurant", referencedColumnName="id")
      */
     private $restaurant;
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Maid", inversedBy="timeSlots")
+     * @ORM\ManyToOne(targetEntity="Maid", inversedBy="timeslots")
      * @ORM\JoinColumn(name="id_maid", referencedColumnName="id")
      */
     private $maid;
@@ -132,7 +132,7 @@ class TimeSlot
     /**
      * Set startTime
      * 
-     * @return TimeSlot
+     * @return Timeslot
      */
     public function setStartTime()
     {
@@ -186,7 +186,7 @@ class TimeSlot
     /**
      * Set endTime
      *
-     * @return TimeSlot
+     * @return Timeslot
      */
     public function setEndTime()
     {
@@ -209,7 +209,7 @@ class TimeSlot
      * Set dayOfWeek
      *
      * @param integer $dayOfWeek
-     * @return TimeSlot
+     * @return Timeslot
      */
     public function setDayOfWeek($dayOfWeek)
     {

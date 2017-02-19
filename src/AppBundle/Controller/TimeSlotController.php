@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\TimeSlot;
+use AppBundle\Entity\Timeslot;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -12,10 +12,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  *
  * @Route("timeslot")
  */
-class TimeSlotController extends Controller
+class TimeslotController extends Controller
 {
     /**
-     * Lists all timeSlot entities.
+     * Lists all timeslot entities.
      *
      * @Route("/", name="timeslot_index")
      * @Method("GET")
@@ -24,115 +24,145 @@ class TimeSlotController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $timeSlots = $em->getRepository('AppBundle:TimeSlot')->findAll();
+        $timeslots = $em->getRepository('AppBundle:Timeslot')->findAll();
 
-        return $this->render('timeslot/index.html.twig', array(
-            'timeSlots' => $timeSlots,
+        return $this->render('back-office/timeSlot/schedule.html.twig', array(
+            'timeslots' => $timeslots,
         ));
     }
 
     /**
-     * Creates a new timeSlot entity.
+     * Creates a new timeslot entity.
      *
      * @Route("/new", name="timeslot_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
-        $timeSlot = new Timeslot();
-        $form = $this->createForm('AppBundle\Form\TimeSlotType', $timeSlot);
+        $timeslot = new Timeslot();
+        $form = $this->createForm('AppBundle\Form\TimeslotType', $timeslot);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $timeSlot->setStartTime();
-            $timeSlot->setEndTime();
-            $em->persist($timeSlot);
-            $em->flush($timeSlot);
+            $timeslot->setStartTime();
+            $timeslot->setEndTime();
+            $em->persist($timeslot);
+            $em->flush($timeslot);
 
-            return $this->redirectToRoute('timeslot_show', array('id' => $timeSlot->getId()));
+            return $this->redirectToRoute('timeslot_show', array('id' => $timeslot->getId()));
         }
 
         return $this->render('timeslot/new.html.twig', array(
-            'timeSlot' => $timeSlot,
+            'timeslot' => $timeslot,
             'form' => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a timeSlot entity.
+     * Finds and displays a timeslot entity.
      *
      * @Route("/{id}", name="timeslot_show")
      * @Method("GET")
      */
-    public function showAction(TimeSlot $timeSlot)
+    public function showAction(Timeslot $timeslot)
     {
-        $deleteForm = $this->createDeleteForm($timeSlot);
+        $deleteForm = $this->createDeleteForm($timeslot);
 
         return $this->render('timeslot/show.html.twig', array(
-            'timeSlot' => $timeSlot,
+            'timeslot' => $timeslot,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing timeSlot entity.
+     * Displays a form to edit an existing timeslot entity.
      *
-     * @Route("/{id}/edit", name="timeslot_edit")
-     * @Method({"GET", "POST"})
+     * @Route("timeslot/{id}/edit", name="timeslot_edit")
+     * @Method({"POST"})
      */
-    public function editAction(Request $request, TimeSlot $timeSlot)
+    public function editAction(Request $request, Timeslot $timeslot)
     {
-        $deleteForm = $this->createDeleteForm($timeSlot);
-        $editForm = $this->createForm('AppBundle\Form\TimeSlotType', $timeSlot);
-        $editForm->handleRequest($request);
+        if($request->isXmlHttpRequest()) {
+            $em = $this->getDoctrine()->getManager();
+            if($request->isXmlHttpRequest()) {
+                $data = $request->get('appbundle_timeslot');
+                $timeslot->setStartHour($data['startHour']);
+                $timeslot->setStartMinute($data['startMinute']);
+                $timeslot->setEndHour($data['endHour']);
+                $timeslot->setEndMinute($data['endMinute']);
+                $timeslot->setDayOfWeek($data['dayOfWeek']);
+                if($data['restaurant'] != 1) {
+                    $timeslot->setRestaurant($data['restaurant']);
+                }
+                if($data['maid'] != 1) {
+                    $timeslot->setMaid($em->getRepository('AppBundle:Maid')->find($data['maid']));
+                }
+                $em->persist($timeslot);
+                $em->flush($timeslot);
+            }
+            $timeslots = $em->getRepository('AppBundle:Timeslot')->findAll();
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            return  $this->render('back-office/timeSlot/schedule.html.twig', array(
+                'timeslots' => $timeslots,
+            ));
+        } else {
 
-            return $this->redirectToRoute('timeslot_edit', array('id' => $timeSlot->getId()));
+            return $this->indexAction();
         }
 
-        return $this->render('timeslot/edit.html.twig', array(
-            'timeSlot' => $timeSlot,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
     }
 
     /**
-     * Deletes a timeSlot entity.
+     * Deletes a timeslot entity.
      *
      * @Route("/{id}", name="timeslot_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, TimeSlot $timeSlot)
+    public function deleteAction(Request $request, Timeslot $timeslot)
     {
-        $form = $this->createDeleteForm($timeSlot);
+        $form = $this->createDeleteForm($timeslot);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($timeSlot);
-            $em->flush($timeSlot);
+            $em->remove($timeslot);
+            $em->flush($timeslot);
         }
 
         return $this->redirectToRoute('timeslot_index');
     }
 
     /**
-     * Creates a form to delete a timeSlot entity.
+     * Creates a form to delete a timeslot entity.
      *
-     * @param TimeSlot $timeSlot The timeSlot entity
+     * @param Timeslot $timeslot The timeslot entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(TimeSlot $timeSlot)
+    private function createDeleteForm(Timeslot $timeslot)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('timeslot_delete', array('id' => $timeSlot->getId())))
+            ->setAction($this->generateUrl('timeslot_delete', array('id' => $timeslot->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * create a form to edit an existing timeslot entity.
+     *
+     * @Route("timeslot/{id}/form/edit", name="timeslot_form_edit")
+     * @Method({"POST"})
+     */
+    public function formEditAction(Request $request, Timeslot $timeslot)
+    {
+        $deleteForm = $this->createDeleteForm($timeslot);
+        $editForm = $this->createForm('AppBundle\Form\TimeslotType', $timeslot);
+        return $this->render('back-office/timeslot/edit.html.twig', array(
+            'timeslot_to_edit' => $timeslot,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 }

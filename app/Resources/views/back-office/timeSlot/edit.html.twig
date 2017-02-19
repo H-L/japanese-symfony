@@ -1,0 +1,14 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1>Timeslot edit</h1>
+    </div>
+    <div class="panel-body">
+        <form class="timeslot-edit-form" action="{{ path('timeslot_edit', { 'id': timeslot_to_edit.id }) }}" method="post">
+            {{ form_widget(edit_form) }}
+            <input type="submit" value="Edit" class="btn btn-lg btn-success"/>
+        </form>
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Delete" class="btn btn-lg btn-danger">
+        {{ form_end(delete_form) }}
+    </div>
+</div>

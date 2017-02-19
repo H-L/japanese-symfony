@@ -29,7 +29,7 @@ gulp.task('bo-scss', function() {
 });
 
 gulp.task('scripts', function () {
-    return gulp.src('app/Resources/js/**')
+    return gulp.src('app/Resources/js/*.js')
         .pipe(concat('main.js'))
         .pipe(uglify())
         .pipe(gulp.dest('web/js'));

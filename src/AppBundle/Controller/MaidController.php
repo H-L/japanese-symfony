@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Maid;
+use AppBundle\Entity\Timeslot;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -66,11 +67,17 @@ class MaidController extends Controller
     public function showAction(Maid $maid)
     {
         $deleteForm = $this->createDeleteForm($maid);
+        $newTimeslot = new Timeslot();
+        $createForm = $this->createForm('AppBundle\Form\TimeslotType', $newTimeslot);
+        $timeslotToEdit = $maid->getTimeslots()[0];
+        $editForm = $this->createForm('AppBundle\Form\TimeslotType', $timeslotToEdit);
         
         return $this->render('back-office/maid/show.html.twig', array(
             'maid' => $maid,
-            'timeSlots' => $maid->getTimeSlots(),
-            'delete_form' => $deleteForm->createView(),
+            'timeslots' => $maid->getTimeslots(),
+            'delete_form' => $deleteForm->createView(),'createForm' => $createForm->createView(),
+            'edit_form' => $editForm->createView(),
+            'timeslot_to_edit' => $timeslotToEdit
         ));
     }
 

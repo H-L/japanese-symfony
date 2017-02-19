@@ -48,7 +48,7 @@ class RestaurantController extends Controller
             $em->persist($restaurant);
             $em->flush();
 
-            return $this->redirectToRoute('_show', array('id' => $restaurant->getId()));
+            return $this->redirectToRoute('_restaurant_show', array('id' => $restaurant->getId()));
         }
 
         return $this->render('back-office/restaurant/new.html.twig', array(
@@ -69,7 +69,7 @@ class RestaurantController extends Controller
 
         return $this->render('back-office/restaurant/show.html.twig', array(
             'restaurant' => $restaurant,
-            'timeSlots' => $restaurant->getTimeSlots(),
+            'timeslots' => $restaurant->getTimeslots(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -89,7 +89,7 @@ class RestaurantController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('_edit', array('id' => $restaurant->getId()));
+            return $this->redirectToRoute('_restaurant_edit', array('id' => $restaurant->getId()));
         }
 
         return $this->render('back-office/restaurant/edit.html.twig', array(
@@ -130,7 +130,7 @@ class RestaurantController extends Controller
     private function createDeleteForm(Restaurant $restaurant)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('_delete', array('id' => $restaurant->getId())))
+            ->setAction($this->generateUrl('_restaurant_delete', array('id' => $restaurant->getId())))
             ->setMethod('DELETE')
             ->getForm();
     }

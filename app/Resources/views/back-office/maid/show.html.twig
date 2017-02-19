@@ -72,12 +72,18 @@
             </table>
         </div>
     </div>
-    <ul>
-        {% for slot in timeSlots %}
-            <li>{{ slot.startTime[0] }}h{{ slot.startTime[1] }} {{ slot.endTime[0] }}h{{ slot.endTime[1] }}</li>
-        {% endfor %}
-    </ul>
-
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1>Maid weekly schedule </h1>
+        </div>
+        <div id="schedule">
+            {% include 'back-office/timeslot/schedule.html.twig'%}
+        </div>
+        <div id="edit-form">
+            {% include 'back-office/timeslot/edit.html.twig' with {'timeslot_to_edit' : timeslot_to_edit, 'form' : edit_form, 'delete_form' : delete_form }  %}
+        </div>
+        {% include ':back-office/timeslot:new.html.twig' with {'form' : createForm }  %}
+    </div>
     <ul class="list-group">
         <li class="list-group-item">
             <a href="{{ path('_maid_index') }}"><button type="button" class="btn btn-lg btn-primary">Back to the list</button></a>
