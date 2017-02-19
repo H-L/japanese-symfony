@@ -52,7 +52,10 @@ class TimeSlotType extends AbstractType
                     0 => 'Sunday',
                 ),
             ))
-            ->add('restaurant')
+            ->add('restaurant', EntityType::class, array(
+                'class' => 'AppBundle:Restaurant',
+                'choice_label' => 'name',
+            ))
             ->add('maid', EntityType::class, array(
                 'class' => 'AppBundle:Maid',
                 'choice_label' => 'name',

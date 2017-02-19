@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Validator\Constraints\Date;
-use Symfony\Component\VarDumper\VarDumper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class MaidType extends AbstractType
 {
@@ -21,6 +21,10 @@ class MaidType extends AbstractType
         $old = intval(date('Y', strtotime('-60 years')));
 
         $builder
+            ->add('restaurant', EntityType::class, array(
+                'class' => 'AppBundle:Restaurant',
+                'choice_label' => 'name',
+            ))
             ->add('name')
             ->add('lastName')
             ->add('birthDate', DateType::class, array(

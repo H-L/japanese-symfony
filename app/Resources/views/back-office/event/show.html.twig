@@ -1,47 +1,46 @@
 {% extends 'back-office/base.html.twig' %}
 
 {% block body %}
-    <h1>Event</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ event.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ event.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ event.description }}</td>
-            </tr>
-            <tr>
-                <th>Start</th>
-                <td>{% if event.start %}{{ event.start|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>End</th>
-                <td>{% if event.end %}{{ event.end|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Profilepicture</th>
-                <td>{{ event.profilePicture }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('back-office_event_index') }}">Back to the list</a>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1> Event -{{ event.name }}- informations</h1>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ event.name }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ event.description }}</td>
+                </tr>
+                <tr>
+                    <th>Start</th>
+                    <td>{% if event.start %}{{ event.start|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>End</th>
+                    <td>{% if event.end %}{{ event.end|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Profilepicture</th>
+                    <td>{{ event.profilePicture }}</td>
+                </tr>
+            </tbody>
+         </table>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="{{ path('back-office_event_index') }}"><button type="button" class="btn btn-lg btn-primary">Back to the list</button></a>
         </li>
-        <li>
-            <a href="{{ path('back-office_event_edit', { 'id': event.id }) }}">Edit</a>
+        <li class="list-group-item">
+            <a href="{{ path('back-office_event_edit', { 'id': event.id }) }}"><button type="button" class="btn btn-lg btn-warning">Edit</button></a>
         </li>
-        <li>
+        <li class="list-group-item">
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Delete" class="btn btn-lg btn-danger">
             {{ form_end(delete_form) }}
         </li>
     </ul>

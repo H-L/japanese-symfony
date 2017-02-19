@@ -53,4 +53,20 @@ class DefaultController extends Controller
             'events' => $events,
         ));
     }
+
+    /**
+     * @Route("/back-office", name="back-office_index")
+     */
+    public function backOfficeAction() {
+        $em = $this->getDoctrine()->getManager();
+        $maids = $em->getRepository('AppBundle:Maid')->findAll();
+        $restaurant = $em->getRepository('AppBundle:Restaurant')->findAll();
+        $events = $em->getRepository('AppBundle:Event')->findAll();
+
+        return $this->render('back-office/index.html.twig', array(
+            'maids' => $maids,
+            'restaurants' => $restaurant,
+            'events' => $events,
+        ));
+    }
 }

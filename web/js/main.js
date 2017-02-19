@@ -1,1 +1,1 @@
-console.log("hey"),$(document).ready(function(){$(".dropdown-toggle").click(function(){console.log("mdr"),$(this).parent().toggleClass("open")})});
+console.log("hey"),$(document).ready(function(){$(".dropdown-toggle").click(function(){$(this).parent().toggleClass("open")})});

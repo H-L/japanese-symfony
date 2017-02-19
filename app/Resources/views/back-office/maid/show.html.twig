@@ -6,7 +6,6 @@
             <h1>Maid informations</h1>
         </div>
         <div class="panel-body">
-
             <table class="table">
                 <tbody>
                     <tr>
@@ -73,27 +72,25 @@
             </table>
         </div>
     </div>
-            <ul>
-                {% for slot in timeSlots %}
-                    <li>{{ slot.startTime[0] }}h{{ slot.startTime[1] }} {{ slot.endTime[0] }}h{{ slot.endTime[1] }}</li>
-                {% endfor %}
-            </ul>
+    <ul>
+        {% for slot in timeSlots %}
+            <li>{{ slot.startTime[0] }}h{{ slot.startTime[1] }} {{ slot.endTime[0] }}h{{ slot.endTime[1] }}</li>
+        {% endfor %}
+    </ul>
 
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <a href="{{ path('_maid_index') }}"><button type="button" class="btn btn-lg btn-primary">Back to the list</button></a>
-                </li>
-                <li class="list-group-item">
-                    <a href="{{ path('_maid_edit', { 'id': maid.id }) }}"><button type="button" class="btn btn-lg btn-warning">Edit</button></a>
-                </li>
-                <li class="list-group-item">
-                    {{ form_start(delete_form) }}
-                    <input type="submit" value="Delete" class="btn btn-lg btn-danger" />
-                    {{ form_end(delete_form) }}
-                </li>
-            </ul>
-        </div>
-    </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="{{ path('_maid_index') }}"><button type="button" class="btn btn-lg btn-primary">Back to the list</button></a>
+        </li>
+        <li class="list-group-item">
+            <a href="{{ path('_maid_edit', { 'id': maid.id }) }}"><button type="button" class="btn btn-lg btn-warning">Edit</button></a>
+        </li>
+        <li class="list-group-item">
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete" class="btn btn-lg btn-danger" />
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
 {% endblock %}
 
 
