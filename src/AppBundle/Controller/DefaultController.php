@@ -22,18 +22,18 @@ class DefaultController extends Controller
         ));
     }
 
-    /**
-     * @Route("/galleries", name="galleries")
-     */
-    public function testingImageGalleriesAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $gallery = $em->getRepository('AppBundle:Gallery')->find(1);
-        $images = $gallery->getImages()->toArray();
-
-        return $this->render('galleries/index.html.twig', array(
-            'images' => $images,
-            'gallery' => $gallery,
-        ));
-    }
+//    /**
+//     * @Route("/galleries", name="galleries")
+//     */
+//    public function testingImageGalleriesAction(Request $request)
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//        $gallery = $em->getRepository('AppBundle:Gallery')->find(1);
+//        $images = $gallery->getImages()->toArray();
+//
+//        return $this->render('galleries/index.html.twig', array(
+//            'images' => $images,
+//            'gallery' => $gallery,
+//        ));
+//    }
 }
