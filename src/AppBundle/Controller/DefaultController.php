@@ -2,9 +2,12 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Image;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Form\ImageType;
 
 /**
  * Default controller.
@@ -53,4 +56,19 @@ class DefaultController extends Controller
             'events' => $events,
         ));
     }
+
+//    /**
+//     * @Route("/galleries", name="galleries")
+//     */
+//    public function testingImageGalleriesAction(Request $request)
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//        $gallery = $em->getRepository('AppBundle:Gallery')->find(1);
+//        $images = $gallery->getImages()->toArray();
+//
+//        return $this->render('galleries/index.html.twig', array(
+//            'images' => $images,
+//            'gallery' => $gallery,
+//        ));
+//    }
 }

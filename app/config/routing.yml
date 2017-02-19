@@ -1,6 +1,10 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 

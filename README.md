@@ -17,17 +17,19 @@ cd japanese-symfony
 composer install
 
 # Installing DB and update it
-#if you just want an empty database
 php app/console doctrine:database:create
 php app/console doctrine:schema:update
 
-#We also created a command to initialise a little work database :
+# For hard reset use this command before the 2 above, it will delete your current DB :
+php app/console doctrine:database:drop
+
+# We also created a command to initialise a little work database :
 php app/console app:initialise:db
 
 # Launch the server : will sync assets and lauch symfony server
 gulp sync
 
-#Just the symfony server
+# Launch the server
 php app/console server:run
 
 #Just the assets
@@ -82,6 +84,9 @@ php app/console app:restaurant:add
 
 # Create a timeSlot for scheduling
 php app/console app:timeSlot:add
+
+# Create/import Images from local dir to DB and copy images in web/uploads/images
+php app/console app:add_images
 ```
 
 # Team & Collaborators
