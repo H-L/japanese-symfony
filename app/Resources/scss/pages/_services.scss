@@ -1,0 +1,77 @@
+.services__header {
+	background-color: #F4B1B6;
+    background-image: url('http://alexandrechich.fr/rubbon.png');
+    width: 100%;
+    position: relative;
+    padding: 75px 0;
+    .cafe-name {
+    	font-family: LilyScriptOne;
+    	font-size: 77px;
+    	text-align: center;
+    	color: #fefefe;
+    	text-shadow: 0 2px 5px #FC4F5C;
+    	position: absolute;
+		left: 0;
+		right: 0;
+		margin: -52px auto 0;
+    }
+    .cafe-jap {
+    	font-family: HCP-Maru;
+    	font-size: 60px;
+    	text-align: center;
+    	color: #FC4F5C;
+    	text-shadow: 1px 1px 1px #F9CCCF;
+    }
+}
+
+/*-----------------------------------------------------------------------------------------------------------*/
+/* MENU */
+/*-----------------------------------------------------------------------------------------------------------*/
+
+.services__menu {
+	text-align: center;
+	width: 880px;
+	margin: 50px auto;
+	.menu__content {
+		color: #67393C; 
+		line-height: 22px;
+		padding-bottom: 20px;
+	}
+}
+
+.services__title {
+	font-family: LilyScriptOne;
+	color: #67393C;
+	font-size: 24px;
+	text-align: center;
+	padding-bottom: 40px;
+	position: relative;
+	&:after {
+		content: '';
+		position: absolute;
+		width: 30px;
+		height: 20px;
+		left: 0;
+		right: 0;
+		margin: 37px auto;
+		@include bg-img('../imgs/shape.png');
+	}
+}
+
+.menu__encres {
+	width: 470px;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: space-between;
+	div {
+		font-family: LilyScriptOne;
+		color: #fefefe;
+		font-size: 20px;
+		margin: 15px 7px 0; 
+		padding: 8px 30px;
+		background-color: #F4ADB2;
+		border-radius: 30px;
+	}
+}

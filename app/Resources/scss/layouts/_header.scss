@@ -24,9 +24,7 @@ header {
   &:after {
     content: '';
     position: absolute;
-    background-image: url('../imgs/logoTei.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
+    @include bg-img('../imgs/logoTei.png');
     left: -70px;
     top: -5px;
     width: 70px;

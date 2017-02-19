@@ -1,7 +1,5 @@
 .footer__map {
-	background-image: url('../imgs/map.png');
-	background-repeat: no-repeat;
-	background-size: 100%;
+	@include bg-img('../imgs/map.png')
 	width: 100vw;
 	height: 330px;
 }
@@ -17,9 +15,7 @@
 		top: -20px;
 		width: 100vw;
 		height: 30px;
-		background-image: url('../imgs/footerwave.png');
-		background-repeat: no-repeat;
-		background-size: 100%;
+		@include bg-img('../imgs/footerwave.png');
 	}
 	ul {
 		height: 100%;
@@ -31,9 +27,7 @@
 }
 
 .logo_Tei {
-	background-image: url('../imgs/logoTei.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
+    @include bg-img('../imgs/logoTei.png')
     width: 70px;
     height: 35px;
 }
@@ -48,18 +42,16 @@
 	justify-content: space-between;
 	.logo {
 		margin: 5px 0 0 10px;
-		background-repeat: no-repeat;
-		background-size: 100%;
 		background-position: 50% 50%;
 		width: 25px;
 		height: 25px;
 		&.logo-fb {
 			background-size: 46% ;
 			padding-left: 5px;
-			background-image: url('../imgs/logo-fb.png');
+			@include bg-img('../imgs/logo-fb.png');
 		}
-		&.logo-tw {background-image: url('../imgs/logo-tw.png');}
-		&.logo-insta {background-image: url('../imgs/logo-insta.png');}
+		&.logo-tw {@include bg-img('../imgs/logo-tw.png');}
+		&.logo-insta {@include bg-img('../imgs/logo-insta.png');}
 	}
 }
 
