@@ -26,14 +26,9 @@ php app/console doctrine:database:drop
 # We also created a command to initialise a little work database :
 php app/console app:initialise:db
 
-# Launch the server : will sync assets and lauch symfony server
-gulp sync
-
 # Launch the server
 php app/console server:run
 
-#Just the assets
-gulp watch
 ```
 # Front End
 The project works sass and gulp. The views are in Resources/views and the scss files are in Resources/scss.
@@ -41,6 +36,15 @@ After running `gulp sync`, scss files with compile automatically.
 
 For views, public site views are in Resources/views/default. All views extends scss/base.html.twig, which contains header and footer.
 A folder by page is done, with a main file page/page.html.twig, and optionnal other views. This other views of /page must be included in the main file.
+
+## Gulp Commands
+```bash
+# Launch the server : will sync assets and launch symfony server:run command :
+gulp sync
+
+# Just the assets, without launching the server :
+gulp watch
+```
 
 # Commits
 Commit messages must follow this guide : [gitmoji | An emoji guide for your commit messages](https://gitmoji.carloscuesta.me/)
