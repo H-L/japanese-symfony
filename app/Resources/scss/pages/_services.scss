@@ -4,24 +4,25 @@
     width: 100%;
     position: relative;
     padding: 75px 0;
-    .cafe-name {
-    	font-family: LilyScriptOne;
-    	font-size: 77px;
-    	text-align: center;
-    	color: #fefefe;
-    	text-shadow: 0 2px 5px #FC4F5C;
-    	position: absolute;
-		left: 0;
-		right: 0;
-		margin: -52px auto 0;
-    }
-    .cafe-jap {
-    	font-family: HCP-Maru;
-    	font-size: 60px;
-    	text-align: center;
-    	color: #FC4F5C;
-    	text-shadow: 1px 1px 1px #F9CCCF;
-    }
+}
+
+.cafe-name {
+	font-family: LilyScriptOne;
+	font-size: 77px;
+	text-align: center;
+	color: #fefefe;
+	text-shadow: 0 2px 5px #FC4F5C;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: -52px auto 0;
+}
+.cafe-jap {
+	font-family: HCP-Maru;
+	font-size: 60px;
+	text-align: center;
+	color: #FC4F5C;
+	text-shadow: 1px 1px 1px #F9CCCF;
 }
 
 /*-----------------------------------------------------------------------------------------------------------*/
