@@ -24,7 +24,7 @@ class Restaurant extends CoffeeShopItem
     private $timeSlots;
 
     /**
-     * @ORM\OneToMany(targetEntity="Restaurant", mappedBy="maids")
+     * @ORM\OneToMany(targetEntity="Restaurant", mappedBy="events")
      */
     private $events;
     

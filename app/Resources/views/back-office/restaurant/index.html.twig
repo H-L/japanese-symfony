@@ -1,0 +1,36 @@
+{% extends 'back-office/base.html.twig' %}
+{% block body %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1>Restaurant list</h1>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for restaurant in restaurants %}
+                    <tr>
+                        <td><a href="{{ path('_restaurant_show', { 'id': restaurant.id }) }}">{{ restaurant.id }}</a></td>
+                        <td>{{ restaurant.name }}</td>
+                        <td>
+                            <a href="{{ path('_restaurant_show', { 'id': restaurant.id }) }}"><button type="button" class="btn btn-lg btn-primary">Show</button></a>
+                            <a href="{{ path('_restaurant_edit', { 'id': restaurant.id }) }}"><button type="button" class="btn btn-lg btn-warning">Edit</button></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="{{ path('_restaurant_new') }}"><button type="button" class="btn btn-lg btn-success">Create a new restaurant</button></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

@@ -45,11 +45,13 @@ var logStdOutAndErr = function (err, stdout, stderr) {
 };
 
 gulp.task('sync', ['server','scss','bo-scss', 'scripts'], function() {
+    gulp.watch("app/Resources/back-office-scss/**/*.scss", ['bo-scss']);
     gulp.watch("app/Resources/scss/**/*.scss", ['scss']);
     gulp.watch("app/Resources/js/**", ['scripts']);
 });
 
 gulp.task('watch', ['scss','bo-scss', 'scripts'], function() {
+    gulp.watch("app/Resources/back-office-scss/**/*.scss", ['bo-scss']);
     gulp.watch("app/Resources/scss/**/*.scss", ['scss']);
     gulp.watch("app/Resources/js/**", ['scripts']);
 });

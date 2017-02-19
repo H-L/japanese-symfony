@@ -81,10 +81,10 @@
 
             <ul class="list-group">
                 <li class="list-group-item">
-                    <a href="{{ path('_index') }}"><button type="button" class="btn btn-lg btn-primary">Back to the list</button></a>
+                    <a href="{{ path('_maid_index') }}"><button type="button" class="btn btn-lg btn-primary">Back to the list</button></a>
                 </li>
                 <li class="list-group-item">
-                    <a href="{{ path('_edit', { 'id': maid.id }) }}"><button type="button" class="btn btn-lg btn-warning">Edit</button></a>
+                    <a href="{{ path('_maid_edit', { 'id': maid.id }) }}"><button type="button" class="btn btn-lg btn-warning">Edit</button></a>
                 </li>
                 <li class="list-group-item">
                     {{ form_start(delete_form) }}
