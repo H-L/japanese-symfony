@@ -1,0 +1,8 @@
+/* base files : reset, mixins, functions, fonts... */
+@import "base/&module";
+/* components */
+@import "components/&module";
+/* bigger parts: header, footer */
+@import "layouts/&module";
+/* each page */
+@import "pages/&module";

@@ -9,16 +9,51 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\ImageType;
 
+/**
+ * Default controller.
+ *
+ * @Route("/")
+ */
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="_home")
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+        $em = $this->getDoctrine()->getManager();
+        $maids = $em->getRepository('AppBundle:Maid')->findAll();
+        $restaurant = $em->getRepository('AppBundle:Restaurant')->findAll();
+        $events = $em->getRepository('AppBundle:Event')->findAll();
+
         return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+            'maids' => $maids,
+            'restaurants' => $restaurant,
+            'events' => $events,
+        ));
+    }
+
+    /**
+     * @Route("/maid", name="_maid")
+     */
+    public function maidAction() {
+        $em = $this->getDoctrine()->getManager();
+        $maids = $em->getRepository('AppBundle:Maid')->findAll();
+
+        return $this->render('default/maid/maid.html.twig', array(
+            'maids' => $maids,
+        ));
+    }
+
+    /**
+     * @Route("/event", name="_event")
+     */
+    public function eventAction() {
+        $em = $this->getDoctrine()->getManager();
+        $events = $em->getRepository('AppBundle:Event')->findAll();
+
+        return $this->render('default/event/event.html.twig', array(
+            'events' => $events,
         ));
     }
 

@@ -1,0 +1,12 @@
+{% extends 'default/base.html.twig' %}
+{% block body %}
+    <h1>Maid</h1>
+    <ul>
+        {% for maid in maids %}
+            <li>
+                <img src="{{ maid.profilePicture }}" width="150px "alt="">
+                <p>name : {{ maid.name }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
