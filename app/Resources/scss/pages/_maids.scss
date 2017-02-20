@@ -1,7 +1,10 @@
-.maid__container {
+.maid__header {
   @include bg-img('../imgs/our-maids.png');
   min-height: 490px;
+  background-size: 50%;
+  background-position: 50% 10%;
   width: 100%;
+  background-color: #CAEDEF;
   h1 {line-height:490px;}
 }
 
@@ -53,7 +56,7 @@
          position: relative;
        }
        .maid__text-japonais{
-         font-size: 50px;
+         font-size: 35px;
        }
      }
    }
@@ -63,9 +66,9 @@
      flex-wrap: wrap;
      width: 900px;
      margin: auto;
-     padding-top: 50px;
+     margin: 50px auto;
      .maid__content--icon{
-       margin: auto;
+       margin: 40px auto;
        display: flex;
        p{
          font-family: LilyScriptOne;

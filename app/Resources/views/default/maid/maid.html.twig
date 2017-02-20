@@ -1,6 +1,6 @@
 {% extends 'default/base.html.twig' %}
 {% block body %}
-    <div class="maid__container">
+    <div class="maid__header">
       <h1 class="cafe-name"> Our maids </h1>
         <h1 class="cafe-jap"> 私たちの家 </h1>
     </div>
@@ -71,7 +71,7 @@
         </div>
       </div>
     </div>
-    <ul>
+    <!-- <ul>
         {% for maid in maids %}
             <li>
                 <img src="{{ maid.profilePicture }}" width="150px "alt="">
@@ -79,5 +79,5 @@
                 <a href="{{ path('_maid_show', {'id': maid.id }) }}">Full info on {{ maid.name }}</a>
             </li>
         {% endfor %}
-    </ul>
+    </ul> -->
 {% endblock %}
