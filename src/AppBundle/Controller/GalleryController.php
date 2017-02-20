@@ -26,7 +26,7 @@ class GalleryController extends Controller
 
         $galleries = $em->getRepository('AppBundle:Gallery')->findAll();
 
-        return $this->render('gallery/index.html.twig', array(
+        return $this->render('default/gallery/index.html.twig', array(
             'galleries' => $galleries,
         ));
     }
@@ -51,7 +51,7 @@ class GalleryController extends Controller
             return $this->redirectToRoute('galleries_show', array('id' => $gallery->getId()));
         }
 
-        return $this->render('gallery/new.html.twig', array(
+        return $this->render('default/gallery/new.html.twig', array(
             'gallery' => $gallery,
             'form' => $form->createView(),
         ));
@@ -67,9 +67,7 @@ class GalleryController extends Controller
     {
         $deleteForm = $this->createDeleteForm($gallery);
 
-//        $images = $gallery->getImages();
-
-        return $this->render('gallery/show.html.twig', array(
+        return $this->render('default/gallery/show.html.twig', array(
             'gallery' => $gallery,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -93,7 +91,7 @@ class GalleryController extends Controller
             return $this->redirectToRoute('galleries_edit', array('id' => $gallery->getId()));
         }
 
-        return $this->render('gallery/edit.html.twig', array(
+        return $this->render('default/gallery/edit.html.twig', array(
             'gallery' => $gallery,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

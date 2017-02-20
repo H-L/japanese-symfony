@@ -1,7 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'default/base.html.twig' %}
 
 {% block body %}
-    <h1>Image edit</h1>
+    <h1>Gallery edit</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -10,7 +10,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('images_index') }}">Back to the list</a>
+            <a href="{{ path('galleries_index') }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

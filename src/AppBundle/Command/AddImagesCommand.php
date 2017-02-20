@@ -25,7 +25,7 @@ class AddImagesCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('app:add_images')
+            ->setName('app:initialise:images')
             ->setDescription('Add an image or an image repository to DB and local Directory')
             ->setHelp('Add path to the Images directory ')
         ;

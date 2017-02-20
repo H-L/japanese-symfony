@@ -1,4 +1,4 @@
-2<?php
+<?php
 
 namespace AppBundle\Form;
 
