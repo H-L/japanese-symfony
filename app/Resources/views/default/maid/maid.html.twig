@@ -6,7 +6,10 @@
             <li>
                 <img src="{{ maid.profilePicture }}" width="150px "alt="">
                 <p>name : {{ maid.name }}</p>
+                {#<a href="{{ path('_maid_show', {'id': maid.id }) }}"></a>#}
             </li>
         {% endfor %}
     </ul>
 {% endblock %}
+
+{#INSERT INTO `hetic_h3_symfony_maid_cafe`.`maid` (`id`, `restaurant_id`, `lastName`, `maidName`, `favoriteThings`, `bloodType`, `blogUrl`, `twitterUrl`) VALUES ('', NULL, 'Chimu', 'Magical Doremi', 'Flutes', 'ABCDEFG', 'maid.com', 'https://twitter.com/MAIDCAFEWP?lang=fr')#}

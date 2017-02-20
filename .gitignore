@@ -11,4 +11,5 @@
 /bin/
 /composer.phar
 /web/media
+/web/uploads
 /node_modules/

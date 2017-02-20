@@ -2,9 +2,12 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use AppBundle\Entity\Maid;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+
 
 /**
  * Default controller.
@@ -39,6 +42,22 @@ class DefaultController extends Controller
 
         return $this->render('default/maid/maid.html.twig', array(
             'maids' => $maids,
+        ));
+    }
+
+    /**
+     * Finds and displays a maid entity.
+     *
+     * @Route("/maid/{id}", name="_maid_show")
+     * @Method("GET")
+     */
+    public function showAction($id)
+    {
+//        $em = $this->getDoctrine()->getManager();
+//        $maid = $em->getRepository('AppBundle:Maid')->find($id);
+
+        return $this->render('default/maid/show.html.twig', array(
+//            'maid' => $maid,
         ));
     }
 
