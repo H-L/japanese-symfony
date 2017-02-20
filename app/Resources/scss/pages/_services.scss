@@ -59,14 +59,15 @@
 	}
 }
 
-.menu__encres {
+.menu__ancres {
 	width: 470px;
 	margin: auto;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: space-between;
-	div {
+	a {
+		text-decoration: none;
 		font-family: LilyScriptOne;
 		color: #fefefe;
 		font-size: 20px;
@@ -74,10 +75,11 @@
 		padding: 8px 30px;
 		background-color: $pink-bg;
 		border-radius: 30px;
+		cursor: pointer;
 	}
 }
 
-.services__encres {
+.services__ancres {
 	font-family: LilyScriptOne;
 	font-size: 44px;
 	color: #fefefe;
@@ -350,6 +352,8 @@
 		text-shadow: 2px 2px 5px $pink-bg;
 	}
 	.ls__top {
+		text-decoration: none;
+		cursor: pointer;
 		color: #fefefe;
 		background-color: #F49696;
 		width: 150px;

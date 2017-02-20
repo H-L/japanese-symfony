@@ -1,6 +1,6 @@
 {% extends 'default/base.html.twig' %}
 {% block body %}
-    <div class="services__header">
+    <div class="services__header" id="haut">
     	<h1 class="cafe-name"> Teishutsu Cafe </h1>
     	<h1 class="cafe-jap"> コーヒー提出 </h1>
     </div>
@@ -8,16 +8,16 @@
     <div class="services__menu">
     	<div class="services__title"> What do you need today Master ? </div>
     	<div class="menu__content"> We are so happy that you decided to come visit us ! <br>We want to make you happy and MOE, so we have prepared a few things for you, and you will be the only one to decide how to spend your day with us at Teishutsu Café. With us, you’ll have the most wonderful and heartwarming time with your most favorite maids Master ! <br>So, what do you need today Master ?</div>
-    	<div class="menu__encres">
-    		<div>Food & Drinks</div>
-    		<div>Karaoke</div>
-    		<div>MOE</div>
-    		<div>Games & Photos</div>
-    		<div>Live Show</div>
+    	<div class="menu__ancres">
+    		<a href="#food-drinks"> Food & Drinks </a>
+    		<a href="#karaoke"> Karaoke </a>
+    		<a href="#MOE-magic"> MOE </a>
+    		<a href="#games-photos"> Games & Photos </a>
+    		<a href="#live-shows"> Live Show </a>
     	</div>
     </div>
 
-    <h1 class="services__encres"> Food & Drinks </h1>
+    <h1 class="services__ancres" id="food-drinks"> Food & Drinks </h1>
 
 	<div class="services__fd">
 		<div class="fd__header">
@@ -29,7 +29,7 @@
 		<img class="fd__menu" src="imgs/menu.png" />
 	</div>
 
-	<h1 class="services__encres"> Karaoke </h1>
+	<h1 class="services__ancres" id="karaoke"> Karaoke </h1>
 
 	<div class="services__karaoke">
 		<div class="services__menu">
@@ -86,7 +86,7 @@
 		</div>
 	</div>
 
-	<h1 class="services__encres"> MOE Magic </h1>
+	<h1 class="services__ancres" id="MOE-magic"> MOE Magic </h1>
 
 	<div class="services__moe">
 		<div class="services__menu">
@@ -126,7 +126,7 @@
 	    </div>
 	</div>
 
-	<h1 class="services__encres"> Games & Photos </h1>
+	<h1 class="services__ancres" id="games-photos"> Games & Photos </h1>
 
 	<div class="services__gp">
 		<div class="services__menu">
@@ -164,7 +164,7 @@
 	    </div>
 	</div>
 
-	<h1 class="services__encres"> Live Shows </h1>
+	<h1 class="services__ancres" id="live-shows"> Live Shows </h1>
 
 	<div class="services__ls">
 		<div class="services__menu">
@@ -174,7 +174,7 @@
 
 	    <div class="ls__header">
 			<div class="ls__title"> It’s time to dance ! </div>
-			<div class="ls__top"> <i class="fa fa-sort-asc" aria-hidden="true" style="color:#fefefe"></i> Back to top </div>
+			<a href="#haut" class="ls__top"> <i class="fa fa-sort-asc" aria-hidden="true" style="color:#fefefe"></i> Back to top </a>
 		</div>
 
 	    
