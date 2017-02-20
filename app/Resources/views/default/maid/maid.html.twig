@@ -76,6 +76,7 @@
             <li>
                 <img src="{{ maid.profilePicture }}" width="150px "alt="">
                 <p>name : {{ maid.name }}</p>
+                <a href="{{ path('_maid_show', {'id': maid.id }) }}">Full info on {{ maid.name }}</a>
             </li>
         {% endfor %}
     </ul>

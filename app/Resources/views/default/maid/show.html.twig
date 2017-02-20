@@ -1,0 +1,39 @@
+{% extends 'default/base.html.twig' %}
+
+{% block body %}
+
+    {# The maids have other informations but only these are public #}
+    <table>
+        <tbody>
+        <tr>
+            <th>Profile Picture</th>
+            <td><img src="{{ asset('Chimu480.jpg') }}" width="150px "alt=""></td>
+        </tr>
+        <tr>
+            <th>Maid name</th>
+            <td>{{ maid.maidName }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ maid.description}}</td>
+        </tr>
+        <tr>
+            <th>Blood type</th>
+            <td>{{ maid.bloodType}}</td>
+        </tr>
+        <tr>
+            <th>FavoriteThings</th>
+            <td>{{ maid.favoriteThings}}</td>
+        </tr>
+        <tr>
+            <th>Blog</th>
+            <td>{{ maid.blogUrl}}</td>
+        </tr>
+        <tr>
+            <th>Twitter</th>
+            <td>{{ maid.twitterUrl}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
