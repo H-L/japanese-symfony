@@ -53,11 +53,11 @@ class DefaultController extends Controller
      */
     public function showAction($id)
     {
-//        $em = $this->getDoctrine()->getManager();
-//        $maid = $em->getRepository('AppBundle:Maid')->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $maid = $em->getRepository('AppBundle:Maid')->find($id);
 
         return $this->render('default/maid/show.html.twig', array(
-//            'maid' => $maid,
+            'maid' => $maid,
         ));
     }
 
