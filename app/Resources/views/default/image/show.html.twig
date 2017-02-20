@@ -17,6 +17,12 @@
                 <th>Path</th>
                 <td>{{ image.path }}</td>
             </tr>
+            {% for gallery in image.galleries %}
+                <tr>
+                    <th>Gallery {{ gallery.id}}</th>
+                    <td>{{ gallery.name }}</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 

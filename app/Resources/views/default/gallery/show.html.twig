@@ -13,10 +13,13 @@
                 <th>Name</th>
                 <td>{{ gallery.name }}</td>
             </tr>
+
+            {% for image in gallery.images %}
             <tr>
-                <th>Images</th>
-                <td>{{ dump(gallery.images) }}</td>
+                <th>{{ image.name }}</th>
+                <td><img src="{{ asset(image.path) | imagine_filter('my_thumb') }}" alt=""></td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 
