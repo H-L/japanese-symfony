@@ -34,7 +34,7 @@
 	width: 880px;
 	margin: 50px auto;
 	.menu__content {
-		color: #67393C; 
+		color: $br-text; 
 		line-height: 22px;
 		padding-bottom: 20px;
 	}
@@ -42,7 +42,7 @@
 
 .services__title {
 	font-family: LilyScriptOne;
-	color: #67393C;
+	color:$br-text;
 	font-size: 24px;
 	text-align: center;
 	padding-bottom: 40px;
@@ -72,7 +72,298 @@
 		font-size: 20px;
 		margin: 15px 7px 0; 
 		padding: 8px 30px;
-		background-color: #F4ADB2;
+		background-color: $pink-bg;
 		border-radius: 30px;
+	}
+}
+
+.services__encres {
+	font-family: LilyScriptOne;
+	font-size: 44px;
+	color: #fefefe;
+	background-color: #FB8AA4;
+	padding: 10px 50px;
+}
+
+/*-----------------------------------------------------------------------------------------------------------*/
+/* FOOD & DRINKS */
+/*-----------------------------------------------------------------------------------------------------------*/
+
+.fd__header {
+	@include bg-img('../imgs/food-drinks.png');
+	width: 65%;
+	height: 500px;
+	margin: 30px auto 10px;
+	position: relative;
+	color: #fefefe;
+	.yummy {
+		position: absolute;
+		font-weight: bold;
+		font-size: 65px;
+		right: 140px;
+		top: 30px;
+		text-shadow: 2px 2px 5px $pink-bg;
+	}
+	.fd__header--content {
+		font-weight: 700;
+		font-size: 25px;
+		padding: 400px 80px 0;
+	}
+	.fb__list {
+		background-color: #F87680;
+		width: 250px;
+		font-size: 22px;
+		font-weight: bold;
+		text-align: center;
+		border-radius: 25px;
+		padding: 17px 25px;
+		position: absolute;
+		bottom: 150px;
+		right: 50px;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		box-shadow: 0px 2px 4px #9B9B9B;
+	}
+}
+
+.fd__menu {
+	margin: auto;
+	text-align: center;
+	display: flex;
+	margin-bottom: 60px;
+}
+
+/*-----------------------------------------------------------------------------------------------------------*/
+/* KARAOKE */
+/*-----------------------------------------------------------------------------------------------------------*/
+
+.karaoke__header {
+	@include bg-img('../imgs/karaoke.png');
+	width: 65%;
+	height: 400px;
+	margin: 0px auto 20px;
+	font-family: LilyScriptOne;
+	color: #fefefe;
+	padding: 50px;
+	.karaoke__title {
+		font-weight: bold;
+		font-size: 65px;
+		color: #fefefe;
+		text-shadow: 2px 2px 5px $pink-bg;
+	}
+	.karaoke__header--content {
+		color: #FBDBDE;
+		width: 590px;
+		font-size: 28px;
+		padding: 40px 80px 0;
+		line-height: 35px;
+	}
+}
+
+.karaoke__events-container {
+	display: flex;
+	width: 64%;
+	margin: 20px auto 50px;
+	justify-content: space-between;
+	font-family: LilyScriptOne;
+	.karaoke__event {
+		background-color: $pink-bg;
+		width: 520px;
+		border-radius: 10px;
+	}
+	.event__title {
+		background-color: #fefefe;
+		border: solid 2px #C0C0C0;
+		color: $pink-bg;
+		font-size: 28px;
+		text-align: center;
+		width: 90%;
+		margin: 10px auto;
+		padding: 15px 10px;
+		border-radius: 10px;
+	}
+	.event__content {
+		background-color: #FDD9E7;
+		border: solid 2px #C0C0C0;
+		width: 60%;
+		color: #595959;
+		margin: 0 auto 20px;
+		padding: 8px 40px;
+		border-radius: 10px;
+		height: 215px;
+		font-size: 18px
+	}
+}
+
+.event_day {
+	display: flex;
+	justify-content: space-between;
+	padding: 5px 0;
+	.event {color: #818181;}
+}
+
+/*-----------------------------------------------------------------------------------------------------------*/
+/* MOE */
+/*-----------------------------------------------------------------------------------------------------------*/
+
+.moe__header {
+	@include bg-img('../imgs/moe.png');
+	width: 65%;
+	height: 900px;
+	margin: 0px auto 20px;
+	font-family: LilyScriptOne;
+	color: #fefefe;
+	padding: 50px;
+	position: relative;
+	font-size: 65px;
+	.love {
+		position: absolute;
+		right: 250px;
+		top: 300px;
+	}
+	.joy {
+		position: absolute;
+		left: 150px;
+		bottom: 200px;
+	}
+}
+
+.moe__maids {
+	display: flex;
+	width: 80%;
+	margin: 50px auto;
+	justify-content: space-around;
+	text-align: center;
+	color: $br-text;
+}
+
+.maid__container {
+	width: 200px;
+	.maid__profil-pict {
+		border-radius: 50%;
+		border: solid 5px $pink-bg;
+		overflow:hidden;
+	}
+	.maid__name {
+		color: #FFA1A1;
+		font-family: LilyScriptOne;
+		font-size: 24px;
+		padding: 10px 0;
+	}
+	.maid__content {
+		font-size: 19px;
+		line-height: 24px;
+	}
+}
+
+/*-----------------------------------------------------------------------------------------------------------*/
+/* GAME & PHOTOS */
+/*-----------------------------------------------------------------------------------------------------------*/
+
+.gp__header {
+	@include bg-img('../imgs/gamephotos.png');
+	width: 65%;
+	height: 400px;
+	margin: 0px auto 20px;
+	color: #fefefe;
+	padding: 50px;
+	position: relative;
+	.gp__title {
+		position: absolute;
+		left: 300px;
+		font-size: 65px;
+		color: #FEB7C7;
+		font-family: LilyScriptOne;
+	}
+	.gp__list {
+		background-color: #F87680;
+		width: 250px;
+		font-size: 25px;
+		font-weight: bold;
+		text-align: center;
+		border-radius: 25px;
+		padding: 17px 25px;
+		position: absolute;
+		bottom: 50px;
+		right: 350px;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		box-shadow: 0px 2px 4px #9B9B9B;
+	}
+}
+
+.karaoke__event.gp__event {padding: 1px 0;}
+
+.gp__title.event__title {
+	color: $br-text;
+	width: 60%;
+}
+
+.gp__content.event__content {
+	color: $br-text;
+	width: 80%;
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 22px;
+	padding: 8px 0px 8px 30px;
+	height: auto;
+	.game {
+		width: 50%;
+		padding: 10px;
+	}
+}
+
+.karaoke__event.gp__game {
+	background-color: #fefefe;
+	border: solid 5px $pink-bg;
+	text-align: center;
+	padding: 55px;
+	.game__title {
+		font-size: 24px;
+		padding-bottom: 30px;
+	}
+	.game__content {
+		font-size: 19px;
+		font-family: Nunito;
+	}
+}
+
+/*-----------------------------------------------------------------------------------------------------------*/
+/* LIVE SHOWS */
+/*-----------------------------------------------------------------------------------------------------------*/
+
+.ls__header {
+	@include bg-img('../imgs/liveshows.png');
+	width: 65%;
+	height: 400px;
+	margin: 0px auto 20px;
+	font-family: LilyScriptOne;
+	color: #fefefe;
+	padding: 50px;
+	position: relative;
+	.ls__title {
+		font-weight: bold;
+		font-size: 65px;
+		color: #fefefe;
+		text-shadow: 2px 2px 5px $pink-bg;
+	}
+	.ls__top {
+		color: #fefefe;
+		background-color: #F49696;
+		width: 150px;
+		font-size: 20px;
+		text-align: center;
+		border-radius: 10px;
+		padding: 9px 10px 7px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+		display: flex;
+		justify-content: space-around;
+		i {padding-top:3px;}
 	}
 }

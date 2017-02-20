@@ -17,7 +17,7 @@ i {color: red;}
   .home__description_container{
     margin:auto;
     h2{
-      color:#67393C;
+      color:$br-text;
       font-family: LilyScriptOne;
       font-size: 24px;
       line-height: 150px;
@@ -35,7 +35,7 @@ i {color: red;}
       }
     }
     p{
-      color:#67393C;
+      color:$br-text;
       font-size: 16px;
       line-height: 22px;
       text-align: center;
@@ -47,7 +47,7 @@ i {color: red;}
 
 .home__title {
   font-family: LilyScriptOne;
-  color: #67393C;
+  color: $br-text;
   font-size: 24px;
   padding-bottom: 40px;
   position: relative;
@@ -79,14 +79,14 @@ i {color: red;}
       text-align: left;
       line-height: 40px;
       padding: 10px 20px;
-      color: #67393C;
+      color: $br-text;
       font-size: 18px;
       font-weight: bold;
     }
     p{
       text-align: left;
       padding: 0 20px 20px;
-      color: #67393C;
+      color: $br-text;
     }
   }
   &:before {
@@ -111,12 +111,12 @@ i {color: red;}
     width: 80%;
     margin: 35px 0 60px;
     h3 {
-      color: #67393C;
+      color: $br-text;
       font-size: 18px;
       font-weight: 700;
       margin: 15px 0;
     }
-    p {color: #67393C;}
+    p {color: $br-text;}
   }
   &:before {
     content: '実用的な情報';
