@@ -22,7 +22,8 @@ class CreateTimeSlotCommand extends ContainerAwareCommand
     {
         $em = $this->getContainer()->get('doctrine.orm.entity_manager');
         $maidRepository = $em->getRepository('AppBundle:Maid');
-        
+//        $restaurantRepository = $em->getRepository('AppBundle:Restaurant');
+
         $helper = $this->getHelper('question');
         $question = new Question('<fg=yellow>TimeSlot start time hour (from 0 to 23) </> : ', 0);
         $question1 = new Question('<fg=yellow>TimeSlot start time minute (from 0 to 59) </> : ', 0);
@@ -30,6 +31,7 @@ class CreateTimeSlotCommand extends ContainerAwareCommand
         $question3 = new Question('<fg=yellow>TimeSlot end time minute (from 0 to 59)</> : ', 23);
         $question4 = new Question('<fg=yellow>TimeSlot day of the week</> : ', 0);
         $question5 = new Question('<fg=yellow>Id of the Maid ?</> :' , null);
+//        $question6 = new Question('<fg=yellow>Id of the Restaurant ?</> :' , null);
 
         $startTimeHour = intval($helper->ask($input, $output, $question));
         $startTimeMinute = intval($helper->ask($input, $output, $question1));
@@ -39,10 +41,13 @@ class CreateTimeSlotCommand extends ContainerAwareCommand
         $maidId = $helper->ask($input, $output, $question5);
 
         $timeSlot = new TimeSlot();
-        $timeSlot->setStartTime([$startTimeHour, $startTimeMinute]);
-        $timeSlot->setEndTime([$endTimeHour, $endTimeMinute]);
         $timeSlot->setDayOfWeek($dayOfTheWeek);
         $timeSlot->setMaid($maidRepository->find($maidId));
+//        $timeSlot->setRestaurant($restaurantRepository->find($restaurantId));
+        $timeSlot->setStartHour($startTimeHour);
+        $timeSlot->setStartMinute($startTimeMinute);
+        $timeSlot->setEndHour($endTimeHour);
+        $timeSlot->setEndMinute($endTimeMinute);
 
         $em->persist($timeSlot);
         $em->flush();

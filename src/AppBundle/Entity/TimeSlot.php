@@ -71,21 +71,6 @@ class TimeSlot
      * @ORM\JoinColumn(name="id_maid", referencedColumnName="id")
      */
     private $maid;
-
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="start_time", type="array")
-     */
-    private $startTime;
-    
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="end_time", type="array")
-     */
-    private $endTime;
-    
     
     /**
      * Get id
@@ -130,28 +115,6 @@ class TimeSlot
     }
 
     /**
-     * Set startTime
-     * 
-     * @return TimeSlot
-     */
-    public function setStartTime()
-    {
-        $this->startTime = [$this->getStartHour(), $this->getStartMinute()];
-
-        return $this;
-    }
-
-    /**
-     * Get startTime
-     *
-     * @return array 
-     */
-    public function getStartTime()
-    {
-        return $this->startTime;
-    }
-
-    /**
      * @return int
      */
     public function getEndHour()
@@ -181,28 +144,6 @@ class TimeSlot
     public function setEndMinute($endMinute)
     {
         $this->endMinute = $endMinute;
-    }
-
-    /**
-     * Set endTime
-     *
-     * @return TimeSlot
-     */
-    public function setEndTime()
-    {
-        $this->endTime = [$this->getEndHour(), $this->getEndMinute()];
-
-        return $this;
-    }
-
-    /**
-     * Get endTime
-     *
-     * @return array 
-     */
-    public function getEndTime()
-    {
-        return $this->endTime;
     }
 
     /**
