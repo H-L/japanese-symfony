@@ -82,4 +82,14 @@ class DefaultController extends Controller
 
         ));
     }
+
+    /**
+     * @Route("/fake/users", name="fake_users")
+     */
+    public function fakeUsersAction()
+    {
+        return $this->render('users/index.html.twig', array(
+
+        ));
+    }
 }
