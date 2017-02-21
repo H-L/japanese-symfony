@@ -74,6 +74,18 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/contact", name="_contact")
+     */
+    public function contactAction() {
+        $em = $this->getDoctrine()->getManager();
+        $restaurants = $em->getRepository('AppBundle:Restaurant')->findAll();
+
+        return $this->render('default/contact/index.html.twig', array(
+            'restaurants' => $restaurants,
+        ));
+    }
+
+    /**
      * @Route("/services", name="_services")
      */
     public function serviceAction()

@@ -16,17 +16,19 @@
         </div>
     </div>
 
+    {#{{ dump(maid.timeSlots.values) }}#}
+
     <div class="single-maid__presentation">
         <div class="pres__title"> Presentation </div>
         <div class="pres__container">
             <div class="pres__content pres__content-1">
                 <div class="pres__info">
                     <div class="info__title"> Birthday </div>
-                    <div class="info__content"> 31 aout </div>
+                    <div class="info__content"> {{ maid.birthDate | date("d/m") }} </div>
                 </div>
                 <div class="pres__info">
                     <div class="info__title"> Restaurant </div>
-                    <div class="info__content"> Paris </div>
+                    <div class="info__content"> {{ maid.restaurant.name }} </div>
                 </div>
                 <div class="pres__info">
                     <div class="info__title"> Favorite things </div>
