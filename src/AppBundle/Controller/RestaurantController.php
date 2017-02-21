@@ -18,7 +18,7 @@ class RestaurantController extends Controller
     /**
      * Lists all restaurant entities
      *
-     * @Route("/", name="_restaurant_index")
+     * @Route("/", name="back-office_restaurant_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -34,7 +34,7 @@ class RestaurantController extends Controller
     /**
      * Creates a new restaurant entity.
      *
-     * @Route("/new", name="_restaurant_new")
+     * @Route("/new", name="back-office_restaurant_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -48,7 +48,7 @@ class RestaurantController extends Controller
             $em->persist($restaurant);
             $em->flush();
 
-            return $this->redirectToRoute('_restaurant_show', array('id' => $restaurant->getId()));
+            return $this->redirectToRoute('back-office_restaurant_show', array('id' => $restaurant->getId()));
         }
 
         return $this->render('back-office/restaurant/new.html.twig', array(
@@ -60,7 +60,7 @@ class RestaurantController extends Controller
     /**
      * Finds and displays a restaurant entity.
      *
-     * @Route("/{id}", name="_restaurant_show")
+     * @Route("/{id}", name="back-office_restaurant_show")
      * @Method("GET")
      */
     public function showAction(Restaurant $restaurant)
@@ -77,7 +77,7 @@ class RestaurantController extends Controller
     /**
      * Displays a form to edit an existing restaurant entity.
      *
-     * @Route("/{id}/edit", name="_restaurant_edit")
+     * @Route("/{id}/edit", name="back-office_restaurant_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Restaurant $restaurant)
@@ -102,7 +102,7 @@ class RestaurantController extends Controller
     /**
      * Deletes a restaurant entity.
      *
-     * @Route("/{id}", name="_restaurant_delete")
+     * @Route("/{id}", name="back-office_restaurant_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Restaurant $restaurant)
@@ -116,7 +116,7 @@ class RestaurantController extends Controller
             $em->flush($restaurant);
         }
 
-        return $this->redirectToRoute('_restaurant_index');
+        return $this->redirectToRoute('back-office_restaurant_index');
     }
 
 
@@ -130,7 +130,7 @@ class RestaurantController extends Controller
     private function createDeleteForm(Restaurant $restaurant)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('_restaurant_delete', array('id' => $restaurant->getId())))
+            ->setAction($this->generateUrl('back-office_restaurant_delete', array('id' => $restaurant->getId())))
             ->setMethod('DELETE')
             ->getForm();
     }

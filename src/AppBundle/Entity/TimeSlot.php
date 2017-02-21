@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Timeslot
@@ -13,6 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Timeslot
 {
     /**
+     * Id of the Timeslot
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -21,16 +25,17 @@ class Timeslot
      */
     private $id;
 
-
     /**
+     * StartHour
+     *
      * @var int
      *
      * @ORM\Column(name="start_hour", type="integer")
      */
     private $startHour;
 
-
     /**
+     *
      * @var int
      *
      * @ORM\Column(name="start_minute", type="integer")
@@ -43,7 +48,6 @@ class Timeslot
      * @ORM\Column(name="end_hour", type="integer")
      */
     private $endHour;
-
 
     /**
      * @var int
@@ -58,34 +62,12 @@ class Timeslot
      * @ORM\Column(name="dayOfWeek", type="integer")
      */
     private $dayOfWeek;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="Restaurant", inversedBy="timeslots")
-     * @ORM\JoinColumn(name="id_restaurant", referencedColumnName="id")
-     */
-    private $restaurant;
-
 
     /**
      * @ORM\ManyToOne(targetEntity="Maid", inversedBy="timeslots")
      * @ORM\JoinColumn(name="id_maid", referencedColumnName="id")
      */
     private $maid;
-
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="start_time", type="array")
-     */
-    private $startTime;
-    
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="end_time", type="array")
-     */
-    private $endTime;
-    
     
     /**
      * Get id
@@ -96,7 +78,6 @@ class Timeslot
     {
         return $this->id;
     }
-
     /**
      * @return int
      */
@@ -127,28 +108,6 @@ class Timeslot
     public function setStartMinute($startMinute)
     {
         $this->startMinute = $startMinute;
-    }
-
-    /**
-     * Set startTime
-     * 
-     * @return Timeslot
-     */
-    public function setStartTime()
-    {
-        $this->startTime = [$this->getStartHour(), $this->getStartMinute()];
-
-        return $this;
-    }
-
-    /**
-     * Get startTime
-     *
-     * @return array 
-     */
-    public function getStartTime()
-    {
-        return $this->startTime;
     }
 
     /**
@@ -184,28 +143,6 @@ class Timeslot
     }
 
     /**
-     * Set endTime
-     *
-     * @return Timeslot
-     */
-    public function setEndTime()
-    {
-        $this->endTime = [$this->getEndHour(), $this->getEndMinute()];
-
-        return $this;
-    }
-
-    /**
-     * Get endTime
-     *
-     * @return array 
-     */
-    public function getEndTime()
-    {
-        return $this->endTime;
-    }
-
-    /**
      * Set dayOfWeek
      *
      * @param integer $dayOfWeek
@@ -221,28 +158,13 @@ class Timeslot
     /**
      * Get dayOfWeek
      *
-     * @return integer 
+     * @return integer
      */
     public function getDayOfWeek()
     {
         return $this->dayOfWeek;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getRestaurant()
-    {
-        return $this->restaurant;
-    }
-
-    /**
-     * @param mixed $restaurant
-     */
-    public function setRestaurant($restaurant)
-    {
-        $this->restaurant = $restaurant;
-    }
 
     /**
      * @return mixed
@@ -254,15 +176,29 @@ class Timeslot
 
     /**
      * @param mixed $maid
+     * @return Timeslot
      */
     public function setMaid($maid)
     {
         $this->maid = $maid;
+        
+        return $this;
     }
 
-    public function __construct()
+    /**
+     * @Assert\Callback
+     * @param ExecutionContextInterface $context
+     */
+    public function validate(ExecutionContextInterface $context)
     {
-        
+        $diffHour = $this->endHour - $this->startHour;
+        $diffMinute = $this->endMinute - $this->startMinute;
+        //if timeslot is less than 1 hour long
+        if ($diffHour < 1 || ($diffHour === 1 && $diffMinute < 0 )) {
+            $context->buildViolation('Maids must work at least 1 hour')
+                ->addViolation()
+            ;
+        }
     }
-    
+
 }

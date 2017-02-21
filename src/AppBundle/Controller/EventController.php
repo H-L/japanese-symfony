@@ -48,7 +48,7 @@ class EventController extends Controller
             $em->persist($event);
             $em->flush($event);
 
-            return $this->redirectToRoute('_event_show', array('id' => $event->getId()));
+            return $this->redirectToRoute('back-office_event_show', array('id' => $event->getId()));
         }
 
         return $this->render('back-office/event/new.html.twig', array(

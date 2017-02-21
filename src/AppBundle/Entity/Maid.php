@@ -1,5 +1,4 @@
 <?php
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -15,7 +14,6 @@ class Maid extends CoffeeShopItem
 {
     /**
      * @var string
-     *
      * @ORM\Column(name="lastName", type="string", length=100)
      */
     private $lastName;
@@ -27,35 +25,30 @@ class Maid extends CoffeeShopItem
 
     /**
      * @var string
-     *
      * @ORM\Column(name="maidName", type="string", length=100, nullable=true)
      */
     private $maidName;
 
-    /**
+    /*
      * @var string
-     *
      * @ORM\Column(name="favoriteThings", type="string", length=255, nullable=true)
      */
     private $favoriteThings;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="bloodType", type="string", length=255, nullable=true)
      */
     private $bloodType;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="blogUrl", type="string", length=255, nullable=true)
      */
     private $blogUrl;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="twitterUrl", type="string", length=255, nullable=true)
      */
     private $twitterUrl;
@@ -127,7 +120,7 @@ class Maid extends CoffeeShopItem
     /**
      * Get maidName
      *
-     * @return string 
+     * @return string
      */
     public function getMaidName()
     {
@@ -150,7 +143,7 @@ class Maid extends CoffeeShopItem
     /**
      * Get favoriteThings
      *
-     * @return string 
+     * @return string
      */
     public function getFavoriteThings()
     {
@@ -173,7 +166,7 @@ class Maid extends CoffeeShopItem
     /**
      * Get blogUrl
      *
-     * @return string 
+     * @return string
      */
     public function getBlogUrl()
     {
@@ -196,7 +189,7 @@ class Maid extends CoffeeShopItem
     /**
      * Get twitterUrl
      *
-     * @return string 
+     * @return string
      */
     public function getTwitterUrl()
     {
@@ -204,6 +197,7 @@ class Maid extends CoffeeShopItem
     }
 
     /**
+     * Get Blootype
      * @return string
      */
     public function getBloodType()
@@ -212,14 +206,20 @@ class Maid extends CoffeeShopItem
     }
 
     /**
+     * Set BloodType
      * @param string $bloodType
+     * @return Restaurant
      */
     public function setBloodType($bloodType)
     {
         $this->bloodType = $bloodType;
+        
+        return $this;
     }
 
     /**
+     * Get Timeslots
+     *
      * @return mixed
      */
     public function getTimeslots()
@@ -228,16 +228,50 @@ class Maid extends CoffeeShopItem
     }
 
     /**
+     * Set TimeSlots
+     *
      * @param mixed $timeslots
+     * @return Maid
      */
     public function setTimeslots($timeslots)
     {
         $this->timeslots = $timeslots;
+        
+        return $this;
     }
-    
+
+    /**
+     * Add timeslot
+     *
+     * @param $timeslot
+     * @return Restaurant
+     */
+    public function addTimeslot($timeslot)
+    {
+        $this->timeslots[] = $timeslot;
+
+        return $this;
+    }
+
+    /**
+     * Remove timeslot
+     *
+     * @param mixed $timeslot
+     * @return Restaurant
+     */
+    public function removeTimeSlot($timeslot)
+    {
+        $this->timeslots->removeElement($timeslot);
+
+        return $this;
+    }
+
+
+    /**
+     * Maid constructor.
+     */
     public function __construct()
     {
         $this->timeslots = new ArrayCollection();
     }
-
 }

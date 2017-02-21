@@ -19,7 +19,7 @@ class MaidController extends Controller
     /**
      * Lists all maid entities
      *
-     * @Route("/", name="_maid_index")
+     * @Route("/", name="back-office_maid_index")
      * @Method("GET") 
      */
     public function indexAction()
@@ -35,7 +35,7 @@ class MaidController extends Controller
     /**
      * Creates a new maid entity.
      *
-     * @Route("/new", name="_maid_new")
+     * @Route("/new", name="back-office_maid_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -49,7 +49,7 @@ class MaidController extends Controller
             $em->persist($maid);
             $em->flush();
 
-            return $this->redirectToRoute('_show', array('id' => $maid->getId()));
+            return $this->redirectToRoute('back-office_maid_show', array('id' => $maid->getId()));
         }
 
         return $this->render('back-office/maid/new.html.twig', array(
@@ -61,7 +61,7 @@ class MaidController extends Controller
     /**
      * Finds and displays a maid entity.
      *
-     * @Route("/{id}", name="_maid_show")
+     * @Route("/{id}", name="back-office_maid_show")
      * @Method("GET")
      */
     public function showAction(Maid $maid)
@@ -84,7 +84,7 @@ class MaidController extends Controller
     /**
      * Displays a form to edit an existing maid entity.
      *
-     * @Route("/{id}/edit", name="_maid_edit")
+     * @Route("/{id}/edit", name="back-office_maid_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Maid $maid)
@@ -96,7 +96,7 @@ class MaidController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('_edit', array('id' => $maid->getId()));
+            return $this->redirectToRoute('back-office_maid_edit', array('id' => $maid->getId()));
         }
 
         return $this->render('back-office/maid/edit.html.twig', array(
@@ -109,7 +109,7 @@ class MaidController extends Controller
     /**
      * Deletes a maid entity.
      *
-     * @Route("/{id}", name="_delete")
+     * @Route("/{id}", name="back-office_maid_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Maid $maid)
@@ -123,7 +123,7 @@ class MaidController extends Controller
             $em->flush($maid);
         }
 
-        return $this->redirectToRoute('_index');
+        return $this->redirectToRoute('back-office_maid_index');
     }
 
 
@@ -137,7 +137,7 @@ class MaidController extends Controller
     private function createDeleteForm(Maid $maid)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('_delete', array('id' => $maid->getId())))
+            ->setAction($this->generateUrl('back-office_maid_delete', array('id' => $maid->getId())))
             ->setMethod('DELETE')
             ->getForm();
     }

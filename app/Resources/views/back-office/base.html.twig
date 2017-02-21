@@ -22,10 +22,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-fw fa-cutlery"></i> Restaurants<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li class="dropdown-header">Manage your restaurants</li>
-                        <li><a href="{{ path('_restaurant_index') }}">List of your restaurants</a></li>
-                        <li><a href="{{ path('_restaurant_new') }}">Create a new restaurant</a></li>
-                        <li><a href="#">Weekly schedules</a></li>
-                        <li><a href="#">Holidays and days off</a></li>
+                        <li><a href="{{ path('back-office_restaurant_index') }}">List of your restaurants</a></li>
+                        <li><a href="{{ path('back-office_restaurant_new') }}">Create a new restaurant</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -40,8 +38,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-fw fa-heart-o"></i> Maids <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li class="dropdown-header">Manage your maids</li>
-                        <li><a href="{{ path('_maid_index') }}">See all Maids</a></li>
-                        <li><a href="{{ path('_maid_new') }}">Create a new maid</a></li>
+                        <li><a href="{{ path('back-office_maid_index') }}">See all Maids</a></li>
+                        <li><a href="{{ path('back-office_maid_new') }}">Create a new maid</a></li>
                         <li><a href="#">Weekly schedules</a></li>
                         <li><a href="#">Holidays and days off</a></li>
                     </ul>

@@ -80,16 +80,18 @@
             {% include 'back-office/timeslot/schedule.html.twig'%}
         </div>
         <div id="edit-form">
-            {% include 'back-office/timeslot/edit.html.twig' with {'timeslot_to_edit' : timeslot_to_edit, 'form' : edit_form, 'delete_form' : delete_form }  %}
+            {% if maid.timeslots | length > 0 %}
+                {% include 'back-office/timeslot/edit.html.twig' with {'timeslot_to_edit' : timeslot_to_edit, 'form' : edit_form, 'delete_form' : delete_form }  %}
+            {% endif %}
         </div>
         {% include ':back-office/timeslot:new.html.twig' with {'form' : createForm }  %}
     </div>
     <ul class="list-group">
         <li class="list-group-item">
-            <a href="{{ path('_maid_index') }}"><button type="button" class="btn btn-lg btn-primary">Back to the list</button></a>
+            <a href="{{ path('back-office_maid_index') }}"><button type="button" class="btn btn-lg btn-primary">Back to the list</button></a>
         </li>
         <li class="list-group-item">
-            <a href="{{ path('_maid_edit', { 'id': maid.id }) }}"><button type="button" class="btn btn-lg btn-warning">Edit</button></a>
+            <a href="{{ path('back-office_maid_edit', { 'id': maid.id }) }}"><button type="button" class="btn btn-lg btn-warning">Edit</button></a>
         </li>
         <li class="list-group-item">
             {{ form_start(delete_form) }}

@@ -15,14 +15,18 @@ class EventType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $todayYear = intval(date('Y', strtotime('today')));
         $builder
             ->add('name')
             ->add('description')
             ->add('start', DateTimeType::class, array(
                 'with_seconds' => false,
+                'years' => range($todayYear, 2100)
+
             ))
             ->add('end', DateTimeType::class, array(
                 'with_seconds' => false,
+                'years' => range($todayYear, 2100)
             ))
             ->add('profilePicture')
             ->add('restaurant', EntityType::class, array(

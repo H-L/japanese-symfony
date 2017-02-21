@@ -3,7 +3,8 @@
         <h1>Timeslot edit</h1>
     </div>
     <div class="panel-body">
-        <form class="timeslot-edit-form" action="{{ path('timeslot_edit', { 'id': timeslot_to_edit.id }) }}" method="post">
+        <form class="timeslot-edit-form" action="{{ path('back-office_timeslot_edit', { 'id': timeslot_to_edit.id }) }}" method="post">
+            <div class="form-errors"></div>
             {{ form_widget(edit_form) }}
             <input type="submit" value="Edit" class="btn btn-lg btn-success"/>
         </form>

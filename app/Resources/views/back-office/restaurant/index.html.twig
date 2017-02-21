@@ -15,11 +15,11 @@
                 <tbody>
                 {% for restaurant in restaurants %}
                     <tr>
-                        <td><a href="{{ path('_restaurant_show', { 'id': restaurant.id }) }}">{{ restaurant.id }}</a></td>
+                        <td><a href="{{ path('back-office_restaurant_show', { 'id': restaurant.id }) }}">{{ restaurant.id }}</a></td>
                         <td>{{ restaurant.name }}</td>
                         <td>
-                            <a href="{{ path('_restaurant_show', { 'id': restaurant.id }) }}"><button type="button" class="btn btn-lg btn-primary">Show</button></a>
-                            <a href="{{ path('_restaurant_edit', { 'id': restaurant.id }) }}"><button type="button" class="btn btn-lg btn-warning">Edit</button></a>
+                            <a href="{{ path('back-office_restaurant_show', { 'id': restaurant.id }) }}"><button type="button" class="btn btn-lg btn-primary">Show</button></a>
+                            <a href="{{ path('back-office_restaurant_edit', { 'id': restaurant.id }) }}"><button type="button" class="btn btn-lg btn-warning">Edit</button></a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -28,7 +28,7 @@
 
             <ul class="list-group">
                 <li class="list-group-item">
-                    <a href="{{ path('_restaurant_new') }}"><button type="button" class="btn btn-lg btn-success">Create a new restaurant</button></a>
+                    <a href="{{ path('back-office_restaurant_new') }}"><button type="button" class="btn btn-lg btn-success">Create a new restaurant</button></a>
                 </li>
             </ul>
         </div>

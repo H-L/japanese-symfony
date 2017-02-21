@@ -19,11 +19,6 @@ class Restaurant extends CoffeeShopItem
     private $maids;
 
     /**
-     * @ORM\OneToMany(targetEntity="Timeslot", mappedBy="restaurant")
-     */
-    private $timeslots;
-
-    /**
      * @ORM\OneToMany(targetEntity="Event", mappedBy="restaurant")
      */
     private $events;
@@ -52,22 +47,35 @@ class Restaurant extends CoffeeShopItem
     }
 
     /**
-     * @return mixed
+     * Add maid
+     *
+     * @param mixed $maid
+     * @return Restaurant
      */
-    public function getTimeslots()
+    public function addMaid($maid)
     {
-        return $this->timeslots;
+        $this->maids[] = $maid;
+
+        return $this;
     }
 
     /**
-     * @param mixed $timeslots
+     * Remove maid
+     *
+     * @param mixed $maid
+     * @return Restaurant
      */
-    public function setTimeslots($timeslots)
+    public function removeMaid($maid)
     {
-        $this->timeslots = $timeslots;
+        $this->events->removeElement($maid);
+
+        return $this;
     }
+    
 
     /**
+     * Get events
+     *
      * @return mixed
      */
     public function getEvents()
@@ -76,16 +84,49 @@ class Restaurant extends CoffeeShopItem
     }
 
     /**
+     * Set events
+     *
      * @param mixed $events
+     * @return Restaurant
      */
     public function setEvents($events)
     {
         $this->events = $events;
+
+        return $this;
+    }
+
+    /**
+     * Add event
+     *
+     * @param mixed $event
+     * @return Restaurant
+     */
+    public function addEvent($event)
+    {
+        $this->events[] = $event;
+
+        return $this;
+    }
+
+    /**
+     * Remove event
+     *
+     * @param mixed $event
+     * @return Restaurant
+     */
+    public function removeEvent($event)
+    {
+        $this->events->removeElement($event);
+
+        return $this;
     }
     
+    /**
+     * Restaurant constructor.
+     */
     public function __construct()
     {
-        $this->timeslots = new ArrayCollection();
         $this->events = new ArrayCollection();
     }
 }

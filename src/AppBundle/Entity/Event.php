@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Event
@@ -44,6 +46,7 @@ class Event
     /**
      * @var \DateTime
      *
+     * @Assert\GreaterThan("today")
      * @ORM\Column(name="start", type="datetime")
      */
     private $start;
@@ -51,6 +54,7 @@ class Event
     /**
      * @var \DateTime
      *
+     * @Assert\GreaterThan("today")
      * @ORM\Column(name="end", type="datetime")
      */
     private $end;
@@ -65,7 +69,7 @@ class Event
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -88,7 +92,7 @@ class Event
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -157,7 +161,7 @@ class Event
     /**
      * Get start
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStart()
     {
@@ -180,7 +184,7 @@ class Event
     /**
      * Get end
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEnd()
     {
@@ -203,5 +207,17 @@ class Event
         $this->profilePicture = $profilePicture;
     }
 
-    
+    /**
+     * @Assert\Callback
+     * @param ExecutionContextInterface $context
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+        if (($this->start != '') && ($this->end < $this->start) || $this->end == $this->start) {
+            $context
+                ->buildViolation('The value for end date invalid. End date can\'t be equal or inferior to start date')
+                ->addViolation()
+            ;
+        }
+    }
 }
