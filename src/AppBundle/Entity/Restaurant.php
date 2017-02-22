@@ -24,14 +24,14 @@ class Restaurant extends CoffeeShopItem
     private $timeSlots;
 
     /**
-     * @ORM\OneToMany(targetEntity="Restaurant", mappedBy="maids")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Event", mappedBy="restaurant")
      */
-    private $events;
+    private $event;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="restaurant")
      */
-    private $reviews;
+    private $review;
     
     /**
      * Set maids
@@ -75,23 +75,23 @@ class Restaurant extends CoffeeShopItem
     /**
      * @return mixed
      */
-    public function getEvents()
+    public function getEvent()
     {
-        return $this->events;
+        return $this->event;
     }
 
     /**
-     * @param mixed $events
+     * @param mixed $event
      */
-    public function setEvents($events)
+    public function setEvent($event)
     {
-        $this->events = $events;
+        $this->event = $event;
     }
     
     public function __construct()
     {
         $this->timeSlots = new ArrayCollection();
-        $this->events = new ArrayCollection();
-        $this->reviews = new ArrayCollection();
+        $this->event = new ArrayCollection();
+        $this->review = new ArrayCollection();
     }
 }

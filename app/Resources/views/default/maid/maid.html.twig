@@ -3,9 +3,13 @@
     <h1>Maid</h1>
     <ul>
         {% for maid in maids %}
+            {#{{ dump(maid) }}#}
             <li>
                 <img src="{{ maid.profilePicture }}" width="150px "alt="">
                 <p>name : {{ maid.name }}</p>
+                {% for review in maid.review %}
+                    <p>Review {{ review.id }} : {{ review.comment }}</p>
+                {% endfor %}
             </li>
         {% endfor %}
     </ul>

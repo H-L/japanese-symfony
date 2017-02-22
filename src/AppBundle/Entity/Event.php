@@ -36,7 +36,7 @@ class Event
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Restaurant", inversedBy="events")
+     * @ORM\ManyToOne(targetEntity="Restaurant", inversedBy="event")
      * @ORM\JoinColumn(name="id_restaurant", referencedColumnName="id")
      */
     private $restaurant;

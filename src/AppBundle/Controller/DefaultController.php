@@ -39,6 +39,8 @@ class DefaultController extends Controller
     public function maidAction() {
         $em = $this->getDoctrine()->getManager();
         $maids = $em->getRepository('AppBundle:Maid')->findAll();
+        $characterTraits = $em->getRepository('AppBundle:CharacterTrait')->findAll();
+        $reviews = $em->getRepository('AppBundle:Review')->findAll();
 
         return $this->render('default/maid/maid.html.twig', array(
             'maids' => $maids,

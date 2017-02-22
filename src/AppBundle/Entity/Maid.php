@@ -68,7 +68,12 @@ class Maid extends CoffeeShopItem
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="maid")
      */
-    private $reviews;
+    private $review;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CharacterTrait", inversedBy="maid")
+     */
+    private $characterTrait;
 
     /**
      * Set lastName
@@ -132,7 +137,7 @@ class Maid extends CoffeeShopItem
     /**
      * Get maidName
      *
-     * @return string 
+     * @return string
      */
     public function getMaidName()
     {
@@ -155,7 +160,7 @@ class Maid extends CoffeeShopItem
     /**
      * Get favoriteThings
      *
-     * @return string 
+     * @return string
      */
     public function getFavoriteThings()
     {
@@ -178,7 +183,7 @@ class Maid extends CoffeeShopItem
     /**
      * Get blogUrl
      *
-     * @return string 
+     * @return string
      */
     public function getBlogUrl()
     {
@@ -201,7 +206,7 @@ class Maid extends CoffeeShopItem
     /**
      * Get twitterUrl
      *
-     * @return string 
+     * @return string
      */
     public function getTwitterUrl()
     {
@@ -234,16 +239,54 @@ class Maid extends CoffeeShopItem
 
     /**
      * @param mixed $timeSlots
+     * @return null
      */
     public function setTimeSlots($timeSlots)
     {
         $this->timeSlots = $timeSlots;
     }
-    
+
+    /**
+     * @return mixed
+     */
+    public function getReview()
+    {
+        return $this->review;
+    }
+
+    /**
+     * @param mixed $review
+     */
+    public function setReview($review)
+    {
+        $this->review = $review;
+    }
+
+    /**
+     * @param mixed $characterTrait
+     * @return $this
+     */
+    public function setCharacterTrait($characterTrait)
+    {
+        $this->characterTrait = $characterTrait;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCharacterTrait()
+    {
+        return $this->characterTrait;
+    }
+
+
+
     public function __construct()
     {
         $this->timeSlots = new ArrayCollection();
-        $this->reviews = new ArrayCollection();
+        $this->review = new ArrayCollection();
     }
 
 }
