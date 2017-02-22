@@ -4,6 +4,7 @@ namespace AppBundle\Command;
 use AppBundle\Entity\CharacterTrait;
 use AppBundle\Entity\Event;
 use AppBundle\Entity\Maid;
+use AppBundle\Entity\Rank;
 use AppBundle\Entity\Restaurant;
 use AppBundle\Entity\Review;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -102,6 +103,14 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $characterTrait1 = new CharacterTrait();
         $characterTrait1->setName('Joyful');
 
+        $rank = new Rank();
+        $rank->setName('Super Premium');
+        $rank->setValue('1');
+
+        $rank1 = new Rank();
+        $rank1->setName('First Maid');
+        $rank1->setValue('2');
+
         $maid = new Maid();
         $maid->setName('Saesenthessis');
         $maid->setLastName('Dragonborn');
@@ -118,6 +127,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid->setProfilePicture('Chimu480.jpg');
         $maid->setRestaurant($restaurant);
         $maid->setCharacterTrait($characterTrait);
+        $maid->setRank($rank);
 
         $maid1 = new Maid();
         $maid1->setName('Katy');
@@ -135,6 +145,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid1->setProfilePicture('Chimu480.jpg');
         $maid1->setRestaurant($restaurant);
         $maid1->setCharacterTrait($characterTrait1);
+        $maid1->setRank($rank1);
 
         $review2 = new Review();
         $review2->setRate(1);
@@ -173,6 +184,8 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $em->persist($review1);
         $em->persist($characterTrait);
         $em->persist($characterTrait1);
+        $em->persist($rank);
+        $em->persist($rank1);
         $em->persist($maid);
         $em->persist($maid1);
         $em->persist($review2);

@@ -76,6 +76,11 @@ class Maid extends CoffeeShopItem
     private $characterTrait;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Rank", inversedBy="maid")
+     */
+    private $rank;
+
+    /**
      * Set lastName
      *
      * @param string $lastName
@@ -281,7 +286,21 @@ class Maid extends CoffeeShopItem
         return $this->characterTrait;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getRank()
+    {
+        return $this->rank;
+    }
 
+    /**
+     * @param mixed $rank
+     */
+    public function setRank($rank)
+    {
+        $this->rank = $rank;
+    }
 
     public function __construct()
     {
