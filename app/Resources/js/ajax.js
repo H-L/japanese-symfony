@@ -20,6 +20,7 @@ function newAction() {
                 formEditAction();
             },
             success: function(data) {
+                $this.find('.form-errors').html('');
                 $('#schedule').html(data);
                 formEditAction();
                 $this[0].reset();
