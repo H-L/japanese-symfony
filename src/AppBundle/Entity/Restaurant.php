@@ -27,6 +27,11 @@ class Restaurant extends CoffeeShopItem
      * @ORM\OneToMany(targetEntity="Restaurant", mappedBy="maids")
      */
     private $events;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="restaurant")
+     */
+    private $reviews;
     
     /**
      * Set maids
@@ -87,5 +92,6 @@ class Restaurant extends CoffeeShopItem
     {
         $this->timeSlots = new ArrayCollection();
         $this->events = new ArrayCollection();
+        $this->reviews = new ArrayCollection();
     }
 }

@@ -66,6 +66,11 @@ class Maid extends CoffeeShopItem
     private $timeSlots;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="maid")
+     */
+    private $reviews;
+
+    /**
      * Set lastName
      *
      * @param string $lastName
@@ -238,6 +243,7 @@ class Maid extends CoffeeShopItem
     public function __construct()
     {
         $this->timeSlots = new ArrayCollection();
+        $this->reviews = new ArrayCollection();
     }
 
 }
