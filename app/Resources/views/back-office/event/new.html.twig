@@ -3,18 +3,16 @@
 {% block body %}
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h1>Maid creation</h1>
+            <h1>Event creation</h1>
         </div>
         <div class="panel-body">
-
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <input type="submit" value="Create" class="btn btn-lg btn-success" />
             {{ form_end(form) }}
-
             <ul class="list-group">
                 <li class="list-group-item">
-                    <a href="{{ path('back-office_maid_index') }}"><button type="button" class="btn btn-lg btn-primary">Back to the list</button></a>
+                    <a href="{{ path('back-office_event_index') }}"><button type="button" class="btn btn-lg btn-primary">Back to the list</button></a>
                 </li>
             </ul>
         </div>

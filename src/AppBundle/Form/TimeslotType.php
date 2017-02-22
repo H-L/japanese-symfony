@@ -7,11 +7,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use AppBundle\Entity\Maid;
-use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
-class TimeSlotType extends AbstractType
+class TimeslotType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -20,7 +18,7 @@ class TimeSlotType extends AbstractType
     {
         $builder
             ->add('startHour', ChoiceType::class, array(
-                'choices'=> range(0,23)
+                'choices'=> range(0, 23),
             ))
             ->add('startMinute', ChoiceType::class, array(
                 'choices'=> array(
@@ -31,7 +29,7 @@ class TimeSlotType extends AbstractType
                 )
             ))
             ->add('endHour', ChoiceType::class, array(
-                'choices'=> range(0,23)
+                'choices'=> range(0, 23)
             ))
             ->add('endMinute', ChoiceType::class, array(
                 'choices'=> array(
@@ -52,7 +50,6 @@ class TimeSlotType extends AbstractType
                     0 => 'Sunday',
                 ),
             ))
-            ->add('restaurant')
             ->add('maid', EntityType::class, array(
                 'class' => 'AppBundle:Maid',
                 'choice_label' => 'name',
@@ -66,7 +63,7 @@ class TimeSlotType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\TimeSlot'
+            'data_class' => 'AppBundle\Entity\Timeslot'
         ));
     }
 

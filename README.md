@@ -86,11 +86,11 @@ php app/console app:maid:list
 # Create a restaurant
 php app/console app:restaurant:add
 
-# Create a timeSlot for scheduling
-php app/console app:timeSlot:add
-
 # Create/import Images from local dir to DB and copy images in web/uploads/images
 php app/console app:add_images
+
+# Create a timeslot for scheduling
+php app/console app:timeslot:add
 ```
 
 # Team & Collaborators
