@@ -1,15 +1,40 @@
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h1>Timeslot edit</h1>
+<h3>Edit a work session</h3>
+<form class="timeslot-edit-form form-inline" action="{{ path('back-office_timeslot_edit', { 'id': timeslot_to_edit.id }) }}" method="post">
+    <div class="form-errors"></div>
+    <div class="form-elmt inline">
+        {{ form_label(edit_form.startHour) }}
+        {{ form_widget(edit_form.startHour) }}
+        {{ form_errors(edit_form.startHour) }}
     </div>
-    <div class="panel-body">
-        <form class="timeslot-edit-form" action="{{ path('back-office_timeslot_edit', { 'id': timeslot_to_edit.id }) }}" method="post">
-            <div class="form-errors"></div>
-            {{ form_widget(edit_form) }}
-            <input type="submit" value="Edit" class="btn btn-lg btn-success"/>
-        </form>
-        {{ form_start(delete_form) }}
-        <input type="submit" value="Delete" class="btn btn-lg btn-danger">
-        {{ form_end(delete_form) }}
+    <div class="form-elmt inline">
+        {{ form_label(edit_form.startMinute) }}
+        {{ form_widget(edit_form.startMinute) }}
+        {{ form_errors(edit_form.startMinute) }}
     </div>
-</div>
+    <div class="form-elmt inline">
+        {{ form_label(edit_form.endHour) }}
+        {{ form_widget(edit_form.endHour) }}
+        {{ form_errors(edit_form.endHour) }}
+    </div>
+    <div class="form-elmt inline">
+        {{ form_label(edit_form.endMinute) }}
+        {{ form_widget(edit_form.endMinute) }}
+        {{ form_errors(edit_form.endMinute) }}
+    </div>
+    <div class="form-elmt">
+        {{ form_label(edit_form.dayOfWeek) }}
+        {{ form_widget(edit_form.dayOfWeek) }}
+        {{ form_errors(edit_form.dayOfWeek) }}
+    </div>
+    <div class="form-elmt hidden">
+        {{ form_label(edit_form.maid) }}
+        {{ form_widget(edit_form.maid) }}
+        {{ form_errors(edit_form.maid) }}
+    </div>
+    <input type="submit" value="Edit" class="btn btn-lg btn-success"/>
+</form>
+{{ form_start(delete_form) }}
+<input type="submit" value="Delete" class="btn btn-lg btn-danger">
+{{ form_end(delete_form) }}
+
+

@@ -1,5 +1,89 @@
-{% for slot in timeslots %}
-    <div class="time-slot edit-form-create" data-path="{{ path('back-office_timeslot_form_edit', { 'id': slot.id }) }}">
-        {{ slot.startHour }}h{{ slot.startMinute }} {{ slot.endHour }}h{{ slot.endMinute }} {{ slot.dayOfWeek }}
-    </div>
-{% endfor %}
+<table class="table">
+    <tbody>
+    <tr>
+        <th>Monday</th>
+        <td>
+            {% for slot in timeslots %}
+                {% if slot.dayOfWeek == 1 %}
+                    <div class="time-slot edit-form-create" data-path="{{ path('back-office_timeslot_form_edit', { 'id': slot.id }) }}">
+                        {{ "%02d"|format(slot.startHour) }}h{{ "%02d"|format(slot.startMinute) }} - {{ "%02d"|format(slot.endHour) }}h{{ "%02d"|format(slot.endMinute) }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <th>Tuesday</th>
+        <td>
+            {% for slot in timeslots %}
+                {% if slot.dayOfWeek == 2 %}
+                    <div class="time-slot edit-form-create" data-path="{{ path('back-office_timeslot_form_edit', { 'id': slot.id }) }}">
+                        {{ "%02d"|format(slot.startHour) }}h{{ "%02d"|format(slot.startMinute) }} - {{ "%02d"|format(slot.endHour) }}h{{ "%02d"|format(slot.endMinute) }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <th>Wednesday</th>
+        <td>
+            {% for slot in timeslots %}
+                {% if slot.dayOfWeek == 3 %}
+                    <div class="time-slot edit-form-create" data-path="{{ path('back-office_timeslot_form_edit', { 'id': slot.id }) }}">
+                        {{ "%02d"|format(slot.startHour) }}h{{ "%02d"|format(slot.startMinute) }} - {{ "%02d"|format(slot.endHour) }}h{{ "%02d"|format(slot.endMinute) }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <th>Thursday</th>
+        <td>
+            {% for slot in timeslots %}
+                {% if slot.dayOfWeek == 4 %}
+                    <div class="time-slot edit-form-create" data-path="{{ path('back-office_timeslot_form_edit', { 'id': slot.id }) }}">
+                        {{ "%02d"|format(slot.startHour) }}h{{ "%02d"|format(slot.startMinute) }} - {{ "%02d"|format(slot.endHour) }}h{{ "%02d"|format(slot.endMinute) }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <th>Friday</th>
+        <td>
+            {% for slot in timeslots %}
+                {% if slot.dayOfWeek == 5 %}
+                    <div class="time-slot edit-form-create" data-path="{{ path('back-office_timeslot_form_edit', { 'id': slot.id }) }}">
+                        {{ "%02d"|format(slot.startHour) }}h{{ "%02d"|format(slot.startMinute) }} - {{ "%02d"|format(slot.endHour) }}h{{ "%02d"|format(slot.endMinute) }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <th>Saturday</th>
+        <td>
+            {% for slot in timeslots %}
+                {% if slot.dayOfWeek == 6 %}
+                    <div class="time-slot edit-form-create" data-path="{{ path('back-office_timeslot_form_edit', { 'id': slot.id }) }}">
+                        {{ "%02d"|format(slot.startHour) }}h{{ "%02d"|format(slot.startMinute) }} - {{ "%02d"|format(slot.endHour) }}h{{ "%02d"|format(slot.endMinute) }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <th>Sunday</th>
+        <td>
+            {% for slot in timeslots %}
+                {% if slot.dayOfWeek == 0 %}
+                    <div class="time-slot edit-form-create" data-path="{{ path('back-office_timeslot_form_edit', { 'id': slot.id }) }}">
+                        {{ "%02d"|format(slot.startHour) }}h{{ "%02d"|format(slot.startMinute) }} - {{ "%02d"|format(slot.endHour) }}h{{ "%02d"|format(slot.endMinute) }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    </tbody>
+</table>
+

@@ -72,19 +72,25 @@
             </table>
         </div>
     </div>
-    <div class="panel panel-primary">
+    <div class="panel panel-primary maid-schedule">
         <div class="panel-heading">
             <h1>Maid weekly schedule </h1>
         </div>
         <div id="schedule">
             {% include 'back-office/timeslot/schedule.html.twig'%}
         </div>
-        <div id="edit-form">
-            {% if maid.timeslots | length > 0 %}
-                {% include 'back-office/timeslot/edit.html.twig' with {'timeslot_to_edit' : timeslot_to_edit, 'form' : edit_form, 'delete_form' : delete_form }  %}
-            {% endif %}
+        <div class="forms">
+            <button class="btn btn-success new">New work session</button>
+            <button class="btn btn-warning edit">Edit</button>
+            <div id="edit-form" class="form hidden">
+                {% if maid.timeslots | length > 0 %}
+                    {% include 'back-office/timeslot/edit.html.twig' with {'timeslot_to_edit' : timeslot_to_edit, 'form' : edit_form, 'delete_form' : delete_form }  %}
+                {% endif %}
+            </div>
+            <div id="new-form" class="form">
+                {% include ':back-office/timeslot:new.html.twig' with {'form' : create_form }  %}
+            </div>
         </div>
-        {% include ':back-office/timeslot:new.html.twig' with {'form' : createForm }  %}
     </div>
     <ul class="list-group">
         <li class="list-group-item">

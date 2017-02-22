@@ -69,7 +69,6 @@ class RestaurantController extends Controller
 
         return $this->render('back-office/restaurant/show.html.twig', array(
             'restaurant' => $restaurant,
-            'timeslots' => $restaurant->getTimeslots(),
             'delete_form' => $deleteForm->createView(),
         ));
     }

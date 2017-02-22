@@ -20,7 +20,7 @@ class MaidController extends Controller
      * Lists all maid entities
      *
      * @Route("/", name="back-office_maid_index")
-     * @Method("GET") 
+     * @Method("GET")
      */
     public function indexAction()
     {
@@ -37,6 +37,8 @@ class MaidController extends Controller
      *
      * @Route("/new", name="back-office_maid_new")
      * @Method({"GET", "POST"})
+     * @param $request
+     * @return view
      */
     public function newAction(Request $request)
     {
@@ -63,19 +65,24 @@ class MaidController extends Controller
      *
      * @Route("/{id}", name="back-office_maid_show")
      * @Method("GET")
+     * @param $maid
+     * @return route
      */
     public function showAction(Maid $maid)
     {
         $deleteForm = $this->createDeleteForm($maid);
         $newTimeslot = new Timeslot();
         $createForm = $this->createForm('AppBundle\Form\TimeslotType', $newTimeslot);
+        $createForm->get('maid')->setData($maid);
         $timeslotToEdit = $maid->getTimeslots()[0];
         $editForm = $this->createForm('AppBundle\Form\TimeslotType', $timeslotToEdit);
+        $editForm->get('maid')->setData($maid);
         
         return $this->render('back-office/maid/show.html.twig', array(
             'maid' => $maid,
             'timeslots' => $maid->getTimeslots(),
-            'delete_form' => $deleteForm->createView(),'createForm' => $createForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+            'create_form' => $createForm->createView(),
             'edit_form' => $editForm->createView(),
             'timeslot_to_edit' => $timeslotToEdit
         ));
@@ -86,6 +93,9 @@ class MaidController extends Controller
      *
      * @Route("/{id}/edit", name="back-office_maid_edit")
      * @Method({"GET", "POST"})
+     * @param $request
+     * @param $maid
+     * @return route
      */
     public function editAction(Request $request, Maid $maid)
     {
@@ -111,6 +121,9 @@ class MaidController extends Controller
      *
      * @Route("/{id}", name="back-office_maid_delete")
      * @Method("DELETE")
+     * @param $request
+     * @param $maid
+     * @return route
      */
     public function deleteAction(Request $request, Maid $maid)
     {
@@ -120,7 +133,7 @@ class MaidController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($maid);
-            $em->flush($maid);
+            $em->flush();
         }
 
         return $this->redirectToRoute('back-office_maid_index');
@@ -141,5 +154,4 @@ class MaidController extends Controller
             ->setMethod('DELETE')
             ->getForm();
     }
-
 }

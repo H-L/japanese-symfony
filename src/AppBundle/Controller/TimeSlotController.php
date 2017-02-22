@@ -258,8 +258,10 @@ class TimeslotController extends Controller
      */
     public function formEditAction(Request $request, Timeslot $timeslot)
     {
+        $maid = $timeslot->getMaid();
         $deleteForm = $this->createDeleteForm($timeslot);
         $editForm = $this->createForm('AppBundle\Form\TimeslotType', $timeslot);
+        $editForm->get('maid')->setData($maid);
         return $this->render('back-office/timeslot/edit.html.twig', array(
             'timeslot_to_edit' => $timeslot,
             'edit_form' => $editForm->createView(),

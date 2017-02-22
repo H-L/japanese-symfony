@@ -23,6 +23,7 @@ class MaidService
         $timeService = new TimeService();
         //initialise work array for a week : 0 is sunday, 6 is saturday
         $workHours = array(
+            0 =>0,
             1 => 0,
             2 => 0,
             3 => 0,

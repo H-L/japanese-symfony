@@ -20,7 +20,7 @@ class TimeslotType extends AbstractType
     {
         $builder
             ->add('startHour', ChoiceType::class, array(
-                'choices'=> range(0,23)
+                'choices'=> range(0, 23),
             ))
             ->add('startMinute', ChoiceType::class, array(
                 'choices'=> array(
@@ -31,7 +31,7 @@ class TimeslotType extends AbstractType
                 )
             ))
             ->add('endHour', ChoiceType::class, array(
-                'choices'=> range(0,23)
+                'choices'=> range(0, 23)
             ))
             ->add('endMinute', ChoiceType::class, array(
                 'choices'=> array(
