@@ -46,7 +46,18 @@ class MaidService
         $workHours['total'] = array_sum($workHours);
         return $workHours;
     }
+    public function getSchedule(Maid $maid) {
+        $timeslots = $maid->getTimeslots();
+        $byDay = array(
+          0 => 0
 
+        );
+    }
+    /**
+     * @param Maid $maid
+     * @param Timeslot $timeslot
+     * @return bool
+     */
     public function doesSlotExists(Maid $maid, Timeslot $timeslot)
     {
         $timeService = new TimeService();

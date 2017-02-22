@@ -105,8 +105,6 @@ class Restaurant extends CoffeeShopItem
     public function addEvent($event)
     {
         $this->events[] = $event;
-
-        return $this;
     }
 
     /**
