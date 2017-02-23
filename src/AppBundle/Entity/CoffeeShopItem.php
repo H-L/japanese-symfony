@@ -67,20 +67,6 @@ abstract class CoffeeShopItem
     private $description;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="pictures", type="string", length=255, nullable=true)
-     */
-    private $pictures;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="profilePicture", type="string", length=255, nullable=true)
-     */
-    private $profilePicture;
-
-    /**
      * Get id
      *
      * @return integer
@@ -226,52 +212,6 @@ abstract class CoffeeShopItem
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set pictures
-     *
-     * @param string $pictures
-     * @return $this
-     */
-    public function setPictures($pictures)
-    {
-        $this->pictures = $pictures;
-
-        return $this;
-    }
-
-    /**
-     * Get pictures
-     *
-     * @return string
-     */
-    public function getPictures()
-    {
-        return $this->pictures;
-    }
-
-    /**
-     * Set profilePicture
-     *
-     * @param string $profilePicture
-     * @return $this
-     */
-    public function setProfilePicture($profilePicture)
-    {
-        $this->profilePicture = $profilePicture;
-
-        return $this;
-    }
-
-    /**
-     * Get profilePicture
-     *
-     * @return string
-     */
-    public function getProfilePicture()
-    {
-        return $this->profilePicture;
     }
 
     /**

@@ -39,6 +39,11 @@ class Image
     private $path;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Gallery", mappedBy="images")
+     */
+    private $galleries;
+
+    /**
      * Get id
      *
      * @return int
@@ -97,15 +102,6 @@ class Image
     }
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Gallery", mappedBy="images")
-     */
-    private $galleries;
-
-    public function __construct() {
-        $this->galleries = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
      * Add gallery
      *
      * @param \AppBundle\Entity\Gallery $gallery
@@ -137,5 +133,9 @@ class Image
     public function getGalleries()
     {
         return $this->galleries;
+    }
+
+    public function __construct() {
+        $this->galleries = new \Doctrine\Common\Collections\ArrayCollection();
     }
 }

@@ -4,7 +4,7 @@
 
     <div class="single-maid__header">
         <div class="maid__bloc--content">
-            <img src="../imgs/hitomi.png" />
+            <img src="{{ asset(maid.profilePicture.path) }}" />
             <div class="maid__name">
               <div class="maid__text">
                 <p>Hitomi</p>
@@ -46,7 +46,15 @@
                 </div>
                 <div class="pres__info">
                     <div class="info__title"> Caractère</div>
-                    <div class="info__content"> Dominant </div>
+                    <div class="info__content"> {{ maid.characterTrait.name }} </div>
+                </div>
+                <div class="pres_reviews">
+                    Reviews :
+                    {% for review in maid.review %}
+                        <div class="pres_review">
+                            {{ dump(review) }}
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
 

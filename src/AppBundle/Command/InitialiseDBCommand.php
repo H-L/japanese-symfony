@@ -7,6 +7,7 @@ use AppBundle\Entity\Maid;
 use AppBundle\Entity\Rank;
 use AppBundle\Entity\Restaurant;
 use AppBundle\Entity\Review;
+use AppBundle\Entity\Gallery;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -25,10 +26,13 @@ class InitialiseDBCommand extends ContainerAwareCommand
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
+        $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+
         $dropCommand = $this->getApplication()->find('doctrine:schema:drop');
         $createCommand = $this->getApplication()->find('doctrine:schema:create');
         $createUserCommand = $this->getApplication()->find('fos:user:create');
         $promoteUserCommand = $this->getApplication()->find('fos:user:promote');
+        $initialiseImagesCommand = $this->getApplication()->find('app:initialise:images');
 
         $dropArguments = array(
             'command' => 'doctrine:schema:drop',
@@ -54,18 +58,42 @@ class InitialiseDBCommand extends ContainerAwareCommand
             'username' => 'adminUser',
             'role' => 'ROLE_ADMIN'
         );
+        $initialiseImagesArguments = array(
+            'command' => 'app:initialise:images',
+        );
 
         $dropInput = new ArrayInput($dropArguments);
         $createInput = new ArrayInput($createArguments);
         $createUserInput = new ArrayInput($userCreateArguments);
         $createUserInput2 = new ArrayInput($userCreateArguments2);
         $promoteUserInput = new ArrayInput($userPromoteArguments);
+        $initialiseImagesInput = new ArrayInput($initialiseImagesArguments);
 
         $dropReturnCode = $dropCommand->run($dropInput, $output);
         $createReturnCode = $createCommand->run($createInput, $output);
         $userCreateReturnCode = $createUserCommand->run($createUserInput, $output);
         $userCreateReturnCode2 = $createUserCommand->run($createUserInput2, $output);
         $userPromoteArguments = $promoteUserCommand->run($promoteUserInput, $output);
+        $initialiseImagesArguments = $initialiseImagesCommand->run($initialiseImagesInput, $output);
+
+        $restaurantProfilePicture = $em->getRepository('AppBundle:Image')->find(2);
+        $restaurantProfilePicture1 = $em->getRepository('AppBundle:Image')->find(6);
+
+        $restaurantGallery = new Gallery();
+        $restaurantGallery->setName('restaurant');
+
+        for ($i = 1; $i <= 10; $i++) {
+            $restaurantGallery->addImage($em->getRepository('AppBundle:Image')->find($i));
+            $output->writeln('Image'.$i.' added to '.$restaurantGallery->getName());
+        }
+
+        $restaurantGallery1 = new Gallery();
+        $restaurantGallery1->setName('restaurant1');
+
+        for ($i = 11; $i <= 20; $i++) {
+            $restaurantGallery1->addImage($em->getRepository('AppBundle:Image')->find($i));
+            $output->writeln('Image'.$i.' added to '.$restaurantGallery1->getName());
+        }
 
         $restaurant = new Restaurant();
         $restaurant->setName('athome 1');
@@ -74,7 +102,8 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $restaurant->setDescription('Little restaurant just near your favorite neighborhood');
         $restaurant->setEmail('athome1@othome.com');
         $restaurant->setPhone('+8765670877');
-        $restaurant->setProfilePicture('resto.jpg');
+        $restaurant->setProfilePicture($restaurantProfilePicture);
+        $restaurant->setGallery($restaurantGallery);
 
         $restaurant1 = new Restaurant();
         $restaurant1->setName('athome 2');
@@ -83,7 +112,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $restaurant1->setDescription('Little restaurant near your favorite neighborhood');
         $restaurant1->setEmail('athome2@athome.com');
         $restaurant1->setPhone('+66789097542');
-        $restaurant1->setProfilePicture('resto.jpg');
+        $restaurant1->setProfilePicture($restaurantProfilePicture1);
 
         $review = new Review();
         $review->setRate(5);
@@ -111,6 +140,25 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $rank1->setName('First Maid');
         $rank1->setValue('2');
 
+        $maidProfilePicture = $em->getRepository('AppBundle:Image')->find(2);
+        $maidProfilePicture1 = $em->getRepository('AppBundle:Image')->find(6);
+
+        $maidGallery = new Gallery();
+        $maidGallery->setName('maid');
+
+        for ($i = 1; $i <= 10; $i++) {
+            $maidGallery->addImage($em->getRepository('AppBundle:Image')->find($i));
+            $output->writeln('Image'.$i.' added to '.$maidGallery->getName());
+        }
+
+        $maidGallery1 = new Gallery();
+        $maidGallery1->setName('maid1');
+
+        for ($i = 11; $i <= 20; $i++) {
+            $maidGallery1->addImage($em->getRepository('AppBundle:Image')->find($i));
+            $output->writeln('Image'.$i.' added to '.$maidGallery1->getName());
+        }
+
         $maid = new Maid();
         $maid->setName('Saesenthessis');
         $maid->setLastName('Dragonborn');
@@ -124,7 +172,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid->setFavoriteThings('Dwarves mostly');
         $maid->setBlogUrl('www.sakia.com');
         $maid->setTwitterUrl('wwww.twitter.com/saskia');
-        $maid->setProfilePicture('Chimu480.jpg');
+        $maid->setProfilePicture($maidProfilePicture);
         $maid->setRestaurant($restaurant);
         $maid->setCharacterTrait($characterTrait);
         $maid->setRank($rank);
@@ -142,7 +190,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid1->setFavoriteThings('Cats, dogs, food');
         $maid1->setBlogUrl('wwww.kawaiikat.overblog');
         $maid1->setTwitterUrl('wwww.twitter.com/kawaiikat');
-        $maid1->setProfilePicture('Chimu480.jpg');
+        $maid1->setProfilePicture($maidProfilePicture1);
         $maid1->setRestaurant($restaurant);
         $maid1->setCharacterTrait($characterTrait1);
         $maid1->setRank($rank1);
@@ -175,7 +223,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $event1->setRestaurant($restaurant);
         $event1->setProfilePicture('event.jpg');
 
-        $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+        $em->persist($restaurantGallery);
         $em->persist($restaurant);
         $em->persist($restaurant1);
         $em->persist($event);
