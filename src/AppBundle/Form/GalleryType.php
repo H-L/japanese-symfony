@@ -18,7 +18,7 @@ class GalleryType extends AbstractType
             ->add('name')
             ->add('images', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Image',
-                'choice_label' => 'name',
+                'choice_label' => 'path',
                 'multiple' => true,
                 'expanded' => true,
             ))

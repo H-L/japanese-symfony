@@ -1,0 +1,19 @@
+{% form_theme form _self %}
+
+{% block checkbox_widget %}
+
+    <input type="checkbox" {{ block('widget_attributes') }}
+            {% if value is defined %}
+                value="{{ value }}"
+            {% endif %}
+
+            {% if checked %}
+                checked="checked"
+            {% endif %}
+    />
+
+    <label  for="{{ id }}">
+        <img src="{{ asset(label|trans) | imagine_filter('my_thumb') }}" alt="">
+    </label>
+
+{% endblock checkbox_widget %}
