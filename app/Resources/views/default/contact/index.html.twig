@@ -1,9 +1,6 @@
 {% extends 'default/base.html.twig' %}
 
 {% block body %}
-
-    {{ dump(restaurants) }}
-
     {% for restaurant in restaurants %}
         <div class="restaurant">
             <p>{{ restaurant.name }}</p>
