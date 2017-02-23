@@ -3,3 +3,118 @@
 {% block body %}
     Users
 {% endblock %}
+
+{% extends 'default/base.html.twig' %}
+{% block body %}
+<div class="profil__container">
+  <div class="profil__deco">
+    <a href="#">Deconnexion</a>
+  </div>
+  <div class="profil__infos">
+    <h2>My profil</h2>
+    <div class="profil__infos--block">
+      <div class="profil__infos--item">
+        <p>
+          First Name :
+        </p>
+        <p>
+          Last Name :
+        </p>
+        <P>
+          Email :
+        </P>
+      </div>
+      <div class="profil__infos--values">
+        <p>
+          Jean
+        </p>
+        <p>
+          Bombeur
+        </p>
+        <P>
+          jean.bombeur@gamil.com
+        </P>
+      </div>
+    </div>
+  </div>
+  <!-- Reservation -->
+  <div class="reservation__infos">
+    <h2>My reservation(s)</h2>
+    <div class="reservation__block">
+      <h3>Chimu</h3>
+      <div class="reservation__block--content">
+        <p>
+          Monday 23rd October<br />
+          14:30 pm to 15:30 pm
+        </p>
+        <p>
+          Teishutsu Café <br />
+          20 rue Vignon, 75008 Paris
+        </p>
+        <img src="../imgs/chimu.png" />
+      </div>
+    </div>
+    <hr />
+    <div class="reservation__block">
+      <h3>Chimu</h3>
+      <div class="reservation__block--content">
+        <p>
+          Monday 23rd October<br />
+          14:30 pm to 15:30 pm
+        </p>
+        <p>
+          Teishutsu Café <br />
+          20 rue Vignon, 75008 Paris
+        </p>
+        <img src="../imgs/chimu.png" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Review -->
+
+  <div class="reservation__infos review">
+    <h2>My reviews</h2>
+    <div class="reservation__block">
+      <h3>Review 1</h3>
+      <div class="reservation__block--content">
+        <p>
+          Friday 1st January <br />
+          12:30 pm to 13:30 pm
+        </p>
+        <p>
+          Teishutsu Café <br />
+          20 rue Vignon, 75008 Paris
+        </p>
+        <img src="../imgs/chimu.png" />
+      </div>
+      <p class="review__txt">It was super ! Chimu is very cute, the services were great. In one word,<br />
+      perfect ! I will come back (◕‿◕✿)</p>
+    </div>
+    <hr />
+    <div class="reservation__block">
+      <h3>Review 2</h3>
+      <div class="reservation__block--content">
+        <p>
+          Thursay 16th March <br />
+          17:00 pm to 18:00 pm
+        </p>
+        <p>
+          Teishutsu Café <br />
+          20 rue Vignon, 75008 Paris
+        </p>
+        <img src="../imgs/chimu.png" />
+      </div>
+      <p class="review__txt">I’m back ! And with Chimu again ! Perfect again, too cute, too kind. <br />
+      Thank you Chimu San ! ლ(́◉◞౪◟◉‵ლ)</p>
+    </div>
+  </div>
+    <h1>Events</h1>
+    <ul>
+        {% for event in events %}
+            <li>
+                <p>name : {{ event.name }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
