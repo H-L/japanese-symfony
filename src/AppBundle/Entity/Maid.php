@@ -59,7 +59,7 @@ class Maid extends CoffeeShopItem
     private $timeslots;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image", inversedBy="event")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image", inversedBy="maid")
      * @ORM\JoinColumn(name="profilePicture_id", referencedColumnName="id")
      */
     private $profilePicture;

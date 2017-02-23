@@ -26,10 +26,10 @@ class Restaurant extends CoffeeShopItem
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="restaurant")
      */
-    private $review;
+    private $reviews;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image", inversedBy="event")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image", inversedBy="restaurant")
      * @ORM\JoinColumn(name="profilePicture_id", referencedColumnName="id")
      */
     private $profilePicture;
@@ -175,24 +175,7 @@ class Restaurant extends CoffeeShopItem
        $this->reviews->removeElement($review);
        return $this;
     }
-
-
-    /**
-     * @return mixed
-     */
-    public function getReview()
-    {
-        return $this->review;
-    }
-
-    /**
-     * @param mixed $review
-     */
-    public function setReview($review)
-    {
-        $this->review = $review;
-    }
-
+    
     /**
      * @return mixed
      */
