@@ -6,7 +6,6 @@
             <h1>Maid informations</h1>
         </div>
         <div class="panel-body">
-
             <table class="table">
                 <tbody>
                     <tr>
@@ -33,7 +32,6 @@
                         <th>Email</th>
                         <td>{{ maid.email}}</td>
                     </tr>
-
                 </tbody>
             </table>
          </div>
@@ -58,6 +56,10 @@
                         <td>{{ maid.bloodType}}</td>
                     </tr>
                     <tr>
+                        <th>Restaurant</th>
+                        <td>{{ maid.restaurant.name }}</td>
+                    </tr>
+                    <tr>
                         <th>FavoriteThings</th>
                         <td>{{ maid.favoriteThings}}</td>
                     </tr>
@@ -73,27 +75,39 @@
             </table>
         </div>
     </div>
-            <ul>
-                {% for slot in timeSlots %}
-                    <li>{{ slot.startTime[0] }}h{{ slot.startTime[1] }} {{ slot.endTime[0] }}h{{ slot.endTime[1] }}</li>
-                {% endfor %}
-            </ul>
-
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <a href="{{ path('_index') }}"><button type="button" class="btn btn-lg btn-primary">Back to the list</button></a>
-                </li>
-                <li class="list-group-item">
-                    <a href="{{ path('_edit', { 'id': maid.id }) }}"><button type="button" class="btn btn-lg btn-warning">Edit</button></a>
-                </li>
-                <li class="list-group-item">
-                    {{ form_start(delete_form) }}
-                    <input type="submit" value="Delete" class="btn btn-lg btn-danger" />
-                    {{ form_end(delete_form) }}
-                </li>
-            </ul>
+    <div class="panel panel-primary maid-schedule">
+        <div class="panel-heading">
+            <h1>Maid weekly schedule </h1>
+        </div>
+        <div id="schedule">
+            {% include 'back-office/timeslot/schedule.html.twig'%}
+        </div>
+        <div class="forms">
+            <button class="btn btn-success new">New work session</button>
+            <button class="btn btn-warning edit">Edit</button>
+            <div id="edit-form" class="form hidden">
+                {% if maid.timeslots | length > 0 %}
+                    {% include 'back-office/timeslot/edit.html.twig' with {'timeslot_to_edit' : timeslot_to_edit, 'form' : edit_form, 'delete_form' : delete_form }  %}
+                {% endif %}
+            </div>
+            <div id="new-form" class="form">
+                {% include ':back-office/timeslot:new.html.twig' with {'form' : create_form }  %}
+            </div>
         </div>
     </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="{{ path('back-office_maid_index') }}"><button type="button" class="btn btn-lg btn-primary">Back to the list</button></a>
+        </li>
+        <li class="list-group-item">
+            <a href="{{ path('back-office_maid_edit', { 'id': maid.id }) }}"><button type="button" class="btn btn-lg btn-warning">Edit</button></a>
+        </li>
+        <li class="list-group-item">
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete" class="btn btn-lg btn-danger" />
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
 {% endblock %}
 
 

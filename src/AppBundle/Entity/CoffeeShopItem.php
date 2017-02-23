@@ -5,7 +5,6 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
-
 /**
  *
  * @ORM\Entity
@@ -84,7 +83,7 @@ abstract class CoffeeShopItem
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -95,7 +94,7 @@ abstract class CoffeeShopItem
      * Set name
      *
      * @param string $name
-     * @return CoffeShopItem
+     * @return $this
      */
     public function setName($name)
     {
@@ -107,7 +106,7 @@ abstract class CoffeeShopItem
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -118,7 +117,7 @@ abstract class CoffeeShopItem
      * Set address
      *
      * @param string $address
-     * @return CoffeShopItem
+     * @return $this
      */
     public function setAddress($address)
     {
@@ -130,7 +129,7 @@ abstract class CoffeeShopItem
     /**
      * Get address
      *
-     * @return string 
+     * @return string
      */
     public function getAddress()
     {
@@ -141,7 +140,7 @@ abstract class CoffeeShopItem
      * Set phone
      *
      * @param string $phone
-     * @return CoffeShopItem
+     * @return $this
      */
     public function setPhone($phone)
     {
@@ -153,7 +152,7 @@ abstract class CoffeeShopItem
     /**
      * Get phone
      *
-     * @return string 
+     * @return string
      */
     public function getPhone()
     {
@@ -164,7 +163,7 @@ abstract class CoffeeShopItem
      * Set email
      *
      * @param string $email
-     * @return CoffeShopItem
+     * @return $this
      */
     public function setEmail($email)
     {
@@ -176,7 +175,7 @@ abstract class CoffeeShopItem
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -187,7 +186,7 @@ abstract class CoffeeShopItem
      * Set birthDate
      *
      * @param \DateTime $birthDate
-     * @return CoffeShopItem
+     * @return $this
      */
     public function setBirthDate($birthDate)
     {
@@ -199,7 +198,7 @@ abstract class CoffeeShopItem
     /**
      * Get birthDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getBirthDate()
     {
@@ -210,7 +209,7 @@ abstract class CoffeeShopItem
      * Set description
      *
      * @param string $description
-     * @return CoffeShopItem
+     * @return $this
      */
     public function setDescription($description)
     {
@@ -222,7 +221,7 @@ abstract class CoffeeShopItem
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -233,7 +232,7 @@ abstract class CoffeeShopItem
      * Set pictures
      *
      * @param string $pictures
-     * @return CoffeShopItem
+     * @return $this
      */
     public function setPictures($pictures)
     {
@@ -245,7 +244,7 @@ abstract class CoffeeShopItem
     /**
      * Get pictures
      *
-     * @return string 
+     * @return string
      */
     public function getPictures()
     {
@@ -256,7 +255,7 @@ abstract class CoffeeShopItem
      * Set profilePicture
      *
      * @param string $profilePicture
-     * @return CoffeShopItem
+     * @return $this
      */
     public function setProfilePicture($profilePicture)
     {
@@ -268,7 +267,7 @@ abstract class CoffeeShopItem
     /**
      * Get profilePicture
      *
-     * @return string 
+     * @return string
      */
     public function getProfilePicture()
     {
@@ -276,30 +275,15 @@ abstract class CoffeeShopItem
     }
 
     /**
-     * Set timeSlots
+     * Set timeslots
      *
-     * @param TimeSlot mixed
-     * @return CoffeShopItem
+     * @param Timeslot mixed
+     * @return $this
      */
-    public function setTimeSlots($timeSlots)
+    public function setTimeslots($timeslots)
     {
-        $this->timeSlots = $timeSlots;
+        $this->timeslots = $timeslots;
 
         return $this;
-    }
-
-    /**
-     * Get timeSlots
-     *
-     * @return mixed
-     */
-    public function getTimeSlots()
-    {
-        return $this->timeSlots;
-    }
-
-    public function __construct()
-    {
-        $this->timeSlots = new ArrayCollection();
     }
 }

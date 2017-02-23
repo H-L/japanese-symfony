@@ -85,9 +85,13 @@
     </div>
     <!-- <ul>
         {% for maid in maids %}
+            {#{{ dump(maid) }}#}
             <li>
                 <img src="{{ maid.profilePicture }}" width="150px "alt="">
                 <p>name : {{ maid.name }}</p>
+                {% for review in maid.review %}
+                    <p>Review {{ review.id }} : {{ review.comment }}</p>
+                {% endfor %}
                 <a href="{{ path('_maid_show', {'id': maid.id }) }}">Full info on {{ maid.name }}</a>
             </li>
         {% endfor %}

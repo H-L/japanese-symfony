@@ -33,9 +33,9 @@ class FindOneEmployeeCommand extends ContainerAwareCommand
         $output->writeln('<info>* name :'.$employee->getName().'</info>');
         $output->writeln('<info>* last name :'.$employee->getLastName().'</info>');
 
-        $timeSlots = $employee->getTimeSlots();
-        foreach ($timeSlots as $timeSlot) {
-            $output->writeln('<info>* TimeSlot : '.$timeSlot->getStartTime()[0].' '.$timeSlot->getEndTime()[0].' day : '.$timeSlot->getDayOfWeek().'</info>');
+        $timeslots = $employee->getTimeslots();
+        foreach ($timeslots as $timeslot) {
+            $output->writeln('<info>* Timeslot : '.$timeslot->getStartTime()[0].' '.$timeslot->getEndTime()[0].' day : '.$timeslot->getDayOfWeek().'</info>');
         }
     }
 }

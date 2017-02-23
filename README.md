@@ -17,18 +17,18 @@ cd japanese-symfony
 composer install
 
 # Installing DB and update it
-#We created a command to initialise a little work database :
-php app/console app:initialise:db
-
-#else if you just want an empty database
 php app/console doctrine:database:create
 php app/console doctrine:schema:update
 
-# Launch the server : will sync assets and lauch symfony server
-gulp sync
+# For hard reset use this command before the 2 above, it will delete your current DB :
+php app/console doctrine:database:drop
 
-#else if you want just the symfony server
-php app/console/
+# We also created a command to initialise a little work database :
+php app/console app:initialise:db
+
+# Launch the server
+php app/console server:run
+
 ```
 # Front End
 The project works sass and gulp. The views are in Resources/views and the scss files are in Resources/scss.
@@ -36,6 +36,15 @@ After running `gulp sync`, scss files with compile automatically.
 
 For views, public site views are in Resources/views/default. All views extends scss/base.html.twig, which contains header and footer.
 A folder by page is done, with a main file page/page.html.twig, and optionnal other views. This other views of /page must be included in the main file.
+
+## Gulp Commands
+```bash
+# Launch the server : will sync assets and launch symfony server:run command :
+gulp sync
+
+# Just the assets, without launching the server :
+gulp watch
+```
 
 # Commits
 Commit messages must follow this guide : [gitmoji | An emoji guide for your commit messages](https://gitmoji.carloscuesta.me/)
@@ -52,22 +61,36 @@ Call uour branches with clear, short names. You can add a 'flag' to indicate the
 
 exemple : `git checkout -b New-Maid_entity`
 
+# Test Users
+The command `php app/console app:initialise:db` creates two test users.
+
+username : testUser
+email : test@user.com
+password : testpass
+
+username : adminUser
+email : adminUser@user.com
+password : adminpass
+
 # Custom commands
 
 Here is a list of custom commands we made to create/list our DB items easily :
 
 ```bash
-# Create an employee
-php app/console app:employee:add
+# Create a Maid
+php app/console app:maid:add
 
-# Listing employees
-php app/console app:employee:list
+# Listing Maids
+php app/console app:maid:list
 
 # Create a restaurant
 php app/console app:restaurant:add
 
-# Create a timeSlot for scheduling
-php app/console app:timeSlot:add
+# Create/import Images from local dir to DB and copy images in web/uploads/images
+php app/console app:add_images
+
+# Create a timeslot for scheduling
+php app/console app:timeslot:add
 ```
 
 # Team & Collaborators

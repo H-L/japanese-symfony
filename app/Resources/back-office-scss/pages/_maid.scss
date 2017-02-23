@@ -1,0 +1,63 @@
+.form-errors {
+  display: none;
+  width: 100%;
+  outline: red thin solid;
+  color:red;
+  padding: 2em;
+}
+.time-slot {
+  display: inline-block;
+  padding: 1em;
+  background-color: $brand-primary;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+  &:hover {
+    background-color: lighten($brand-primary, 2%);
+  }
+}
+#schedule {
+  width: 60%;
+  padding: 15px;
+  min-height: 35em;
+}
+.maid-schedule {
+  position: relative;
+
+  .forms {
+    position: absolute;
+    background-color: #fff;
+    padding: 15px;
+    right: 0;
+    top: 18%;
+    width: 40%;
+    position: absolute;
+    padding: 15px;
+
+    button {
+      &:focus {
+        outline:0;
+      }
+      width: 48%;
+      display: inline-block;
+      &.hidden {
+        display: none;
+      }
+    }
+    .form {
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+}
+
+form {
+  .inline {
+    width: 33%;
+    display: inline-block;
+  }
+  .form-elmt {
+    padding-bottom: 15px;
+  }
+}

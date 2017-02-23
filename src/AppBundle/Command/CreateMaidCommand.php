@@ -26,8 +26,12 @@ class CreateMaidCommand extends ContainerAwareCommand
         $question3 = new Question('<fg=yellow>Maid email</> : ');
         $question4 = new Question('<fg=yellow>Maid birthdate (j-M-Y)</> : ');
         $question5 = new Question('<fg=yellow>Maid description [null]</> : ', null);
-        $question6 = new Question('<fg=yellow>Is the Maid a Maid ? [false]</> : ', false);
         $question12 = new Question('<fg=yellow>Maid last name </> : ', false);
+        $question7 = new Question('<fg=yellow>Maid nickname [Maid]</> : ', 'Maid');
+        $question8 = new Question('<fg=yellow>Maid bloodtype[AB]</> : ', 'AB');
+        $question9 = new Question('<fg=yellow>Maid favorite things[Cats, POP Music.]</> : ', 'Cats, POP Music.');
+        $question10 = new Question('<fg=yellow>Maid blog url[wwww.blog.com]</> : ', 'wwww.blog.com');
+        $question11 = new Question('<fg=yellow>Maid twitter url [wwww.twitter.com/maid]</> : ', 'wwww.twitter.com/maid');
 
         $name = $helper->ask($input, $output, $question);
         $lastname = $helper->ask($input, $output, $question12);
@@ -37,29 +41,13 @@ class CreateMaidCommand extends ContainerAwareCommand
         $phone = $helper->ask($input, $output, $question2);
         $email = $helper->ask($input, $output, $question3);
         $description = $helper->ask($input, $output, $question5);
-        $isMaid = $helper->ask($input, $output, $question6);
 
         $maid = new Maid();
-
-        if ($isMaid == true) {
-            $question7 = new Question('<fg=yellow>Maid nickname [Maid]</> : ', 'Maid');
-            $question8 = new Question('<fg=yellow>Maid bloodtype[AB]</> : ', 'AB');
-            $question9 = new Question('<fg=yellow>Maid favorite things[Cats, POP Music.]</> : ', 'Cats, POP Music.');
-            $question10 = new Question('<fg=yellow>Maid blog url[wwww.blog.com]</> : ', 'wwww.blog.com');
-            $question11 = new Question('<fg=yellow>Maid twitter url [wwww.twitter.com/maid]</> : ', 'wwww.twitter.com/maid');
-
-            $maidName = $helper->ask($input, $output, $question7);
-            $bloodType = $helper->ask($input, $output, $question8);
-            $favoriteThings = $helper->ask($input, $output, $question9);
-            $blogUrl = $helper->ask($input, $output, $question10);
-            $twitterUrl = $helper->ask($input, $output, $question11);
-
-            $maid->setMaidName($maidName);
-            $maid->setBloodType($bloodType);
-            $maid->setFavoriteThings($favoriteThings);
-            $maid->setBlogUrl($blogUrl);
-            $maid->setTwitterUrl($twitterUrl);
-        }
+        $maidName = $helper->ask($input, $output, $question7);
+        $bloodType = $helper->ask($input, $output, $question8);
+        $favoriteThings = $helper->ask($input, $output, $question9);
+        $blogUrl = $helper->ask($input, $output, $question10);
+        $twitterUrl = $helper->ask($input, $output, $question11);
 
         $maid->setName($name);
         $maid->setLastName($lastname);
@@ -68,6 +56,13 @@ class CreateMaidCommand extends ContainerAwareCommand
         $maid->setEmail($email);
         $maid->setBirthDate($birthdate);
         $maid->setDescription($description);
+        $maid->setMaidName($maidName);
+        $maid->setBloodType($bloodType);
+        $maid->setFavoriteThings($favoriteThings);
+        $maid->setBlogUrl($blogUrl);
+        $maid->setTwitterUrl($twitterUrl);
+        $maid->setProfilePicture('Chimu480.jpg');
+
 
         $em = $this->getContainer()->get('doctrine.orm.entity_manager');
         $em->persist($maid);

@@ -1,5 +1,4 @@
 <?php
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -15,7 +14,6 @@ class Maid extends CoffeeShopItem
 {
     /**
      * @var string
-     *
      * @ORM\Column(name="lastName", type="string", length=100)
      */
     private $lastName;
@@ -27,43 +25,53 @@ class Maid extends CoffeeShopItem
 
     /**
      * @var string
-     *
      * @ORM\Column(name="maidName", type="string", length=100, nullable=true)
      */
     private $maidName;
 
-    /**
+    /*
      * @var string
-     *
      * @ORM\Column(name="favoriteThings", type="string", length=255, nullable=true)
      */
     private $favoriteThings;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="bloodType", type="string", length=255, nullable=true)
      */
     private $bloodType;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="blogUrl", type="string", length=255, nullable=true)
      */
     private $blogUrl;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="twitterUrl", type="string", length=255, nullable=true)
      */
     private $twitterUrl;
 
     /**
-     * @ORM\OneToMany(targetEntity="TimeSlot", mappedBy="maid")
+     * @ORM\OneToMany(targetEntity="Timeslot", mappedBy="maid")
      */
-    private $timeSlots;
+    private $timeslots;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="maid")
+     */
+    private $review;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CharacterTrait", inversedBy="maid")
+     */
+    private $characterTrait;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Rank", inversedBy="maid")
+     */
+    private $rank;
 
     /**
      * Set lastName
@@ -127,7 +135,7 @@ class Maid extends CoffeeShopItem
     /**
      * Get maidName
      *
-     * @return string 
+     * @return string
      */
     public function getMaidName()
     {
@@ -150,7 +158,7 @@ class Maid extends CoffeeShopItem
     /**
      * Get favoriteThings
      *
-     * @return string 
+     * @return string
      */
     public function getFavoriteThings()
     {
@@ -173,7 +181,7 @@ class Maid extends CoffeeShopItem
     /**
      * Get blogUrl
      *
-     * @return string 
+     * @return string
      */
     public function getBlogUrl()
     {
@@ -196,7 +204,7 @@ class Maid extends CoffeeShopItem
     /**
      * Get twitterUrl
      *
-     * @return string 
+     * @return string
      */
     public function getTwitterUrl()
     {
@@ -204,6 +212,7 @@ class Maid extends CoffeeShopItem
     }
 
     /**
+     * Get Blootype
      * @return string
      */
     public function getBloodType()
@@ -212,32 +221,122 @@ class Maid extends CoffeeShopItem
     }
 
     /**
+     * Set BloodType
      * @param string $bloodType
+     * @return Restaurant
      */
     public function setBloodType($bloodType)
     {
         $this->bloodType = $bloodType;
+        
+        return $this;
+    }
+
+    /**
+     * Get Timeslots
+     *
+     * @return mixed
+     */
+    public function getTimeslots()
+    {
+        return $this->timeslots;
+    }
+
+    /**
+     * Set TimeSlots
+     *
+     * @param mixed $timeslots
+     * @return Maid
+     */
+    public function setTimeslots($timeslots)
+    {
+        $this->timeslots = $timeslots;
+
+        return $this;
+    }
+
+    /**
+     * Add Timeslot
+     *
+     * @param $timeslot
+     * @return Restaurant
+     */
+    public function addTimeslot($timeslot)
+    {
+        $this->timeslots[] = $timeslot;
+
+        return $this;
+    }
+
+    /**
+     * Remove timeslot
+     *
+     * @param mixed $timeslot
+     * @return Restaurant
+     */
+    public function removeTimeSlot($timeslot)
+    {
+        $this->timeslots->removeElement($timeslot);
+
+        return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getTimeSlots()
+    public function getReview()
     {
-        return $this->timeSlots;
+        return $this->review;
     }
 
     /**
-     * @param mixed $timeSlots
+     * @param mixed $review
      */
-    public function setTimeSlots($timeSlots)
+    public function setReview($review)
     {
-        $this->timeSlots = $timeSlots;
-    }
-    
-    public function __construct()
-    {
-        $this->timeSlots = new ArrayCollection();
+        $this->review = $review;
     }
 
+    /**
+     * @param mixed $characterTrait
+     * @return $this
+     */
+    public function setCharacterTrait($characterTrait)
+    {
+        $this->characterTrait = $characterTrait;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCharacterTrait()
+    {
+        return $this->characterTrait;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRank()
+    {
+        return $this->rank;
+    }
+
+    /**
+     * @param mixed $rank
+     */
+    public function setRank($rank)
+    {
+        $this->rank = $rank;
+    }
+    
+    /**
+     * Maid constructor.
+     */
+    public function __construct()
+    {
+        $this->timeslots = new ArrayCollection();
+    }
 }

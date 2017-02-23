@@ -17,6 +17,17 @@
                     <li><a class="nav__link" href="{{ path('_services') }}"> SERVICES </a></li>
                     <li><a class="nav__link" href="{{ path('_event') }}"> EVENTS </a></li>
                     <li><a class="nav__link" href="{{ path('_contact') }}"> CONTACT </a></li>
+                    <li>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                            <a class="nav__link" href="{{ path('fos_user_security_logout') }}">
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                            </a> |
+                            <a  class="nav__link" href="{{ path('fos_user_profile_show') }}">Profile</a>
+                        {% else %}
+                            <a class="nav__link" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                        {% endif %}
+                    </li>
                 </ul>
             </nav>
         </header>

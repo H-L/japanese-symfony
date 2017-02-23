@@ -1,5 +1,5 @@
-{% extends 'base.html.twig' %}
-
+{% extends 'back-office/base.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
 {% block body %}
     <div class="panel panel-primary">
         <div class="panel-heading">
@@ -14,7 +14,7 @@
 
             <ul class="list-group">
                 <li class="list-group-item">
-                    <a href="{{ path('_index') }}"><button type="button" class="btn btn-lg btn-primary">Back to the list</button></a>
+                    <a href="{{ path('back-office_maid_index') }}"><button type="button" class="btn btn-lg btn-primary">Back to the list</button></a>
                 </li>
             </ul>
         </div>

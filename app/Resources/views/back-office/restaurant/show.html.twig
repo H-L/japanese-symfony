@@ -1,0 +1,54 @@
+{% extends 'back-office/base.html.twig' %}
+
+{% block body %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1>Restaurant informations</h1>
+        </div>
+        <div class="panel-body">
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ restaurant.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Creation date</th>
+                        <td>{{ restaurant.birthDate | date('d/m/Y') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>{{ restaurant.address }}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>{{ restaurant.phone }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ restaurant.email}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+         </div>
+
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="{{ path('back-office_restaurant_index') }}"><button type="button" class="btn btn-lg btn-primary">Back to the list</button></a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ path('back-office_restaurant_edit', { 'id': restaurant.id }) }}"><button type="button" class="btn btn-lg btn-warning">Edit</button></a>
+            </li>
+            <li class="list-group-item">
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Delete" class="btn btn-lg btn-danger" />
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+
+

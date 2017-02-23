@@ -2,11 +2,14 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Maid;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use AppBundle\Entity\Image;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use AppBundle\Entity\Maid;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Form\ImageType;
 
 
 /**
@@ -36,9 +39,12 @@ class DefaultController extends Controller
     /**
      * @Route("/maid", name="_maid")
      */
-    public function maidAction() {
+    public function maidAction()
+    {
         $em = $this->getDoctrine()->getManager();
         $maids = $em->getRepository('AppBundle:Maid')->findAll();
+        $characterTraits = $em->getRepository('AppBundle:CharacterTrait')->findAll();
+        $reviews = $em->getRepository('AppBundle:Review')->findAll();
 
         return $this->render('default/maid/maid.html.twig', array(
             'maids' => $maids,
@@ -64,7 +70,8 @@ class DefaultController extends Controller
     /**
      * @Route("/event", name="_event")
      */
-    public function eventAction() {
+    public function eventAction()
+    {
         $em = $this->getDoctrine()->getManager();
         $events = $em->getRepository('AppBundle:Event')->findAll();
 
@@ -73,10 +80,42 @@ class DefaultController extends Controller
         ));
     }
 
+//    /**
+//     * @Route("/galleries", name="galleries")
+//     */
+//    public function testingImageGalleriesAction(Request $request)
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//        $gallery = $em->getRepository('AppBundle:Gallery')->find(1);
+//        $images = $gallery->getImages()->toArray();
+//
+//        return $this->render('galleries/index.html.twig', array(
+//            'images' => $images,
+//            'gallery' => $gallery,
+//        ));
+//    }
+
+    /**
+     * @Route("/back-office", name="back-office_index")
+     */
+    public function backOfficeAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $maids = $em->getRepository('AppBundle:Maid')->findAll();
+        $restaurant = $em->getRepository('AppBundle:Restaurant')->findAll();
+        $events = $em->getRepository('AppBundle:Event')->findAll();
+
+        return $this->render('back-office/index.html.twig', array(
+            'maids' => $maids,
+            'restaurants' => $restaurant,
+            'events' => $events,
+        ));
+    }
     /**
      * @Route("/contact", name="_contact")
      */
-    public function contactAction() {
+    public function contactAction()
+    {
         $em = $this->getDoctrine()->getManager();
         $restaurants = $em->getRepository('AppBundle:Restaurant')->findAll();
 
@@ -101,7 +140,6 @@ class DefaultController extends Controller
     public function fakeUsersAction()
     {
         return $this->render('users/index.html.twig', array(
-
         ));
     }
 }

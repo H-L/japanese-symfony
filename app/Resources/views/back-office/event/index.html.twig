@@ -1,0 +1,44 @@
+{% extends 'back-office/base.html.twig' %}
+
+{% block body %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1>All events</h1>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Profilepicture</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for event in events %}
+                <tr>
+                    <td><a href="{{ path('back-office_event_show', { 'id': event.id }) }}">{{ event.id }}</a></td>
+                    <td>{{ event.name }}</td>
+                    <td>{{ event.description }}</td>
+                    <td>{% if event.start %}{{ event.start|date('Y-m-d H:i') }}{% endif %}</td>
+                    <td>{% if event.end %}{{ event.end|date('Y-m-d H:i') }}{% endif %}</td>
+                    <td>{{ event.profilePicture }}</td>
+                    <td>
+                        <a href="{{ path('back-office_event_show', { 'id': event.id }) }}"><button type="button" class="btn btn-lg btn-primary">show</button></a>
+                        <a href="{{ path('back-office_event_edit', { 'id': event.id }) }}"><button type="button" class="btn btn-lg btn-warning">edit</button></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    <ul class=list-group"">
+        <li class="list-group-item">
+            <a href="{{ path('back-office_event_new') }}"><button type="button" class="btn btn-lg btn-success">Create a new event</button></a>
+        </li>
+    </ul>
+{% endblock %}
