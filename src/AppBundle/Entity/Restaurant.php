@@ -26,7 +26,7 @@ class Restaurant extends CoffeeShopItem
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="restaurant")
      */
-    private $review;
+    private $reviews;
     
     /**
      * Set maids
@@ -124,13 +124,53 @@ class Restaurant extends CoffeeShopItem
 
         return $this;
     }
-    
+
+    /**
+     * @return mixed
+     */
+    public function getReviews()
+    {
+        return $this->reviews;
+    }
+
+    /**
+     * @param mixed $reviews
+     */
+    public function setReviews($reviews)
+    {
+        $this->reviews = $reviews;
+    }
+
+    /**
+     * Add review
+     *
+     * @param mixed $review
+     * @return Restaurant
+     */
+    public function addReview($review)
+    {
+        $this->reviews[] = $review;
+    }
+
+    /**
+     * Remove event
+     *
+     * @param mixed $review
+     * @return Restaurant
+     */
+    public function removeReview($review)
+    {
+        $this->reviews->removeElement($review);
+
+        return $this;
+    }
+
     /**
      * Restaurant constructor.
      */
     public function __construct()
     {
-        $this->review = new ArrayCollection();
+        $this->reviews = new ArrayCollection();
         $this->event = new ArrayCollection();
     }
 }

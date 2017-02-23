@@ -112,17 +112,22 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $maids = $em->getRepository('AppBundle:Maid')->findAll();
-        $restaurant = $em->getRepository('AppBundle:Restaurant')->findAll();
+        $restaurants = $em->getRepository('AppBundle:Restaurant')->findAll();
         $events = $em->getRepository('AppBundle:Event')->findAll();
         $reviews = $em->getRepository('AppBundle:Review')->findAll();
 
+        $indicatorService = $this->get('app.service.indicator_service');
+        $bestRestaurant = $indicatorService->getBestRestaurant($restaurants);
+
         return $this->render('back-office/index.html.twig', array(
             'maids' => $maids,
-            'restaurants' => $restaurant,
+            'restaurants' => $restaurants,
             'events' => $events,
             'reviews' => $reviews,
+            'bestRestaurant' => $bestRestaurant,
         ));
     }
+
     /**
      * @Route("/contact", name="_contact")
      */
