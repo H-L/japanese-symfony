@@ -32,6 +32,10 @@ class MaidType extends AbstractType
                     'year' => $average, 'month' => 'Jan', 'day' => '1'
                 ),
             ))
+            ->add('CharacterTrait', EntityType::class, array(
+                'class' => 'AppBundle:CharacterTrait',
+                'choice_label' => 'name',
+            ))
             ->add('address')
             ->add('phone')
             ->add('email')

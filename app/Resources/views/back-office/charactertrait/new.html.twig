@@ -1,0 +1,20 @@
+{% extends 'back-office/base.html.twig' %}
+
+{% block body %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1>CharaterTrait creation</h1>
+    </div>
+    <div class="panel-body">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+        {{ form_end(form) }}
+        <ul>
+            <li>
+                <a href="{{ path('back-office_charactertrait_index') }}">Back to the list</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

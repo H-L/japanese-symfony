@@ -65,21 +65,7 @@ abstract class CoffeeShopItem
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="pictures", type="string", length=255, nullable=true)
-     */
-    private $pictures;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="profilePicture", type="string", length=255, nullable=true)
-     */
-    private $profilePicture;
-
+    
     /**
      * Get id
      *

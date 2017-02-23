@@ -1,0 +1,37 @@
+{% extends 'back-office/base.html.twig' %}
+
+{% block body %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1>Character Trait</h1>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ characterTrait.id }}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ characterTrait.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('back-office_charactertrait_index') }}">Back to the list</a>
+            </li>
+            <li>
+                <a href="{{ path('back-office_charactertrait_edit', { 'id': characterTrait.id }) }}">Edit</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'back-office/base.html.twig' %}
+
+{% block body %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1>Rank list</h1>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Value</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for rank in ranks %}
+                <tr>
+                    <td><a href="{{ path('back-office_rank_show', { 'id': rank.id }) }}">{{ rank.id }}</a></td>
+                    <td>{{ rank.name }}</td>
+                    <td>{{ rank.value }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('back-office_rank_show', { 'id': rank.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('back-office_rank_edit', { 'id': rank.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('back-office_rank_new') }}">Create a new rank</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

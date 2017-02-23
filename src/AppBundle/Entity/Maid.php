@@ -72,7 +72,7 @@ class Maid extends CoffeeShopItem
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Rank", inversedBy="maid")
      */
     private $rank;
-
+    
     /**
      * Set lastName
      *
