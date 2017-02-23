@@ -102,7 +102,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $restaurant->setDescription('Come and play with us ! It\'s open from monday to friday : 4pm to 2am');
         $restaurant->setEmail('TeishutsuCafe@othome.com');
         $restaurant->setPhone('090-1790-1357');
-        $restaurant->setProfilePicture($restaurantProfilePicture);
+        $restaurant->setProfilePicture($em->getRepository('AppBundle:Image')->find(1));
         $restaurant->setGallery($restaurantGallery);
 
         $restaurant1 = new Restaurant();
@@ -113,7 +113,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $restaurant1->setDescription('Little cute restaurant for you ! It\'s open from monday to friday : 4pm to 2am');
         $restaurant1->setEmail('TeishutsuFluff@athome.com');
         $restaurant1->setPhone('090-1790-1358');
-        $restaurant1->setProfilePicture($restaurantProfilePicture1);
+        $restaurant1->setProfilePicture($em->getRepository('AppBundle:Image')->find(2));
 
         $review = new Review();
         $review->setRate(5);
@@ -125,25 +125,25 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $review1->setRate(1);
         $review1->setComment('This restaurant sucks !');
         $review1->setRestaurant($restaurant1);
-//        $review1->setUser(2);
+        $review1->setUser($em->getRepository('AppBundle:User')->find(1));
 
         $review2 = new Review();
         $review2->setRate(4);
         $review2->setComment('The maids are very cute, and funny ! I loved it a lot !!');
         $review2->setRestaurant($restaurant);
-//        $review2->setUser(3);
+        $review2->setUser($em->getRepository('AppBundle:User')->find(2));
 
         $review3 = new Review();
         $review3->setRate(5);
         $review3->setComment('The staff was super-nice, ultra-cute, and let us into their little world. We played games and sung songs when our food came out. It was definitely an experience.');
         $review3->setRestaurant($restaurant);
-//        $review3->setUser(4);
+        $review3->setUser($em->getRepository('AppBundle:User')->find(1));
 
         $review4 = new Review();
         $review4->setRate(4);
         $review4->setComment('小姐超可爱 还会给饮料施魔法让它变好喝 蛋包饭很好吃 小姐姐超级可爱超级美！服务超棒 ！！！！！！！！！！就是位置因为楼层施工不是很好找，下次一定还会来(｡･ω･｡)ﾉ');
         $review4->setRestaurant($restaurant);
-//        $review4->setUser(5);
+        $review4->setUser($em->getRepository('AppBundle:User')->find(2));
 
         $characterTrait = new CharacterTrait();
         $characterTrait->setName('Shy');
@@ -186,9 +186,6 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $rank1->setName('First Maid');
         $rank1->setValue('2');
 
-        $maidProfilePicture = $em->getRepository('AppBundle:Image')->find(2);
-        $maidProfilePicture1 = $em->getRepository('AppBundle:Image')->find(6);
-
         $maidGallery = new Gallery();
         $maidGallery->setName('maid');
 
@@ -227,10 +224,11 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid->setBlogUrl('www.sakia.com');
         $maid->setTwitterUrl('wwww.twitter.com/saskia');
 
-        $maid->setProfilePicture($maidProfilePicture);
+        $maid->setProfilePicture($em->getRepository('AppBundle:Image')->find(3));
         $maid->setRestaurant($restaurant);
         $maid->setCharacterTrait($characterTrait);
         $maid->setRank($rank);
+        $output->writeln('Maid created');
 
         $maid1 = new Maid();
         $maid1->setName('Katy');
@@ -246,10 +244,11 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid1->setBlogUrl('wwww.kawaiikat.overblog');
         $maid1->setTwitterUrl('wwww.twitter.com/kawaiikat');
 
-        $maid1->setProfilePicture($maidProfilePicture1);
+        $maid1->setProfilePicture($em->getRepository('AppBundle:Image')->find(4));
         $maid1->setRestaurant($restaurant);
         $maid1->setCharacterTrait($characterTrait1);
         $maid1->setRank($rank1);
+        $output->writeln('Maid created');
 
         $maid2 = new Maid();
         $maid2->setName('Yumi');
@@ -264,10 +263,11 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid2->setFavoriteThings('Ribbon ☆ ☆ Mono si Zenbu! ');
         $maid2->setBlogUrl('wwww.yumiyumi.overblog');
         $maid2->setTwitterUrl('wwww.twitter.com/hitomi');
-        $maid2->setProfilePicture($maidProfilePicture);
+        $maid2->setProfilePicture($em->getRepository('AppBundle:Image')->find(5));
         $maid2->setRestaurant($restaurant);
         $maid2->setCharacterTrait($characterTrait4);
         $maid2->setRank($rank2);
+        $output->writeln('Maid created');
 
         $maid3 = new Maid();
         $maid3->setName('Saki');
@@ -282,10 +282,11 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid3->setFavoriteThings('Les enfants mignons, les paillettes');
         $maid3->setBlogUrl('wwww.chiminu.overblog');
         $maid3->setTwitterUrl('wwww.twitter.com/chimu_aaa');
-        $maid3->setProfilePicture($maidProfilePicture);
+        $maid3->setProfilePicture($em->getRepository('AppBundle:Image')->find(6));
         $maid3->setRestaurant($restaurant);
         $maid3->setCharacterTrait($characterTrait10);
         $maid3->setRank($rank2);
+        $output->writeln('Maid created');
 
         $maid4 = new Maid();
         $maid4->setName('Rina');
@@ -300,10 +301,11 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid4->setFavoriteThings('Fleurs bleues, les balancoires');
         $maid4->setBlogUrl('wwww.eri.overblog');
         $maid4->setTwitterUrl('wwww.twitter.com/eri');
-        $maid4->setProfilePicture($maidProfilePicture);
+        $maid4->setProfilePicture($em->getRepository('AppBundle:Image')->find(7));
         $maid4->setRestaurant($restaurant);
         $maid4->setCharacterTrait($characterTrait2);
         $maid4->setRank($rank2);
+        $output->writeln('Maid created');
 
         $maid5 = new Maid();
         $maid5->setName('Kyoko');
@@ -318,10 +320,11 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid5->setFavoriteThings('Fleurs bleues, les balancoires');
         $maid5->setBlogUrl('wwww.renachi.overblog');
         $maid5->setTwitterUrl('wwww.twitter.com/renachi');
-        $maid5->setProfilePicture($maidProfilePicture);
+        $maid5->setProfilePicture($em->getRepository('AppBundle:Image')->find(8));
         $maid5->setRestaurant($restaurant);
         $maid5->setCharacterTrait($characterTrait2);
         $maid5->setRank($rank2);
+        $output->writeln('Maid created');
 
         $maid6 = new Maid();
         $maid6->setName('Sayaka');
@@ -336,7 +339,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid6->setFavoriteThings('Fleurs bleues, les balancoires');
         $maid6->setBlogUrl('wwww.lafraise.overblog');
         $maid6->setTwitterUrl('wwww.twitter.com/lafraise');
-        $maid6->setProfilePicture($maidProfilePicture);
+        $maid6->setProfilePicture($em->getRepository('AppBundle:Image')->find(9));
         $maid6->setRestaurant($restaurant);
         $maid6->setCharacterTrait($characterTrait6);
         $maid6->setRank($rank2);
@@ -354,7 +357,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid7->setFavoriteThings('Rien du tout');
         $maid7->setBlogUrl('wwww.kanata.overblog');
         $maid7->setTwitterUrl('wwww.twitter.com/kanata');
-        $maid7->setProfilePicture($maidProfilePicture);
+        $maid7->setProfilePicture($em->getRepository('AppBundle:Image')->find(10));
         $maid7->setRestaurant($restaurant);
         $maid7->setCharacterTrait($characterTrait3);
         $maid7->setRank($rank2);
@@ -372,52 +375,16 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid8->setFavoriteThings('Les prunes et les fraises, les coeurs tout ronds');
         $maid8->setBlogUrl('wwww.shiemi.overblog');
         $maid8->setTwitterUrl('wwww.twitter.com/shiemi');
-        $maid8->setProfilePicture($maidProfilePicture);
+        $maid8->setProfilePicture($em->getRepository('AppBundle:Image')->find(11));
         $maid8->setRestaurant($restaurant);
         $maid8->setCharacterTrait($characterTrait3);
         $maid8->setRank($rank2);
-
-        $maid9 = new Maid();
-        $maid9->setName('Kumiko');
-        $maid9->setLastName('Akiyoshi');
-        $maid9->setAddress('156-1909 Tōkyō-to, Kyōdō');
-        $maid9->setPhone('+6157842370');
-        $maid9->setEmail('kowane@supermaid.com');
-        $maid9->setBirthDate(date_create_from_format('j-M-Y', '19-Apr-1996'));
-        $maid9->setDescription('salut ca va');
-        $maid9->setMaidName('Kowane');
-        $maid9->setBloodType('Dragon blood');
-        $maid9->setFavoriteThings('Des trucs moches et fragiles');
-        $maid9->setBlogUrl('wwww.kowane.overblog');
-        $maid9->setTwitterUrl('wwww.twitter.com/shiemi');
-        $maid9->setProfilePicture($maidProfilePicture);
-        $maid9->setRestaurant($restaurant);
-        $maid9->setCharacterTrait($characterTrait4);
-        $maid9->setRank($rank2);
-
-        $maid10 = new Maid();
-        $maid10->setName('Miho');
-        $maid10->setLastName('Fujima');
-        $maid10->setAddress('156-1909 Tōkyō-to, Kyōdō');
-        $maid10->setPhone('+6157842370');
-        $maid10->setEmail('chitose@supermaid.com');
-        $maid10->setBirthDate(date_create_from_format('j-M-Y', '19-Apr-1996'));
-        $maid10->setDescription('salut ca va');
-        $maid10->setMaidName('Chitose');
-        $maid10->setBloodType('Rouge gorge');
-        $maid10->setFavoriteThings('Les papillons dorés, les licornes rouges et la mer verte');
-        $maid10->setBlogUrl('wwww.chitose.overblog');
-        $maid10->setTwitterUrl('wwww.twitter.com/chitose');
-        $maid10->setProfilePicture($maidProfilePicture);
-        $maid10->setRestaurant($restaurant);
-        $maid10->setCharacterTrait($characterTrait5);
-        $maid10->setRank($rank2);
 
         $review5 = new Review();
         $review5->setRate(1);
         $review5->setComment('Shineeee !');
         $review5->setMaid($maid1);
-        //        $review5->setUser(6);
+        $review5->setUser();
 
         $review6 = new Review();
         $review6->setRate(5);
@@ -437,7 +404,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $event->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-28 15:00:00'));
         $event->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-28 18:00:00'));
         $event->setRestaurant($restaurant);
-        $event->setProfilePicture($maidProfilePicture);
+        $event->setProfilePicture($em->getRepository('AppBundle:Image')->find(12));
 
         $event1 = new Event();
         $event1->setName('"Gourmetama × Woo ~ Mu Cafe" Collaboration ★');
@@ -445,7 +412,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $event1->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-24 15:00:00'));
         $event1->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-24 18:00:00'));
         $event1->setRestaurant($restaurant);
-        $event1->setProfilePicture($maidProfilePicture);
+        $event1->setProfilePicture($em->getRepository('AppBundle:Image')->find(13));
 
         $event2 = new Event();
         $event2->setName('We held a press conference of a new costume of cafe (new maid clothes)!');
@@ -453,7 +420,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $event2->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-24 15:00:00'));
         $event2->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-24 18:00:00'));
         $event2->setRestaurant($restaurant);
-        $event2->setProfilePicture($maidProfilePicture);
+        $event2->setProfilePicture($em->getRepository('AppBundle:Image')->find(14));
 
         $event3 = new Event();
         $event3->setName('Wow ~ Mu cafe \'s visual book with a worldview of the world (photo collection) "The Maid in Wonder Land" has been completed ☆');
@@ -461,7 +428,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $event3->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-24 15:00:00'));
         $event3->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-24 18:00:00'));
         $event3->setRestaurant($restaurant);
-        $event3->setProfilePicture($maidProfilePicture);
+        $event3->setProfilePicture($em->getRepository('AppBundle:Image')->find(15));
 
         $event4 = new Event();
         $event4->setName('☆ A new single by "@ Ho - Mu Cafe" by luxury creators of Anison world is completed!');
@@ -469,7 +436,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $event4->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-24 15:00:00'));
         $event4->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-24 18:00:00'));
         $event4->setRestaurant($restaurant);
-        $event4->setProfilePicture($maidProfilePicture);
+        $event4->setProfilePicture($em->getRepository('AppBundle:Image')->find(16));
 
         $event5 = new Event();
         $event5->setName('★ Shop exclusive new operation maid will be born ★');
@@ -477,10 +444,10 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $event5->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-24 15:00:00'));
         $event5->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-24 18:00:00'));
         $event5->setRestaurant($restaurant);
-        $event5->setProfilePicture($maidProfilePicture);
+        $event5->setProfilePicture($em->getRepository('AppBundle:Image')->find(17));
 
-        $em->persist($maidProfilePicture);
-        $em->persist($maidProfilePicture1);
+        $em->persist($em->getRepository('AppBundle:Image')->find(2));
+        $em->persist($em->getRepository('AppBundle:Image')->find(2));
         $em->persist($maidGallery);
         $em->persist($maidGallery1);
         $em->persist($restaurantProfilePicture);
@@ -523,8 +490,6 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $em->persist($maid6);
         $em->persist($maid7);
         $em->persist($maid8);
-        $em->persist($maid9);
-        $em->persist($maid10);
         $em->persist($review5);
         $em->persist($review6);
         $em->persist($review7);

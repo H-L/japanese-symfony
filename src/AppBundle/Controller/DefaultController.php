@@ -93,10 +93,10 @@ class DefaultController extends Controller
     /**
      * Finds and displays a event entity.
      *
-     * @Route("/{id}", name="event_show")
+     * @Route("/event/{id}", name="event_show")
      * @Method("GET")
      */
-    public function showAction(Event $event)
+    public function eventShowAction(Event $event)
     {
 
         return $this->render('default/event/show.html.twig', array(
