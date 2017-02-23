@@ -15,7 +15,7 @@ use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 /**
  * Image controller.
  *
- * @Route("images")
+ * @Route("back-office/images")
  */
 class ImageController extends Controller
 {
@@ -31,7 +31,7 @@ class ImageController extends Controller
 
         $images = $em->getRepository('AppBundle:Image')->findAll();
 
-        return $this->render('image/index.html.twig', array(
+        return $this->render('back-office/image/index.html.twig', array(
             'images' => $images,
         ));
     }
@@ -78,7 +78,7 @@ class ImageController extends Controller
             return $this->redirectToRoute('images_show', array('id' => $image->getId()));
         }
 
-        return $this->render('image/new.html.twig', array(
+        return $this->render('back-office/image/new.html.twig', array(
             'image' => $image,
             'form' => $form->createView(),
         ));
@@ -95,33 +95,8 @@ class ImageController extends Controller
     {
         $deleteForm = $this->createDeleteForm($image);
 
-        return $this->render('image/show.html.twig', array(
+        return $this->render('back-office/image/show.html.twig', array(
             'image' => $image,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
-     * Displays a form to edit an existing image entity.
-     *
-     * @Route("/{id}/edit", name="images_edit")
-     * @Method({"GET", "POST"})
-     */
-    public function editAction(Request $request, Image $image)
-    {
-        $deleteForm = $this->createDeleteForm($image);
-        $editForm = $this->createForm('AppBundle\Form\ImageType', $image);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('images_edit', array('id' => $image->getId()));
-        }
-
-        return $this->render('image/edit.html.twig', array(
-            'image' => $image,
-            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }

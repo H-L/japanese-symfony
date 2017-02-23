@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use AppBundle\Entity\Maid;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\ImageType;
-
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Default controller.

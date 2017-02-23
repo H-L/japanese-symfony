@@ -44,6 +44,17 @@
                         <li><a href="#">Holidays and days off</a></li>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-fw fa-picture-o"></i>Galleries & Images<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="dropdown-header">Galleries</li>
+                        <li><a href="{{ path('galleries_index') }}">See galleries</a></li>
+                        <li><a href="{{ path('galleries_new') }}">Create a new gallery</a></li>
+                        <li class="dropdown-header">Images</li>
+                        <li><a href="{{ path('images_index') }}">See all images</a></li>
+                        <li><a href="{{ path('images_new') }}">upload an image</a></li>
+                    </ul>
+                </li>
                 <li>
                     <a href="#"><i class="fa fa-fw fa-bank"></i> Page four</a>
                 </li>
