@@ -2,3 +2,22 @@ body {
 	font-family: Nunito;
 	cursor: url(../imgs/cursor.gif), auto;
 }
+
+.body_container {
+	display: flex;
+	background-image: url('../imgs/backgroundcafe.png');
+	background-size: 100%;
+}
+
+.body__content {
+	width: 70%;
+	background-color: rgba(255,255,255,0.5)
+}
+
+.side-bar__left {
+	width: 15%;
+}
+
+.side-bar__right {
+	width: 15%;
+}

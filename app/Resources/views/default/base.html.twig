@@ -15,23 +15,70 @@
                     <li><a class="nav__link" href="{{ path('_home') }}"> HOME </a></li>
                     <li><a class="nav__link" href="{{ path('_maid') }}"> MAIDS </a></li>
                     <li><a class="nav__link" href="{{ path('_services') }}"> SERVICES </a></li>
-                    <li><a class="nav__link" href="{{ path('_event') }}"> EVENTS </a></li>
                     <li><a class="nav__link" href="{{ path('_contact') }}"> CONTACT </a></li>
                     <li>
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                             {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
                             <a class="nav__link" href="{{ path('fos_user_security_logout') }}">
-                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') |capitalize}}
                             </a> |
-                            <a  class="nav__link" href="{{ path('fos_user_profile_show') }}">Profile</a>
+                            <a  class="nav__link" href="{{ path('fos_user_profile_show') }}">PROFILE</a>
                         {% else %}
-                            <a class="nav__link" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                            <a class="nav__link" href="{{ path('fos_user_security_login') }}">
+                            LOG IN</a>
                         {% endif %}
                     </li>
                 </ul>
             </nav>
         </header>
-        {% block body %}{% endblock %}
+        
+        <div class="body_container">
+
+            <div class="side-bar side-bar__left">
+                <img class="node-side" src="{{ asset('imgs/noeudside.png')}}" alt="">
+                <img class="social-media" src="{{ asset('imgs/socialmedia.png')}}" alt="">
+                <img class="node-side" src="{{ asset('imgs/noeudside.png')}}" alt="">
+
+                <div class="our-maids__list">
+                    <div class="list__title"> Our maids </div>
+                    <ul>
+                        {% for maid in maids %}
+                            <li class="our-maid__name"> {{ maid.name }} </li>
+                            <li> <img class="node-side maid-list" src="{{ asset('imgs/maidlist.png')}}" alt=""></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <img class="node-side" src="{{ asset('imgs/noeudside.png')}}" alt="">
+                
+                <img class="node-side" src="{{ asset('imgs/pub1.png')}}" alt="">
+            </div>
+
+            <div class="body__content">
+                {% block body %}{% endblock %}
+            </div>
+
+            <div class="side-bar side-bar__right">
+                <img class="node-side" src="{{ asset('imgs/noeudside.png')}}" alt="">
+
+                <div class="sponsors_list">
+                    <div class="list__title"> Sponsors </div>
+                    <img class="node-side" src="{{ asset('imgs/sponsors.png')}}" alt="">
+                </div>
+
+                <img class="node-side" src="{{ asset('imgs/noeudside.png')}}" alt="">
+
+                <div class="reviews_list">
+                    {% for test in reviews %}
+                        <li> <img class="node-side review-list" src="{{ asset('imgs/reviewlist.png')}}" alt=""></li>
+                        <li class="review__content"> {{ test.comment }} </li>
+                        
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+
         <footer>
             <div class="footer__map"></div>
             <div class="footer__container">
