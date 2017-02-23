@@ -16,7 +16,7 @@
 				        <div class="rest__block">
 				            <div class="rest-name">★ {{ restaurant.name }}</div>
 				            <div class="block__content">
-				            	<img class="resto_img" src="{{ asset('imgs/resto1.png')}}" alt="">
+				            	<img class="resto_img" src="{{ asset(restaurant.profilePicture.path) }}" alt="">
 				            	<div class="block__contact">
 				            		<div class="rest__sous-title"> Adress </div>
 				            		<div>{{ restaurant.address }}</div>
@@ -57,7 +57,7 @@
     {% for restaurant in restaurants %}
         <div class="restaurant">
             <p>{{ restaurant.name }}</p>
-            <img src="{{ asset(restaurant.profilePicture) }}" alt="">
+            <img src="" alt="">
             <div class="timetable">
                 {% for slot in restaurant.timeslot %}
                     <b>{{ slot.dayOfWeek | date("l") }}</b>

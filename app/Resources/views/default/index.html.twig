@@ -16,14 +16,13 @@
    </div>
 
    <div class="home__actualites">
-     <div class="home__title"> ★ Events ★ </div>
+     <div class="home__title"> ★ Events ★ <img src="{{ asset('imgs/gifs/giphy32).gif')}}" alt=""> </div>
 
      <div class="actualite__container">
        <div class="home__actualites_container">
            {% for event in events %}
-               <a href="{{ path('event_show', {"id": event.id }) }}"></a>
              <div class="home__actualites_content">
-               <img src="{{ asset(event.profilePicture.path) }}" />
+               <img src="{{ asset('imgs/event.jpg')}}" />
                <h3>{{ event.name }}</h3>
                <p>{{ event.description }}</p>
              </div>
@@ -34,7 +33,7 @@
   </div>
 
   <div class="home__information">
-    <h2 class="home__title"> ★ Informations ★ Our Restaurants ★ </h2>
+    <h2 class="home__title"> ★ Informations ★ Our Restaurants ★ <img src="{{ asset('imgs/gifs/giphy33).gif')}}" alt=""> </h2>
 
       {% for restaurant in restaurants %}
         <div class="home__information_container">

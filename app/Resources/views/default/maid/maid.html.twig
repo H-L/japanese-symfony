@@ -46,31 +46,9 @@
           <p>
             {{ maid.name }}
           </p>
-          <a href="{{ path('_maid_show', {'id' : maid.id}) }}"> <img src="{{ maid.profilePicture.path }}"> </a>
+          <a href="{{ path('_maid_show', {'id' : maid.id}) }}"> <img src="{{ asset('imgs/maids/maid1.png')}}"> </a>
         </div>
       {% endfor %}
-
-
-        <div class="maid__content--icon">
-          <p>
-            Maid 1
-          </p>
-          <img src="../imgs/icon-maid.png">
-        </div>
-
-        <div class="maid__content--icon">
-          <p>
-            Maid 1
-          </p>
-          <img src="../imgs/icon-maid.png">
-        </div>
-
-        <div class="maid__content--icon">
-          <p>
-            Maid 1
-          </p>
-          <img src="../imgs/icon-maid.png">
-        </div>
         
       </div>
     </div>
