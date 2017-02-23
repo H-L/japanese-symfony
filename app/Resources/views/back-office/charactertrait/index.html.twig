@@ -1,0 +1,43 @@
+{% extends 'back-office/base.html.twig' %}
+
+{% block body %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1>CharacterTrait list</h1>
+    </div>
+        <div class="panel-body">
+            <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for characterTrait in characterTraits %}
+                <tr>
+                    <td><a href="{{ path('back-office_charactertrait_show', { 'id': characterTrait.id }) }}">{{ characterTrait.id }}</a></td>
+                    <td>{{ characterTrait.name }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('back-office_charactertrait_show', { 'id': characterTrait.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('back-office_charactertrait_edit', { 'id': characterTrait.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <ul>
+            <li>
+                <a href="{{ path('back-office_charactertrait_new') }}">Create a new characterTrait</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'back-office/base.html.twig' %}
+
+{% block body %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1>Gallery {{ gallery.name }}</h1>
+    </div>
+    <div class="panel-body">
+        <table>
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ gallery.id }}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ gallery.name }}</td>
+                </tr>
+                <tr>
+                    <th>Images</th>
+                    {% for image in  gallery.images %}
+                        <td>{{ image.name }}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('galleries_index') }}" class="btn btn-lg btn-primary" >Back to the list</a>
+            </li>
+            <li>
+                <a href="{{ path('galleries_edit', { 'id': gallery.id }) }}" class="btn btn-lg btn-warning">Edit</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete" class="btn btn-lg btn-danger">
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+     </div>
+</div>
+{% endblock %}

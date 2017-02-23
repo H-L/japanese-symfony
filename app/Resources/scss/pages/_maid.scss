@@ -62,3 +62,31 @@
 		font-size: 16px;
 	}
 }
+
+.pres__album{
+  width: 65%;
+  margin: 100px auto;
+  border: 5px solid #67393C;
+  border-radius: 10px;
+  p{
+    color: #fefefe;
+    font-family: LilyScriptOne;
+    font-size: 38px;
+    padding: 0 20px 10px;
+    background-color: #67393C;
+  }
+  #dashboard{
+      .panel {
+          margin: 10px;
+          font-size: 72px;
+          text-align: center;
+          line-height: 200px;
+          border-radius: 10px;
+          img{
+            width: 343px;
+            height: 515px;
+            margin: auto;
+          }
+      }
+   }
+}

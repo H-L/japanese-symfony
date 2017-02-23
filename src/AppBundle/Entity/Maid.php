@@ -72,7 +72,7 @@ class Maid extends CoffeeShopItem
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Rank", inversedBy="maid")
      */
     private $rank;
-
+    
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image")
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id")

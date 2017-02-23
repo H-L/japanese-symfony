@@ -1,4 +1,4 @@
-2<?php
+<?php
 
 namespace AppBundle\Form;
 
@@ -20,6 +20,7 @@ class GalleryType extends AbstractType
                 'class' => 'AppBundle\Entity\Image',
                 'choice_label' => 'name',
                 'multiple' => true,
+                'required' => false,
             ))
         ;
     }
