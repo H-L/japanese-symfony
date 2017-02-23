@@ -63,7 +63,7 @@ i {color: red;}
 }
 
 .home__actualites{
-  width: 60%;
+  width: 80%;
   margin: 0 auto 100px;
   .home__actualites_container{
     display: flex;
@@ -88,7 +88,7 @@ i {color: red;}
       color: $br-text;
     }
   }
-  &:before {
+/*  &:before {
     content: 'ニュース';
     position: absolute;
     font-family: HCP-Maru;
@@ -97,11 +97,11 @@ i {color: red;}
     width: 60px; 
     left: 130px;
     margin-top: 50px; 
-  }
+  }*/
 }
 
 .home__information{
-  width: 60%;
+  width: 80%;
   height: 250px;
   margin: 0px auto 60px;
   .home__information_container {
@@ -117,7 +117,7 @@ i {color: red;}
     }
     p {color: $br-text;}
   }
-  &:before {
+/*  &:before {
     content: '実用的な情報';
     position: absolute;
     font-family: HCP-Maru;
@@ -127,5 +127,5 @@ i {color: red;}
     right: 130px;
     margin-top: -250px; 
     line-height: 115px;
-  }
+  }*/
 }
