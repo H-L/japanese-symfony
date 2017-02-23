@@ -1,7 +1,89 @@
 {% extends 'default/base.html.twig' %}
 {% block body %}
-    <h1>Maid</h1>
-    <ul>
+
+    <div class="maid__header">
+      <h1 class="cafe-name"> Our maids </h1>
+        <h1 class="cafe-jap"> 私たちの家 </h1>
+    </div>
+
+    <div class="maid__block">
+
+      <div class="maid__bloc--content">
+        <img src="../imgs/hitomi.png" />
+        <div class="maid__name">
+          <div class="maid__text">
+            <p>
+              Hitomi
+            </p>
+          </div>
+          <p>MAIDS</p>
+          <p class="maid__text-japonais">メイドの名簿 </p>
+          <p>ROSTER</p>
+        </div>
+      </div>
+
+      <div class="maid__bloc--content">
+        <div class="maid__name">
+          <div class="maid__text">
+            <p>
+              Chimu
+            </p>
+          </div>
+          <p>SUPER</p>
+          <p class="maid__text-japonais">スーパープレミアム </p>
+          <p>PRENIUM</p>
+        </div>
+        <img src="../imgs/chimu.png" />
+      </div>
+
+
+      <div class="maid__container--icon">
+
+        <div class="maid__content--icon">
+          <p>
+            Maid 1
+          </p>
+          <img src="../imgs/icon-maid.png">
+        </div>
+
+        <div class="maid__content--icon">
+          <p>
+            Maid 1
+          </p>
+          <img src="../imgs/icon-maid.png">
+        </div>
+
+        <div class="maid__content--icon">
+          <p>
+            Maid 1
+          </p>
+          <img src="../imgs/icon-maid.png">
+        </div>
+
+        <div class="maid__content--icon">
+          <p>
+            Maid 1
+          </p>
+          <img src="../imgs/icon-maid.png">
+        </div>
+
+        <div class="maid__content--icon">
+          <p>
+            Maid 1
+          </p>
+          <img src="../imgs/icon-maid.png">
+        </div>
+
+        <div class="maid__content--icon">
+          <p>
+            Maid 1
+          </p>
+          <img src="../imgs/icon-maid.png">
+        </div>
+        
+      </div>
+    </div>
+    <!-- <ul>
         {% for maid in maids %}
             {#{{ dump(maid) }}#}
             <li>
@@ -10,7 +92,8 @@
                 {% for review in maid.review %}
                     <p>Review {{ review.id }} : {{ review.comment }}</p>
                 {% endfor %}
+                <a href="{{ path('_maid_show', {'id': maid.id }) }}">Full info on {{ maid.name }}</a>
             </li>
         {% endfor %}
-    </ul>
+    </ul> -->
 {% endblock %}

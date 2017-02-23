@@ -10,6 +10,7 @@
 /vendor/
 /bin/
 /composer.phar
-/web/uploads
-/web/media
 .idea/
+/web/media
+/web/uploads
+/node_modules/

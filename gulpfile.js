@@ -55,3 +55,8 @@ gulp.task('watch', ['scss','bo-scss', 'scripts'], function() {
     gulp.watch("app/Resources/scss/**/*.scss", ['scss']);
     gulp.watch("app/Resources/js/**", ['scripts']);
 });
+
+gulp.task('watch', ['scss','bo-scss', 'scripts'], function() {
+    gulp.watch("app/Resources/scss/**/*.scss", ['scss']);
+    gulp.watch("app/Resources/js/**", ['scripts']);
+});

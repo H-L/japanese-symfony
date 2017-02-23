@@ -1,0 +1,53 @@
+header {
+  font-family: Nunito;
+  nav {
+    height: 95px;
+    list-style: none;
+    background-color: #F4B1B6;
+    background-image: url('http://alexandrechich.fr/rubbon.png');
+    width: 100%;
+  }
+}
+
+.header__nav {
+  height: 90px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  li {width: 150px;}
+}
+
+.nav__link--logo {
+  position: relative;
+  color: transparent;
+  &:after {
+    content: '';
+    position: absolute;
+    @include bg-img('../imgs/logoTei.png');
+    left: -70px;
+    top: -5px;
+    width: 70px;
+    height: 35px;
+
+  }
+}
+
+.nav__link {
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  position: relative;
+  &:hover:after {
+    content:'';
+    position: absolute;
+    width: 36px;
+    height: 25px;
+    left: -1px;
+    right: 0;
+    margin: auto;
+    background-image: url('../imgs/shape2.png');
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+  }
+}

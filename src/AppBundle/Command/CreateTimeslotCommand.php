@@ -22,7 +22,7 @@ class CreateTimeslotCommand extends ContainerAwareCommand
     {
         $em = $this->getContainer()->get('doctrine.orm.entity_manager');
         $maidRepository = $em->getRepository('AppBundle:Maid');
-        
+
         $helper = $this->getHelper('question');
         $question = new Question('<fg=yellow>Timeslot start time hour (from 0 to 23) </> : ', 0);
         $question1 = new Question('<fg=yellow>Timeslot start time minute (from 0 to 59) </> : ', 0);
