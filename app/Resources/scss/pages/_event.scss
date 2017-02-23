@@ -1,0 +1,116 @@
+.profil__container{
+  .profil__deco{
+    width: 750px;
+    margin: auto;
+    padding-top: 25px
+  }
+  .profil__infos{
+    border: 5px solid #F4ADB2;
+    border-radius: 5px;
+    width: 750px;
+    margin: auto;
+    margin-top: 40px;
+    h2{
+      background-color: #F4ADB2;
+      font-size: 24px;
+      color:white;
+      padding: 15px;
+    }
+    .profil__infos--block{
+      display:flex;
+      padding-top: 20px;
+      padding-bottom: 20px;
+
+      .profil__infos--item{
+        padding-left: 20px;
+        p{
+          color:#F4ADB2;
+          line-height: 50px
+        }
+      }
+      .profil__infos--values{
+        padding-left: 20px;
+        p{
+          line-height: 50px;
+          color:#67393C;
+        }
+      }
+    }
+  }
+
+  .reservation__infos{
+    border: 5px solid #67393C;
+    border-radius: 5px;
+    width: 750px;
+    margin: auto;
+    margin-top: 40px;
+    h2{
+      background-color: #67393C;
+      font-size: 24px;
+      color:white;
+      padding: 15px;
+    }
+    hr{
+      width: 650px;
+      margin: auto;
+    }
+    .reservation__block{
+      padding-bottom: 20px;
+      h3{
+        font-family: LilyScriptOne;
+        color: #67393c;
+        font-size: 24px;
+        padding-bottom: 40px;
+        position: relative;
+        padding: 20px;
+        color:#67393C;
+        &:after{
+          content: '';
+          position: absolute;
+          width: 30px;
+          height: 20px;
+          left: 20px;
+          top: 40px;
+          margin: 5px auto;
+          background-image: url(../imgs/shape.png);
+          background-size: 100%;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+    .reservation__block--content{
+      display: flex;
+      img{
+        width: 180px;
+        height: 170px;
+        margin: auto;
+      }
+      p{
+        margin: auto;
+        color:#67393C;
+      }
+    }
+  }
+  .review__infos{
+    border: 5px solid #F2BB22;
+    border-radius: 5px;
+    width: 750px;
+    margin: auto;
+    margin-top: 40px;
+    h2{
+      background-color: #F2BB22;
+      font-size: 24px;
+      color:white;
+      padding: 15px;
+    }
+  }
+  .review{
+    border-color: #F2BB22;
+    h2{
+      background-color: #F2BB22;
+    }
+    .review__txt{
+      margin-left: 40px;
+    }
+  }
+}
