@@ -8,18 +8,15 @@
 
   <div class="home__description">
     <div class="home__description_container">
-      <h2>Teishutsu Café, l’unique maid café de Paris</h2>
+      <h2>★ Teishutsu Café, Best Maid french coffee in Tokyo ! ★</h2>
       <p>
-        Le Teishutsu Café est un lieu unique pour ceux qui souhaitent se couper du monde extérieur le temps d’une ou<br />
-        plusieurs soirées dans une ambiance décalée et conviviale et venir tels qu’ils et elles ont envie.<br />
-        Le seul café de Paris avec des desserts délicieux et uniques, un cosplay mignon et des représentations Jpop<br />
-        quotidiennes.
+        The Teishutsu Café is a unique place for those who wish to cut themselves off from the outside world for one or <br>Several evenings in a quirky and convivial atmosphere and come as they and they crave. <br>The only coffee in Paris with delicious and unique desserts, a cute cosplay and Jpop performances Daily life.
       </p>
      </div>
    </div>
 
    <div class="home__actualites">
-     <div class="home__title"> Actualités </div>
+     <div class="home__title"> ★ Events ★ </div>
 
      <div class="actualite__container">
        <div class="home__actualites_container">
@@ -36,13 +33,14 @@
   </div>
 
   <div class="home__information">
-    <h2 class="home__title"> Informations Pratiques / Nos Restaurants </h2>
+    <h2 class="home__title"> ★ Informations ★ Our Restaurants ★ </h2>
 
       {% for restaurant in restaurants %}
         <div class="home__information_container">
           <div class="home__information_content">
             <h3>{{ restaurant.name }}</h3>
             <p>{{ restaurant.address }}</p>
+            <p>{{ restaurant.Description }}</p>
             {#<p>{{ dump(restaurant.timeSlots) }}</p>#}
           </div>
           <div class="home__information_content">

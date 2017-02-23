@@ -68,21 +68,21 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $userPromoteArguments = $promoteUserCommand->run($promoteUserInput, $output);
 
         $restaurant = new Restaurant();
-        $restaurant->setName('athome 1');
-        $restaurant->setAddress('7765 rue de Osaka');
+        $restaurant->setName('Teishutsu Cafe');
+        $restaurant->setAddress('7765 Osaka street');
         $restaurant->setBirthDate(date_create_from_format('j-M-Y', '20-Jan-2010'));
-        $restaurant->setDescription('Little restaurant just near your favorite neighborhood');
-        $restaurant->setEmail('athome1@othome.com');
-        $restaurant->setPhone('+8765670877');
+        $restaurant->setDescription('Come and play with us ! It\'s open from monday to friday : 4pm to 2am');
+        $restaurant->setEmail('TeishutsuCafe@othome.com');
+        $restaurant->setPhone('090-1790-1357');
         $restaurant->setProfilePicture('resto.jpg');
 
         $restaurant1 = new Restaurant();
-        $restaurant1->setName('athome 2');
-        $restaurant1->setAddress('7765 rue de Hanoi');
+        $restaurant1->setName('Teishutsu Fluff');
+        $restaurant1->setAddress('7765 Hanoi street');
         $restaurant1->setBirthDate(date_create_from_format('j-M-Y', '1-Jan-2005'));
-        $restaurant1->setDescription('Little restaurant near your favorite neighborhood');
-        $restaurant1->setEmail('athome2@athome.com');
-        $restaurant1->setPhone('+66789097542');
+        $restaurant1->setDescription('Little cute restaurant for you ! It\'s open from monday to friday : 4pm to 2am');
+        $restaurant1->setEmail('TeishutsuFluff@athome.com');
+        $restaurant1->setPhone('090-1790-1358');
         $restaurant1->setProfilePicture('resto.jpg');
 
         $review = new Review();
@@ -136,7 +136,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid1->setPhone('+6789986532');
         $maid1->setEmail('katy@supermaid.com');
         $maid1->setBirthDate(date_create_from_format('j-M-Y', '15-Jan-1997'));
-        $maid1->setDescription('I love cats and dogs and food');
+        $maid1->setDescription('I love cats ★ and dogs ★ and food ★');
         $maid1->setMaidName('KawaiiKAT');
         $maid1->setBloodType('AB');
         $maid1->setFavoriteThings('Cats, dogs, food');
@@ -160,26 +160,62 @@ class InitialiseDBCommand extends ContainerAwareCommand
 //        $review3->setUser(2);
 
         $event = new Event();
-        $event->setName('Miku Hastune Concert');
-        $event->setDescription('Miku finally in your favorite Maid cafe !');
+        $event->setName('★ 17 ★ 1st Single "summer time / KOKO RO CARAMEL" released!');
+        $event->setDescription('It is almost time for summer !!! Listen to this, well ~ ♪ I am going to enjoy summer ♪ " Summer time" is perfect for the summer when the sun glitteringly shines ♪ I decided this summer to be on my side at any time!');
         $event->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-28 15:00:00'));
         $event->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-28 18:00:00'));
         $event->setRestaurant($restaurant);
         $event->setProfilePicture('event.jpg');
 
         $event1 = new Event();
-        $event1->setName('Miku Hastune Concert 2');
-        $event1->setDescription('Miku comes again in your favorite Maid cafe !');
-        $event1->setStart(date_create_from_format('Y-m-d H:i:s', '2017-03-28 15:00:00'));
-        $event1->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-03-28 18:00:00'));
+        $event1->setName('"Gourmetama × Woo ~ Mu Cafe" Collaboration ★');
+        $event1->setDescription('It appeared suddenly at the cute cafe \'smansion, with zero motivation! Although it seemingly is a different combination, Wow ~ Mu cafe signboard menu Tama in favor of "Pi Piyo Piyo yo Hiyoko-san Rice" Somehow very ... ... Yu Moe!? Moe moe house, please hold a maid\'s headband Loose ~, motivated ~ ~ We welcome you!');
+        $event1->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-24 15:00:00'));
+        $event1->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-24 18:00:00'));
         $event1->setRestaurant($restaurant);
         $event1->setProfilePicture('event.jpg');
+
+        $event2 = new Event();
+        $event2->setName('We held a press conference of a new costume of cafe (new maid clothes)!');
+        $event2->setDescription('It has proven in ★Paris collection★ and Tokyo collection etc. With fashion designer Keita Maruyama. It is a news conference of new maid clothes completed by collaboration! ★ This new maid outfit that has gained popularity in every direction, in all stores except peach from autumn Maids are going to wear! ★');
+        $event2->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-24 15:00:00'));
+        $event2->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-24 18:00:00'));
+        $event2->setRestaurant($restaurant);
+        $event2->setProfilePicture('event.jpg');
+
+        $event3 = new Event();
+        $event3->setName('Wow ~ Mu cafe \'s visual book with a worldview of the world (photo collection) "The Maid in Wonder Land" has been completed ☆');
+        $event3->setDescription('Have a patronage of chefs, your master, your report is to the lady★ ! Produced by the prominent army archer in the creative industry. ★ It is a fantasy-colored artistic photo album, Pop and unrealistic existence of "maid" existence Expressed in tale tailoring. ★ It has become one book that can fully enjoy the charm of maids to their heart\'s content ♪');
+        $event3->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-24 15:00:00'));
+        $event3->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-24 18:00:00'));
+        $event3->setRestaurant($restaurant);
+        $event3->setProfilePicture('event.jpg');
+
+        $event4 = new Event();
+        $event4->setName('☆ A new single by "@ Ho - Mu Cafe" by luxury creators of Anison world is completed!');
+        $event4->setDescription('Lyrics include voice actor Aya Hirano and "Frozen Dessert" "Summer Color Kiseki" We provide lyrics to theme songs of various animation works Queen Kodama Saori of the anison world , Composition offers music to the popular group "SPHIA" and voice actor Eitori Kitamura. ★ He also worked on composing anime songs such as "The Melancholy of Haruhi Suzumiya" "★Mayo Chiki!★ Currently in charge of Anison, Mr. Akihiko Yamaguchi who is a huge attention composer is in charge. ♪');
+        $event4->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-24 15:00:00'));
+        $event4->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-24 18:00:00'));
+        $event4->setRestaurant($restaurant);
+        $event4->setProfilePicture('event.jpg');
+
+        $event5 = new Event();
+        $event5->setName('★ Shop exclusive new operation maid will be born ★');
+        $event5->setDescription('♪ From April 1st, 2017 (Wednesday) We serve as an operation maid. I look forward to your continued support ★ He always supports a cafe "Operation Made" is, but, A new operation maid will be born this time! As an operation maid dedicated to each shop, For your lady / lady who came home Make your shop more enjoyable and more comfortable We aim to cooperate with the responsible person.');
+        $event5->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-24 15:00:00'));
+        $event5->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-24 18:00:00'));
+        $event5->setRestaurant($restaurant);
+        $event5->setProfilePicture('event.jpg');
 
         $em = $this->getContainer()->get('doctrine.orm.entity_manager');
         $em->persist($restaurant);
         $em->persist($restaurant1);
         $em->persist($event);
         $em->persist($event1);
+        $em->persist($event2);
+        $em->persist($event3);
+        $em->persist($event4);
+        $em->persist($event5);
         $em->persist($review);
         $em->persist($review1);
         $em->persist($characterTrait);
