@@ -15,8 +15,6 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 class Timeslot
 {
     /**
-     * Id of the Timeslot
-     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
