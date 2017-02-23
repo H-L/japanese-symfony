@@ -27,6 +27,11 @@ class Restaurant extends CoffeeShopItem
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="restaurant")
      */
     private $review;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Timeslot", mappedBy="restaurant")
+     */
+    private $timeslot;
     
     /**
      * Set maids
@@ -124,6 +129,22 @@ class Restaurant extends CoffeeShopItem
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTimeslot()
+    {
+        return $this->timeslot;
+    }
+
+    /**
+     * @param mixed $timeslot
+     */
+    public function setTimeslot($timeslot)
+    {
+        $this->timeslot = $timeslot;
+    }
     
     /**
      * Restaurant constructor.
@@ -132,5 +153,6 @@ class Restaurant extends CoffeeShopItem
     {
         $this->review = new ArrayCollection();
         $this->event = new ArrayCollection();
+        $this->timeslot = new ArrayCollection();
     }
 }

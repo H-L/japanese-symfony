@@ -16,8 +16,6 @@
         </div>
     </div>
 
-    {#{{ dump(maid.timeSlots.values) }}#}
-
     <div class="single-maid__presentation">
         <div class="pres__title"> Presentation </div>
         <div class="pres__container">
@@ -47,7 +45,7 @@
                     <div class="info__content"> {{ maid.twitterUrl }} </div>
                 </div>
                 <div class="pres__info">
-                    <div class="info__title"> Caractere</div>
+                    <div class="info__title"> Caractère</div>
                     <div class="info__content"> Dominant </div>
                 </div>
             </div>
@@ -60,7 +58,12 @@
                 
                 <div class="pres__info">
                     <div class="info__title"> Horaires </div>
-                    <div class="info__content"> Lundi au mercredi <br>De 16h30 à 22h30 </div>
+                    <div class="info__content">
+                        {% for slot in maid.timeslots %}
+                            <b>{{ slot.dayOfWeek | date("l") }}</b>
+                            {{ "%02d"|format(slot.startHour) }}h{{ "%02d"|format(slot.startMinute) }} - {{ "%02d"|format(slot.endHour) }}h{{ "%02d"|format(slot.endMinute) }}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
