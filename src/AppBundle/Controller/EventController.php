@@ -88,7 +88,7 @@ class EventController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('_event_edit', array('id' => $event->getId()));
+            return $this->redirectToRoute('back-office_event_edit', array('id' => $event->getId()));
         }
 
         return $this->render('back-office/event/edit.html.twig', array(

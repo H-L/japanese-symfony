@@ -22,10 +22,10 @@ class TimeslotType extends AbstractType
             ))
             ->add('startMinute', ChoiceType::class, array(
                 'choices'=> array(
-                    0 => '00',
-                    15 => '15',
-                    30 => '30',
-                    45 => '45',
+                    '00' => 0,
+                    '15' => 1,
+                    '30' => 2,
+                    '45' => 45,
                 )
             ))
             ->add('endHour', ChoiceType::class, array(
@@ -33,21 +33,21 @@ class TimeslotType extends AbstractType
             ))
             ->add('endMinute', ChoiceType::class, array(
                 'choices'=> array(
-                    0 => '00',
-                    15 => '15',
-                    30 => '30',
-                    45 => '45',
+                    '00' => 0,
+                    '15' => 1,
+                    '30' => 2,
+                    '45' => 45,
                 )
             ))
             ->add('dayOfWeek', ChoiceType::class, array(
                 'choices'=> array(
-                    1 => 'Monday',
-                    2 => 'Tuesday',
-                    3 => 'Wednesday',
-                    4 => 'Thursday',
-                    5 => 'Friday',
-                    6 => 'Saturday',
-                    0 => 'Sunday',
+                    'Monday' => 1,
+                    'Tuesday' => 2,
+                    'Wednesday' => 3,
+                    'Thursday' => 4,
+                    'Friday' => 5,
+                    'Saturday' =>6,
+                    'Sunday' => 0,
                 ),
             ))
             ->add('maid', EntityType::class, array(

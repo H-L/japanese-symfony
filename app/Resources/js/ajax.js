@@ -64,6 +64,10 @@ function formEditAction() {
             success: function(data) {
                 $('#edit-form').html(data);
                 editAction();
+                if($('#edit-form').hasClass('hidden')) {
+                    $('#edit-form').toggleClass('hidden');
+                    $('#new-form').toggleClass('hidden');
+                }
             }
         });
     });

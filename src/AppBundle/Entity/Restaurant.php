@@ -19,9 +19,9 @@ class Restaurant extends CoffeeShopItem
     private $maids;
 
     /**
-     * @ORM\OneToMany(targetEntity="TimeSlot", mappedBy="restaurant")
+     * @ORM\OneToMany(targetEntity="Timeslot", mappedBy="restaurant")
      */
-    private $timeSlots;
+    private $timeslots;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Event", mappedBy="restaurant")
@@ -135,7 +135,7 @@ class Restaurant extends CoffeeShopItem
      */
     public function __construct()
     {
-        $this->timeSlots = new ArrayCollection();
+        $this->timeslots = new ArrayCollection();
         $this->review = new ArrayCollection();
         $this->events = new ArrayCollection();
     }

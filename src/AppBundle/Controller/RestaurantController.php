@@ -88,7 +88,7 @@ class RestaurantController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('_restaurant_edit', array('id' => $restaurant->getId()));
+            return $this->redirectToRoute('back-office_restaurant_edit', array('id' => $restaurant->getId()));
         }
 
         return $this->render('back-office/restaurant/edit.html.twig', array(
