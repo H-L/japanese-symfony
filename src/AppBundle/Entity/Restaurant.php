@@ -19,14 +19,19 @@ class Restaurant extends CoffeeShopItem
     private $maids;
 
     /**
-     * @ORM\OneToMany(targetEntity="TimeSlot", mappedBy="restaurant")
+     * @ORM\OneToMany(targetEntity="Timeslot", mappedBy="restaurant")
      */
-    private $timeSlots;
+    private $timeslots;
 
     /**
-     * @ORM\OneToMany(targetEntity="Restaurant", mappedBy="maids")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Event", mappedBy="restaurant")
      */
     private $events;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="restaurant")
+     */
+    private $review;
     
     /**
      * Set maids
@@ -52,22 +57,35 @@ class Restaurant extends CoffeeShopItem
     }
 
     /**
-     * @return mixed
+     * Add maid
+     *
+     * @param mixed $maid
+     * @return Restaurant
      */
-    public function getTimeSlots()
+    public function addMaid($maid)
     {
-        return $this->timeSlots;
+        $this->maids[] = $maid;
+
+        return $this;
     }
 
     /**
-     * @param mixed $timeSlots
+     * Remove maid
+     *
+     * @param mixed $maid
+     * @return Restaurant
      */
-    public function setTimeSlots($timeSlots)
+    public function removeMaid($maid)
     {
-        $this->timeSlots = $timeSlots;
+        $this->events->removeElement($maid);
+
+        return $this;
     }
+    
 
     /**
+     * Get events
+     *
      * @return mixed
      */
     public function getEvents()
@@ -76,16 +94,49 @@ class Restaurant extends CoffeeShopItem
     }
 
     /**
+     * Set events
+     *
      * @param mixed $events
+     * @return Restaurant
      */
     public function setEvents($events)
     {
         $this->events = $events;
+
+        return $this;
+    }
+
+    /**
+     * Add event
+     *
+     * @param mixed $event
+     * @return Restaurant
+     */
+    public function addEvent($event)
+    {
+        $this->events[] = $event;
+    }
+
+    /**
+     * Remove event
+     *
+     * @param mixed $event
+     * @return Restaurant
+     */
+    public function removeEvent($event)
+    {
+        $this->events->removeElement($event);
+
+        return $this;
     }
     
+    /**
+     * Restaurant constructor.
+     */
     public function __construct()
     {
-        $this->timeSlots = new ArrayCollection();
+        $this->timeslots = new ArrayCollection();
+        $this->review = new ArrayCollection();
         $this->events = new ArrayCollection();
     }
 }

@@ -1,0 +1,35 @@
+<h3>Create a create work session</h3>
+<form id="timeslot-new-form" action="{{ path('back-office_timeslot_new') }}" method="POST">
+    <div class="form-errors"></div>
+    <div class="form-elmt inline">
+        {{ form_label(create_form.startHour) }}
+        {{ form_widget(create_form.startHour) }}
+        {{ form_errors(create_form.startHour) }}
+    </div>
+    <div class="form-elmt inline">
+        {{ form_label(create_form.startMinute) }}
+        {{ form_widget(create_form.startMinute) }}
+        {{ form_errors(create_form.startMinute) }}
+    </div>
+    <div class="form-elmt inline">
+        {{ form_label(create_form.endHour) }}
+        {{ form_widget(create_form.endHour) }}
+        {{ form_errors(create_form.endHour) }}
+    </div>
+    <div class="form-elmt inline">
+        {{ form_label(create_form.endMinute) }}
+        {{ form_widget(create_form.endMinute) }}
+        {{ form_errors(create_form.endMinute) }}
+    </div>
+    <div class="form-elmt">
+        {{ form_label(create_form.dayOfWeek) }}
+        {{ form_widget(create_form.dayOfWeek) }}
+        {{ form_errors(create_form.dayOfWeek) }}
+    </div>
+    <div class="form-elmt hidden">
+        {{ form_label(create_form.maid) }}
+        {{ form_widget(create_form.maid) }}
+        {{ form_errors(create_form.maid) }}
+    </div>
+    <input type="submit" value="Create" class="btn btn-lg btn-success" />
+</form>

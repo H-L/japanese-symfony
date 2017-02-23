@@ -1,32 +1,94 @@
 {% extends 'default/base.html.twig' %}
 
 {% block body %}
-    <h1>Kawaii Cafe home <i class="fa fa-heart" aria-hidden="true"></i></h1>
-    <h2>Restaurants</h2>
-    <ul>
-        {% for restaurant in restaurants %}
-            <li>
-                <img src="{{ restaurant.profilePicture }}" width="150px "alt="">
-                <p>name : {{ restaurant.name }}</p>
-            </li>
-        {% endfor %}
-    </ul>
-    <h2>Maids</h2>
-    <ul>
-        {% for maid in maids %}
-            <li>
-                <img src="{{ maid.profilePicture }}" width="150px "alt="">
-                <p>name : {{ maid.name }}</p>
-            </li>
-        {% endfor %}
-    </ul>
-    <h2>Events</h2>
-    <ul>
-        {% for event in events %}
-            <li>
-                <img src="{{ event.profilePicture }}" width="150px "alt="">
-                <p>name : {{ event.name }}</p>
-            </li>
-        {% endfor %}
-    </ul>
+  <div class="home__container">
+    <h1 class="cafe-name"> Teishutsu Cafe </h1>
+      <h1 class="cafe-jap"> コーヒー提出 </h1>
+  </div>
+
+  <div class="home__description">
+    <div class="home__description_container">
+      <h2>Teishutsu Café, l’unique maid café de Paris</h2>
+      <p>
+        Le Teishutsu Café est un lieu unique pour ceux qui souhaitent se couper du monde extérieur le temps d’une ou<br />
+        plusieurs soirées dans une ambiance décalée et conviviale et venir tels qu’ils et elles ont envie.<br />
+        Le seul café de Paris avec des desserts délicieux et uniques, un cosplay mignon et des représentations Jpop<br />
+        quotidiennes.
+      </p>
+     </div>
+   </div>
+
+   <div class="home__actualites">
+     <div class="home__title"> Actualités </div>
+
+     <div class="actualite__container">
+       <div class="home__actualites_container">
+           {% for event in events %}
+             <div class="home__actualites_content">
+               <img src="{{ asset(event.profilePicture) }}" />
+               <h3>{{ event.name }}</h3>
+               <p>{{ event.description }}</p>
+             </div>
+           {% endfor %}
+      </div>
+    </div>
+
+  </div>
+
+  <div class="home__information">
+    <h2 class="home__title"> Informations Pratiques / Nos Restaurants </h2>
+
+      {% for restaurant in restaurants %}
+        <div class="home__information_container">
+          <div class="home__information_content">
+            <h3>{{ restaurant.name }}</h3>
+            <p>{{ restaurant.address }}</p>
+            {#<p>{{ dump(restaurant.timeSlots) }}</p>#}
+          </div>
+          <div class="home__information_content">
+            <h3>Contact {{ restaurant.name }}</h3>
+            <p>
+              Téléphone : {{ restaurant.phone }}
+            </p>
+            <p>
+              Mail : {{ restaurant.email }}
+            </p>
+          </div>
+        </div>
+      {% endfor %}
+  </div>
+
+    {#<h1>Kawaii Cafe home <i class="fa fa-heart" aria-hidden="true"></i></h1>#}
+      {#<h2>Restaurants</h2>#}
+
+
+    {#<ul>#}
+        {#{% for restaurant in restaurants %}#}
+            {#<li>#}
+                {#<img src="{{ restaurant.profilePicture }}" width="150px "alt="">#}
+                {#<p>name : {{ restaurant.name }}</p>#}
+                {#{{ dump(restaurant) }}#}
+            {#</li>#}
+        {#{% endfor %}#}
+    {#</ul>#}
+    {#<h2>Maids</h2>#}
+    {#<ul>#}
+        {#{% for maid in maids %}#}
+            {#<li>#}
+                {#<img src="{{ maid.profilePicture }}" width="150px "alt="">#}
+                {#<p>name : {{ maid.name }}</p>#}
+                {#{{ dump(maid) }}#}
+            {#</li>#}
+        {#{% endfor %}#}
+    {#</ul>#}
+    {#<h2>Events</h2>#}
+    {#<ul>#}
+        {#{% for event in events %}#}
+            {#<li>#}
+                {#<img src="{{ event.profilePicture }}" width="150px "alt="">#}
+                {#<p>name : {{ event.name }}</p>#}
+                {#{{ dump(event) }}#}
+            {#</li>#}
+        {#{% endfor %}#}
+    {#</ul>#}
 {% endblock %}

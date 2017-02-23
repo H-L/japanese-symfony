@@ -1,9 +1,12 @@
 <?php
 namespace AppBundle\Command;
 
+use AppBundle\Entity\CharacterTrait;
 use AppBundle\Entity\Event;
 use AppBundle\Entity\Maid;
+use AppBundle\Entity\Rank;
 use AppBundle\Entity\Restaurant;
+use AppBundle\Entity\Review;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -82,6 +85,31 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $restaurant1->setPhone('+66789097542');
         $restaurant1->setProfilePicture('resto.jpg');
 
+        $review = new Review();
+        $review->setRate(5);
+        $review->setComment('This was great !');
+        $review->setRestaurant($restaurant);
+//        $review->setUser(1);
+
+        $review1 = new Review();
+        $review1->setRate(1);
+        $review1->setComment('This restaurant sucks !');
+        $review1->setRestaurant($restaurant1);
+//        $review1->setUser(2);
+
+        $characterTrait = new CharacterTrait();
+        $characterTrait->setName('Shy');
+
+        $characterTrait1 = new CharacterTrait();
+        $characterTrait1->setName('Joyful');
+
+        $rank = new Rank();
+        $rank->setName('Super Premium');
+        $rank->setValue('1');
+
+        $rank1 = new Rank();
+        $rank1->setName('First Maid');
+        $rank1->setValue('2');
 
         $maid = new Maid();
         $maid->setName('Saesenthessis');
@@ -98,6 +126,8 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid->setTwitterUrl('wwww.twitter.com/saskia');
         $maid->setProfilePicture('Chimu480.jpg');
         $maid->setRestaurant($restaurant);
+        $maid->setCharacterTrait($characterTrait);
+        $maid->setRank($rank);
 
         $maid1 = new Maid();
         $maid1->setName('Katy');
@@ -114,7 +144,20 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid1->setTwitterUrl('wwww.twitter.com/kawaiikat');
         $maid1->setProfilePicture('Chimu480.jpg');
         $maid1->setRestaurant($restaurant);
+        $maid1->setCharacterTrait($characterTrait1);
+        $maid1->setRank($rank1);
 
+        $review2 = new Review();
+        $review2->setRate(1);
+        $review2->setComment('Shineeee !');
+        $review2->setMaid($maid1);
+//        $review2->setUser(1);
+
+        $review3 = new Review();
+        $review3->setRate(5);
+        $review3->setComment('Daisuki desuuuu');
+        $review3->setMaid($maid1);
+//        $review3->setUser(2);
 
         $event = new Event();
         $event->setName('Miku Hastune Concert');
@@ -137,8 +180,16 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $em->persist($restaurant1);
         $em->persist($event);
         $em->persist($event1);
+        $em->persist($review);
+        $em->persist($review1);
+        $em->persist($characterTrait);
+        $em->persist($characterTrait1);
+        $em->persist($rank);
+        $em->persist($rank1);
         $em->persist($maid);
         $em->persist($maid1);
+        $em->persist($review2);
+        $em->persist($review3);
         $em->flush();
 
         $output->writeln('<info> Database successfully generated!</info>');
