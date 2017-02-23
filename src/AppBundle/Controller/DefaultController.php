@@ -2,20 +2,144 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Image;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use AppBundle\Entity\Maid;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Form\ImageType;
 
+
+/**
+ * Default controller.
+ *
+ * @Route("/")
+ */
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="_home")
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+        $em = $this->getDoctrine()->getManager();
+        $maids = $em->getRepository('AppBundle:Maid')->findAll();
+        $restaurant = $em->getRepository('AppBundle:Restaurant')->findAll();
+        $events = $em->getRepository('AppBundle:Event')->findAll();
+
         return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+            'maids' => $maids,
+            'restaurants' => $restaurant,
+            'events' => $events,
+        ));
+    }
+
+    /**
+     * @Route("/maid", name="_maid")
+     */
+    public function maidAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $maids = $em->getRepository('AppBundle:Maid')->findAll();
+        $characterTraits = $em->getRepository('AppBundle:CharacterTrait')->findAll();
+        $reviews = $em->getRepository('AppBundle:Review')->findAll();
+
+        return $this->render('default/maid/maid.html.twig', array(
+            'maids' => $maids,
+        ));
+    }
+
+    /**
+     * Finds and displays a maid entity.
+     *
+     * @Route("/maid/{id}", name="_maid_show")
+     * @Method("GET")
+     */
+    public function showAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $maid = $em->getRepository('AppBundle:Maid')->find($id);
+
+        return $this->render('default/maid/show.html.twig', array(
+            'maid' => $maid,
+        ));
+    }
+
+    /**
+     * @Route("/event", name="_event")
+     */
+    public function eventAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $events = $em->getRepository('AppBundle:Event')->findAll();
+
+        return $this->render('default/event/event.html.twig', array(
+            'events' => $events,
+        ));
+    }
+
+//    /**
+//     * @Route("/galleries", name="galleries")
+//     */
+//    public function testingImageGalleriesAction(Request $request)
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//        $gallery = $em->getRepository('AppBundle:Gallery')->find(1);
+//        $images = $gallery->getImages()->toArray();
+//
+//        return $this->render('galleries/index.html.twig', array(
+//            'images' => $images,
+//            'gallery' => $gallery,
+//        ));
+//    }
+
+    /**
+     * @Route("/back-office", name="back-office_index")
+     */
+    public function backOfficeAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $maids = $em->getRepository('AppBundle:Maid')->findAll();
+        $restaurant = $em->getRepository('AppBundle:Restaurant')->findAll();
+        $events = $em->getRepository('AppBundle:Event')->findAll();
+
+        return $this->render('back-office/index.html.twig', array(
+            'maids' => $maids,
+            'restaurants' => $restaurant,
+            'events' => $events,
+        ));
+    }
+    /**
+     * @Route("/contact", name="_contact")
+     */
+    public function contactAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $restaurants = $em->getRepository('AppBundle:Restaurant')->findAll();
+
+        return $this->render('default/contact/index.html.twig', array(
+            'restaurants' => $restaurants,
+        ));
+    }
+
+    /**
+     * @Route("/services", name="_services")
+     */
+    public function serviceAction()
+    {
+        return $this->render('default/services/services.html.twig', array(
+
+        ));
+    }
+
+    /**
+     * @Route("/fake/users", name="fake_users")
+     */
+    public function fakeUsersAction()
+    {
+        return $this->render('users/index.html.twig', array(
         ));
     }
 }

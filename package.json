@@ -1,0 +1,30 @@
+{
+  "name": "japanese-symfony",
+  "version": "1.0.0",
+  "description": "School Project on Symfony",
+  "main": "''",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/H-L/japanese-symfony.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/H-L/japanese-symfony/issues"
+  },
+  "homepage": "https://github.com/H-L/japanese-symfony#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.7.3",
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^6.3.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^2.0.1",
+    "pump": "^1.0.2"
+  }
+}

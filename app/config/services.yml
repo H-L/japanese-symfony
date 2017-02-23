@@ -7,3 +7,7 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.service.time_service:
+        class: AppBundle\Service\TimeService
+    app.service.maid_service:
+        class: AppBundle\Service\MaidService

@@ -1,0 +1,72 @@
+{% extends 'default/base.html.twig' %}
+
+{% block body %}
+
+    <div class="single-maid__header">
+        <div class="maid__bloc--content">
+            <img src="../imgs/hitomi.png" />
+            <div class="maid__name">
+              <div class="maid__text">
+                <p>Hitomi</p>
+              </div>
+              <p> {{ maid.maidName }} </p>
+              <p class="maid__text-japonais">メイドの名簿 </p>
+              <p> {{ maid.lastName }} </p>
+            </div>
+        </div>
+    </div>
+
+    {#{{ dump(maid.timeSlots.values) }}#}
+
+    <div class="single-maid__presentation">
+        <div class="pres__title"> Presentation </div>
+        <div class="pres__container">
+            <div class="pres__content pres__content-1">
+                <div class="pres__info">
+                    <div class="info__title"> Birthday </div>
+                    <div class="info__content"> {{ maid.birthDate | date("d/m") }} </div>
+                </div>
+                <div class="pres__info">
+                    <div class="info__title"> Restaurant </div>
+                    <div class="info__content"> {{ maid.restaurant.name }} </div>
+                </div>
+                <div class="pres__info">
+                    <div class="info__title"> Favorite things </div>
+                    <div class="info__content"> {{ maid.favoriteThings }}</div>
+                </div>
+                <div class="pres__info">
+                    <div class="info__title"> Blood type </div>
+                    <div class="info__content"> {{ maid.bloodType }} </div>
+                </div>
+                <div class="pres__info">
+                    <div class="info__title"> Blog </div>
+                    <div class="info__content"> {{ maid.blogUrl }} </div>
+                </div>
+                <div class="pres__info">
+                    <div class="info__title"> Twitter </div>
+                    <div class="info__content"> {{ maid.twitterUrl }} </div>
+                </div>
+                <div class="pres__info">
+                    <div class="info__title"> Caractere</div>
+                    <div class="info__content"> Dominant </div>
+                </div>
+            </div>
+
+            <div class="pres__content pres__content-2">
+                <div class="pres__info">
+                    <div class="info__title"> Description </div>
+                    <div class="info__content"> {{ maid.description }} </div>
+                </div>
+                
+                <div class="pres__info">
+                    <div class="info__title"> Horaires </div>
+                    <div class="info__content"> Lundi au mercredi <br>De 16h30 à 22h30 </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

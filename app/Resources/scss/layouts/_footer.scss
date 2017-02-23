@@ -1,0 +1,67 @@
+.footer__map {
+	background-image: url('../imgs/map.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 100%;
+	@include bg-img('../imgs/map.png')
+	width: 100%;
+	height: 330px;
+}
+
+.footer__container {
+	background-color: #FBE9B9;
+	position: relative;
+	height: 170px;
+	font-family: Nunito;
+	&:before {
+		content: '';
+		position: absolute;
+		top: -20px;
+		width: 100%;
+		height: 30px;
+		@include bg-img('../imgs/footerwave.png');
+	}
+	ul {
+		height: 100%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		text-align: right;
+	}
+}
+
+.logo_Tei {
+    @include bg-img('../imgs/logoTei.png')
+    width: 70px;
+    height: 35px;
+}
+
+.footer__content--title {
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+
+.footer__content--content {
+	display: flex;
+	justify-content: space-between;
+	.logo {
+		margin: 5px 0 0 10px;
+		background-position: 50% 50%;
+		width: 25px;
+		height: 25px;
+		&.logo-fb {
+			background-size: 46% ;
+			padding-left: 5px;
+			@include bg-img('../imgs/logo-fb.png');
+		}
+		&.logo-tw {@include bg-img('../imgs/logo-tw.png');}
+		&.logo-insta {@include bg-img('../imgs/logo-insta.png');}
+	}
+}
+
+.footer_legal {
+	background-color: #F2BB22;
+	display: flex;
+	justify-content: space-around;
+	padding: 10px 0;
+}
