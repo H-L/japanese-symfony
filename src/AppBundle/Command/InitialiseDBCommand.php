@@ -156,9 +156,9 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $rank1->setName('First Maid');
         $rank1->setValue('2');
 
-        $rank1 = new Rank();
-        $rank1->setName('Maid');
-        $rank1->setValue('3');
+        $rank2 = new Rank();
+        $rank2->setName('Maid');
+        $rank2->setValue('3');
 
         $maid = new Maid();
         $maid->setName('Saesenthessis');

@@ -12,13 +12,11 @@
   display: flex;
   flex-direction: column;
   padding-top: 50px;
-  @include bg-img('../imgs/maidpage-background.png');
-  background-repeat: no-repeat;
   &:before {
     content: '';
     position: absolute;
-    top:564px;
-    width: 100%;
+    top: 569px;
+    width: 70%;
     height: 70px;
     @include bg-img('../imgs/maid-rubbon.png');
   }
@@ -67,7 +65,7 @@
  .maid__container--icon{
    display: flex;
    flex-wrap: wrap;
-   width: 900px;
+   width: 80%;
    margin: auto;
    margin: 50px auto;
    .maid__content--icon{

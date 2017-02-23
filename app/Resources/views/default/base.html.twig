@@ -72,12 +72,19 @@
                 <img class="node-side" src="{{ asset('imgs/noeudside.png')}}" alt="">
 
                 <div class="reviews_list">
-                    {% for test in reviews %}
-                        <li> <img class="node-side review-list" src="{{ asset('imgs/reviewlist.png')}}" alt=""></li>
-                        <li class="review__content"> {{ test.comment }} </li>
-                        
-                    {% endfor %}
+                    <ul>
+                        {% for test in reviews %}
+                            <li class="review__content"> 
+                                {{ test.rate }} / 5 <br>
+                                {{ test.comment }}
+                            </li>  
+                        {% endfor %}
+                    </ul>
                 </div>
+
+                <img class="node-side" src="{{ asset('imgs/noeudside.png')}}" alt="">
+
+                <img class="node-side" src="{{ asset('imgs/pub2.png')}}" alt="">
             </div>
 
         </div>

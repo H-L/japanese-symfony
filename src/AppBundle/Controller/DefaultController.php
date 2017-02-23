@@ -129,12 +129,14 @@ class DefaultController extends Controller
     public function contactAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $maids = $em->getRepository('AppBundle:Maid')->findAll();
         $restaurants = $em->getRepository('AppBundle:Restaurant')->findAll();
         $reviews = $em->getRepository('AppBundle:Review')->findAll();
 
         return $this->render('default/contact/index.html.twig', array(
             'restaurants' => $restaurants,
             'reviews' => $reviews,
+            'maids' => $maids,
         ));
     }
 

@@ -5,7 +5,7 @@
 	&:before {
 		content: '';
 		position: absolute;
-		bottom: -27px;
+		bottom: -40px;
 		width: 100%;
 		height: 55px;
 		@include bg-img('../imgs/maid-rubbon.png');
@@ -17,7 +17,7 @@
 }
 
 .single-maid__presentation {
-	width: 65%;
+	width: 80%;
 	margin: 100px auto;
 	background-color: $pink-bg;
 	border-radius: 10px;
@@ -64,7 +64,7 @@
 }
 
 .pres__album{
-  width: 65%;
+  width: 80%;
   margin: 100px auto;
   border: 5px solid #67393C;
   border-radius: 10px;
