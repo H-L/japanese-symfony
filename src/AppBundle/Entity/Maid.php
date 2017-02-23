@@ -59,6 +59,12 @@ class Maid extends CoffeeShopItem
     private $timeslots;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image", inversedBy="event")
+     * @ORM\JoinColumn(name="profilePicture_id", referencedColumnName="id")
+     */
+    private $profilePicture;
+
+    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="maid")
      */
     private $review;
@@ -72,7 +78,13 @@ class Maid extends CoffeeShopItem
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Rank", inversedBy="maid")
      */
     private $rank;
-    
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Gallery")
+     * @ORM\JoinColumn(name="gallery_id", referencedColumnName="id")
+     */
+    private $gallery;
+
     /**
      * Set lastName
      *
@@ -331,6 +343,22 @@ class Maid extends CoffeeShopItem
     {
         $this->rank = $rank;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getProfilePicture()
+    {
+        return $this->profilePicture;
+    }
+
+    /**
+     * @param mixed $profilePicture
+     */
+    public function setProfilePicture($profilePicture)
+    {
+        $this->profilePicture = $profilePicture;
+    }
     
     /**
      * Maid constructor.
@@ -338,5 +366,21 @@ class Maid extends CoffeeShopItem
     public function __construct()
     {
         $this->timeslots = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
+
+    /**
+     * @param mixed $gallery
+     */
+    public function setGallery($gallery)
+    {
+        $this->gallery = $gallery;
     }
 }

@@ -26,8 +26,20 @@ class Restaurant extends CoffeeShopItem
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="restaurant")
      */
-    private $reviews;
-    
+    private $review;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image", inversedBy="event")
+     * @ORM\JoinColumn(name="profilePicture_id", referencedColumnName="id")
+     */
+    private $profilePicture;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Gallery")
+     * @ORM\JoinColumn(name="gallery_id", referencedColumnName="id")
+     */
+    private $gallery;
+
     /**
      * Set maids
      *
@@ -76,7 +88,7 @@ class Restaurant extends CoffeeShopItem
 
         return $this;
     }
-    
+
 
     /**
      * Get event
@@ -160,9 +172,73 @@ class Restaurant extends CoffeeShopItem
      */
     public function removeReview($review)
     {
-        $this->reviews->removeElement($review);
+       $this->reviews->removeElement($review);
+       return $this;
+    }
 
-        return $this;
+
+    /**
+     * @return mixed
+     */
+    public function getReview()
+    {
+        return $this->review;
+    }
+
+    /**
+     * @param mixed $review
+     */
+    public function setReview($review)
+    {
+        $this->review = $review;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTimeslot()
+    {
+        return $this->timeslot;
+    }
+
+    /**
+     * @param mixed $timeslot
+     */
+    public function setTimeslot($timeslot)
+    {
+        $this->timeslot = $timeslot;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProfilePicture()
+    {
+        return $this->profilePicture;
+    }
+
+    /**
+     * @param mixed $profilePicture
+     */
+    public function setProfilePicture($profilePicture)
+    {
+        $this->profilePicture = $profilePicture;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
+
+    /**
+     * @param mixed $gallery
+     */
+    public function setGallery($gallery)
+    {
+        $this->gallery = $gallery;
     }
 
     /**
@@ -172,5 +248,6 @@ class Restaurant extends CoffeeShopItem
     {
         $this->reviews = new ArrayCollection();
         $this->event = new ArrayCollection();
+        $this->timeslot = new ArrayCollection();
     }
 }

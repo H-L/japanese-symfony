@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Image
@@ -37,6 +38,21 @@ class Image
      * @ORM\Column(name="path", type="string", length=255)
      */
     private $path;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Event", mappedBy="image")
+     */
+    private $events;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Restaurant", mappedBy="image")
+     */
+    private $restaurants;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Restaurant", mappedBy="image")
+     */
+    private $maids;
 
     /**
      * Get id
@@ -101,10 +117,6 @@ class Image
      */
     private $galleries;
 
-    public function __construct() {
-        $this->galleries = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
     /**
      * Add gallery
      *
@@ -137,5 +149,60 @@ class Image
     public function getGalleries()
     {
         return $this->galleries;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
+
+    /**
+     * @param mixed $events
+     */
+    public function setEvents($events)
+    {
+        $this->events = $events;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRestaurants()
+    {
+        return $this->restaurants;
+    }
+
+    /**
+     * @param mixed $restaurants
+     */
+    public function setRestaurants($restaurants)
+    {
+        $this->restaurants = $restaurants;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMaids()
+    {
+        return $this->maids;
+    }
+
+    /**
+     * @param mixed $maids
+     */
+    public function setMaids($maids)
+    {
+        $this->maids = $maids;
+    }
+
+    public function __construct() {
+        $this->galleries = new ArrayCollection();
+        $this->events = new ArrayCollection();
+        $this->restaurants = new ArrayCollection();
+        $this->maids = new ArrayCollection();
     }
 }

@@ -25,7 +25,7 @@ class AddImagesCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('app:add_images')
+            ->setName('app:initialise:images')
             ->setDescription('Add an image or an image repository to DB and local Directory')
             ->setHelp('Add path to the Images directory ')
         ;
@@ -38,7 +38,7 @@ class AddImagesCommand extends ContainerAwareCommand
     {
         $helper = $this->getHelper('question');
 
-        $question = new Question('Path Image directory you want to import<fg=yellow>[./web/assets/images]</> :', $this->getContainer()->getParameter('load_images'));
+        $question = new Question('Path Image directory you want to import<fg=yellow>[./web/imgs]</> :', $this->getContainer()->getParameter('load_images'));
 
         $path = $helper->ask($input, $output, $question);
 
