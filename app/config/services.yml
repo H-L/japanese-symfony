@@ -11,3 +11,5 @@ services:
         class: AppBundle\Service\TimeService
     app.service.maid_service:
         class: AppBundle\Service\MaidService
+    app.service.indicator_service:
+            class: AppBundle\Service\IndicatorService

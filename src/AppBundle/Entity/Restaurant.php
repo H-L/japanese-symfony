@@ -29,11 +29,6 @@ class Restaurant extends CoffeeShopItem
     private $review;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Timeslot", mappedBy="restaurant")
-     */
-    private $timeslot;
-
-    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image", inversedBy="event")
      * @ORM\JoinColumn(name="profilePicture_id", referencedColumnName="id")
      */
@@ -145,6 +140,46 @@ class Restaurant extends CoffeeShopItem
     /**
      * @return mixed
      */
+    public function getReviews()
+    {
+        return $this->reviews;
+    }
+
+    /**
+     * @param mixed $reviews
+     */
+    public function setReviews($reviews)
+    {
+        $this->reviews = $reviews;
+    }
+
+    /**
+     * Add review
+     *
+     * @param mixed $review
+     * @return Restaurant
+     */
+    public function addReview($review)
+    {
+        $this->reviews[] = $review;
+    }
+
+    /**
+     * Remove event
+     *
+     * @param mixed $review
+     * @return Restaurant
+     */
+    public function removeReview($review)
+    {
+       $this->reviews->removeElement($review);
+       return $this;
+    }
+
+
+    /**
+     * @return mixed
+     */
     public function getReview()
     {
         return $this->review;
@@ -211,7 +246,7 @@ class Restaurant extends CoffeeShopItem
      */
     public function __construct()
     {
-        $this->review = new ArrayCollection();
+        $this->reviews = new ArrayCollection();
         $this->event = new ArrayCollection();
         $this->timeslot = new ArrayCollection();
     }

@@ -211,7 +211,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $rank2->setValue('2');
 
         $maid = new Maid();
-        $maid->setName('Saesenthessis');
+        $maid->setName('Saesen');
         $maid->setLastName('Dragonborn');
         $maid->setAddress('88 abbey road, Vergen');
         $maid->setPhone('+333667887644');

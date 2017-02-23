@@ -1,4 +1,16 @@
 {% extends 'back-office/base.html.twig' %}
 {% block body %}
-    hey
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1> Dashboard </h1>
+        </div>
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Best restaurant</th>
+                <td>{{ bestRestaurant[0].name }}, {{ bestRestaurant[1] }} positives reviews</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

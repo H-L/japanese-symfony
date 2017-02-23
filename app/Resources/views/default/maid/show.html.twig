@@ -4,11 +4,8 @@
 
     <div class="single-maid__header">
         <div class="maid__bloc--content">
-            <img src="{{ asset(maid.profilePicture.path) }}" />
+            <img src="{{ asset('imgs/maids/maid0.png')}}" />
             <div class="maid__name">
-              <div class="maid__text">
-                <p>Hitomi</p>
-              </div>
               <p> {{ maid.maidName }} </p>
               <p class="maid__text-japonais">メイドの名簿 </p>
               <p> {{ maid.lastName }} </p>
@@ -17,7 +14,7 @@
     </div>
 
     <div class="single-maid__presentation">
-        <div class="pres__title"> Presentation </div>
+        <div class="pres__title"> ★ Presentation ★ </div>
         <div class="pres__container">
             <div class="pres__content pres__content-1">
                 <div class="pres__info">
@@ -60,7 +57,7 @@
 
             <div class="pres__content pres__content-2">
                 <div class="pres__info">
-                    <div class="info__title"> Description </div>
+                    <div class="info__title"> ★ Description ★ </div>
                     <div class="info__content"> {{ maid.description }} </div>
                 </div>
 

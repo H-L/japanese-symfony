@@ -1,7 +1,6 @@
 {% extends 'default/base.html.twig' %}
 
 {% block body %}
-<<<<<<< HEAD
 
 	<div class="contact__container">
 
@@ -9,7 +8,7 @@
 
 		<div class="contact__content">
 			<div class="contact__block contact__rest">
-				<div class="rest__title"> Our restaurants </div>
+				<div class="rest__title"> ★ Our restaurants ★ </div>
 
 				<div class="rest__content">
 
@@ -37,7 +36,7 @@
 			</div>
 
 			<div class="contact__block contact__reviews">
-				<div class="rest__title"> Your thoughts </div>
+				<div class="rest__title"> ★ Your thoughts ★ </div>
 				
 				<div class="rest__content">
 
@@ -53,20 +52,4 @@
 		</div>
 
 	</div>
-=======
-    
-    {% for restaurant in restaurants %}
-        <div class="restaurant">
-            <p>{{ restaurant.name }}</p>
-            <img src="{{ asset(restaurant.profilePicture) }}" alt="">
-            <div class="timetable">
-                {% for slot in restaurant.timeslot %}
-                    <b>{{ slot.dayOfWeek | date("l") }}</b>
-                    {{ "%02d"|format(slot.startHour) }}h{{ "%02d"|format(slot.startMinute) }} - {{ "%02d"|format(slot.endHour) }}h{{ "%02d"|format(slot.endMinute) }}
-                {% endfor %}
-            </div>
-        </div>
-    {% endfor %}
->>>>>>> origin/dev
-
 {% endblock %}

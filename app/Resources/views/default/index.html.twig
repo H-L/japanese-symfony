@@ -16,14 +16,13 @@
    </div>
 
    <div class="home__actualites">
-     <div class="home__title"> ★ Events ★ </div>
+     <div class="home__title"> ★ Events ★ <img src="{{ asset('imgs/gifs/giphy32).gif')}}" alt=""> </div>
 
      <div class="actualite__container">
        <div class="home__actualites_container">
            {% for event in events %}
-               <a href="{{ path('event_show', {"id": event.id }) }}"></a>
              <div class="home__actualites_content">
-               <img src="{{ asset(event.profilePicture) }}" />
+               <img src="{{ asset('imgs/event.jpg')}}" />
                <h3>{{ event.name }}</h3>
                <p>{{ event.description }}</p>
              </div>
@@ -34,7 +33,7 @@
   </div>
 
   <div class="home__information">
-    <h2 class="home__title"> ★ Informations ★ Our Restaurants ★ </h2>
+    <h2 class="home__title"> ★ Informations ★ Our Restaurants ★ <img src="{{ asset('imgs/gifs/giphy33).gif')}}" alt=""> </h2>
 
       {% for restaurant in restaurants %}
         <div class="home__information_container">
@@ -56,38 +55,5 @@
         </div>
       {% endfor %}
   </div>
-
-    {#<h1>Kawaii Cafe home <i class="fa fa-heart" aria-hidden="true"></i></h1>#}
-      {#<h2>Restaurants</h2>#}
-
-
-    {#<ul>#}
-        {#{% for restaurant in restaurants %}#}
-            {#<li>#}
-                {#<img src="{{ restaurant.profilePicture }}" width="150px "alt="">#}
-                {#<p>name : {{ restaurant.name }}</p>#}
-                {#{{ dump(restaurant) }}#}
-            {#</li>#}
-        {#{% endfor %}#}
-    {#</ul>#}
-    {#<h2>Maids</h2>#}
-    {#<ul>#}
-        {#{% for maid in maids %}#}
-            {#<li>#}
-                {#<img src="{{ maid.profilePicture }}" width="150px "alt="">#}
-                {#<p>name : {{ maid.name }}</p>#}
-                {#{{ dump(maid) }}#}
-            {#</li>#}
-        {#{% endfor %}#}
-    {#</ul>#}
-    {#<h2>Events</h2>#}
-    {#<ul>#}
-        {#{% for event in events %}#}
-            {#<li>#}
-                {#<img src="{{ event.profilePicture }}" width="150px "alt="">#}
-                {#<p>name : {{ event.name }}</p>#}
-                {#{{ dump(event) }}#}
-            {#</li>#}
-        {#{% endfor %}#}
-    {#</ul>#}
+  
 {% endblock %}
