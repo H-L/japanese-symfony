@@ -1,0 +1,72 @@
+.contact__container {
+	margin-top: 50px;
+}
+
+.contact__content {
+	width: 90%;
+	margin: auto;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 30px;
+	.contact__rest {width: 58%;}
+	.contact__reviews {width: 40%;}
+	.contact__block {
+		background-color: $pink-bg;
+		border-radius: 10px;
+		padding: 15px 20px;
+		.rest__title {
+			background-color: #FFE7E9;
+			border: solid 2px silver;
+			border-radius: 10px;
+			padding: 10px 15px;
+			font-family: LilyScriptOne;
+			font-size: 24px;
+			color: $br-text;
+			width: 100%;
+			margin-bottom: 20px;
+		}
+		.rest__content {
+			background-color: #FFE7E9;
+			border: solid 2px silver;
+			border-radius: 10px;
+			padding: 10px 15px;
+		}
+	}
+}
+
+.rest__block {
+	padding: 10px 20px;
+	color: $br-text;
+	.rest-name {
+		font-family: LilyScriptOne;
+		color: $br-text;
+		font-size: 18px;
+		padding-bottom: 10px;
+	}
+
+	.block__content {
+		display: flex;
+		justify-content: space-between;
+
+	}
+
+
+	.rest__sous-title {
+		font-weight: 700;
+		padding: 14px 0 7px;
+	}
+}
+
+.rest__block:nth-child(2) {
+	margin-top: 50px;
+	margin-bottom: 47px
+}
+
+.review__card {
+	margin-bottom: 5px;
+	background-color: #fefefe;
+	border: solid 1px silver;
+	width: 100%;
+	border-radius: 5px;
+	padding: 10px;
+}

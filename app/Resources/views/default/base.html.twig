@@ -73,10 +73,10 @@
 
                 <div class="reviews_list">
                     <ul>
-                        {% for test in reviews %}
+                        {% for review in reviews %}
                             <li class="review__content"> 
-                                {{ test.rate }} / 5 <br>
-                                {{ test.comment }}
+                                {{ review.rate }} / 5 <br>
+                                {{ review.comment }}
                             </li>  
                         {% endfor %}
                     </ul>
