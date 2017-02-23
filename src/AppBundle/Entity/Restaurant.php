@@ -27,6 +27,23 @@ class Restaurant extends CoffeeShopItem
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="restaurant")
      */
     private $review;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Timeslot", mappedBy="restaurant")
+     */
+    private $timeslot;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     */
+    private $profilePicture;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Gallery")
+     * @ORM\JoinColumn(name="gallery_id", referencedColumnName="id")
+     */
+    private $gallery;
     
     /**
      * Set maids
@@ -76,7 +93,7 @@ class Restaurant extends CoffeeShopItem
 
         return $this;
     }
-    
+
 
     /**
      * Get event
@@ -124,7 +141,71 @@ class Restaurant extends CoffeeShopItem
 
         return $this;
     }
-    
+
+    /**
+     * @return mixed
+     */
+    public function getReview()
+    {
+        return $this->review;
+    }
+
+    /**
+     * @param mixed $review
+     */
+    public function setReview($review)
+    {
+        $this->review = $review;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTimeslot()
+    {
+        return $this->timeslot;
+    }
+
+    /**
+     * @param mixed $timeslot
+     */
+    public function setTimeslot($timeslot)
+    {
+        $this->timeslot = $timeslot;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProfilePicture()
+    {
+        return $this->profilePicture;
+    }
+
+    /**
+     * @param mixed $profilePicture
+     */
+    public function setProfilePicture($profilePicture)
+    {
+        $this->profilePicture = $profilePicture;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
+
+    /**
+     * @param mixed $gallery
+     */
+    public function setGallery($gallery)
+    {
+        $this->gallery = $gallery;
+    }
+
     /**
      * Restaurant constructor.
      */
@@ -132,5 +213,6 @@ class Restaurant extends CoffeeShopItem
     {
         $this->review = new ArrayCollection();
         $this->event = new ArrayCollection();
+        $this->timeslot = new ArrayCollection();
     }
 }

@@ -43,8 +43,6 @@ class CreateTimeslotCommand extends ContainerAwareCommand
         $timeslot->setStartMinute($startTimeMinute);
         $timeslot->setEndHour($endTimeHour);
         $timeslot->setEndMinute($endTimeMinute);
-        $timeslot->setStartTime(array($startTimeHour, $startTimeMinute));
-        $timeslot->setEndTime(array($endTimeHour, $endTimeMinute));
         $timeslot->setDayOfWeek($dayOfTheWeek);
         $timeslot->setMaid($maidRepository->find($maidId));
 

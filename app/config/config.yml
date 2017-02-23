@@ -8,7 +8,7 @@ imports:
 parameters:
     locale: en
     images_directory: '%kernel.root_dir%/../web/uploads/images/'
-    load_images: '%kernel.root_dir%/../web/assets/images/'
+    load_images: '%kernel.root_dir%/../web/imgs/'
     path_for_images_dir: 'uploads/images/'
 
 framework:
