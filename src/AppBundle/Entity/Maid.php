@@ -59,6 +59,12 @@ class Maid extends CoffeeShopItem
     private $timeslots;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image", inversedBy="event")
+     * @ORM\JoinColumn(name="profilePicture_id", referencedColumnName="id")
+     */
+    private $profilePicture;
+
+    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="maid")
      */
     private $review;
@@ -72,12 +78,6 @@ class Maid extends CoffeeShopItem
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Rank", inversedBy="maid")
      */
     private $rank;
-    
-    /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image")
-     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
-     */
-    private $profilePicture;
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Gallery")

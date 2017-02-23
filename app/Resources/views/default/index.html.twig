@@ -21,6 +21,7 @@
      <div class="actualite__container">
        <div class="home__actualites_container">
            {% for event in events %}
+               <a href="{{ path('event_show', {"id": event.id }) }}"></a>
              <div class="home__actualites_content">
                <img src="{{ asset(event.profilePicture) }}" />
                <h3>{{ event.name }}</h3>

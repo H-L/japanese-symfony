@@ -119,7 +119,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $review->setRate(5);
         $review->setComment('This was great !');
         $review->setRestaurant($restaurant);
-//        $review->setUser(1);
+        $review->setUser($em->getRepository('AppBundle:User')->find(1));
 
         $review1 = new Review();
         $review1->setRate(1);
@@ -206,12 +206,12 @@ class InitialiseDBCommand extends ContainerAwareCommand
         }
 
         $rank1 = new Rank();
-        $rank1->setName('Maid');
+        $rank1->setName('Apprentice');
         $rank1->setValue('3');
 
         $rank2 = new Rank();
         $rank2->setName('Maid');
-        $rank2->setValue('3');
+        $rank2->setValue('2');
 
         $maid = new Maid();
         $maid->setName('Saesenthessis');
@@ -264,7 +264,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid2->setFavoriteThings('Ribbon ☆ ☆ Mono si Zenbu! ');
         $maid2->setBlogUrl('wwww.yumiyumi.overblog');
         $maid2->setTwitterUrl('wwww.twitter.com/hitomi');
-        $maid2->setProfilePicture('maid2.jpg');
+        $maid2->setProfilePicture($maidProfilePicture);
         $maid2->setRestaurant($restaurant);
         $maid2->setCharacterTrait($characterTrait4);
         $maid2->setRank($rank2);
@@ -282,7 +282,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid3->setFavoriteThings('Les enfants mignons, les paillettes');
         $maid3->setBlogUrl('wwww.chiminu.overblog');
         $maid3->setTwitterUrl('wwww.twitter.com/chimu_aaa');
-        $maid3->setProfilePicture('maid3.jpg');
+        $maid3->setProfilePicture($maidProfilePicture);
         $maid3->setRestaurant($restaurant);
         $maid3->setCharacterTrait($characterTrait10);
         $maid3->setRank($rank2);
@@ -300,7 +300,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid4->setFavoriteThings('Fleurs bleues, les balancoires');
         $maid4->setBlogUrl('wwww.eri.overblog');
         $maid4->setTwitterUrl('wwww.twitter.com/eri');
-        $maid4->setProfilePicture('maid4.jpg');
+        $maid4->setProfilePicture($maidProfilePicture);
         $maid4->setRestaurant($restaurant);
         $maid4->setCharacterTrait($characterTrait2);
         $maid4->setRank($rank2);
@@ -318,7 +318,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid5->setFavoriteThings('Fleurs bleues, les balancoires');
         $maid5->setBlogUrl('wwww.renachi.overblog');
         $maid5->setTwitterUrl('wwww.twitter.com/renachi');
-        $maid5->setProfilePicture('maid5.jpg');
+        $maid5->setProfilePicture($maidProfilePicture);
         $maid5->setRestaurant($restaurant);
         $maid5->setCharacterTrait($characterTrait2);
         $maid5->setRank($rank2);
@@ -336,7 +336,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid6->setFavoriteThings('Fleurs bleues, les balancoires');
         $maid6->setBlogUrl('wwww.lafraise.overblog');
         $maid6->setTwitterUrl('wwww.twitter.com/lafraise');
-        $maid6->setProfilePicture('maid6.jpg');
+        $maid6->setProfilePicture($maidProfilePicture);
         $maid6->setRestaurant($restaurant);
         $maid6->setCharacterTrait($characterTrait6);
         $maid6->setRank($rank2);
@@ -354,7 +354,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid7->setFavoriteThings('Rien du tout');
         $maid7->setBlogUrl('wwww.kanata.overblog');
         $maid7->setTwitterUrl('wwww.twitter.com/kanata');
-        $maid7->setProfilePicture('maid7.jpg');
+        $maid7->setProfilePicture($maidProfilePicture);
         $maid7->setRestaurant($restaurant);
         $maid7->setCharacterTrait($characterTrait3);
         $maid7->setRank($rank2);
@@ -372,7 +372,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid8->setFavoriteThings('Les prunes et les fraises, les coeurs tout ronds');
         $maid8->setBlogUrl('wwww.shiemi.overblog');
         $maid8->setTwitterUrl('wwww.twitter.com/shiemi');
-        $maid8->setProfilePicture('maid8.jpg');
+        $maid8->setProfilePicture($maidProfilePicture);
         $maid8->setRestaurant($restaurant);
         $maid8->setCharacterTrait($characterTrait3);
         $maid8->setRank($rank2);
@@ -390,7 +390,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid9->setFavoriteThings('Des trucs moches et fragiles');
         $maid9->setBlogUrl('wwww.kowane.overblog');
         $maid9->setTwitterUrl('wwww.twitter.com/shiemi');
-        $maid9->setProfilePicture('maid9.jpg');
+        $maid9->setProfilePicture($maidProfilePicture);
         $maid9->setRestaurant($restaurant);
         $maid9->setCharacterTrait($characterTrait4);
         $maid9->setRank($rank2);
@@ -408,7 +408,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $maid10->setFavoriteThings('Les papillons dorés, les licornes rouges et la mer verte');
         $maid10->setBlogUrl('wwww.chitose.overblog');
         $maid10->setTwitterUrl('wwww.twitter.com/chitose');
-        $maid10->setProfilePicture('maid10.jpg');
+        $maid10->setProfilePicture($maidProfilePicture);
         $maid10->setRestaurant($restaurant);
         $maid10->setCharacterTrait($characterTrait5);
         $maid10->setRank($rank2);
@@ -437,7 +437,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $event->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-28 15:00:00'));
         $event->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-28 18:00:00'));
         $event->setRestaurant($restaurant);
-        $event->setProfilePicture('event.jpg');
+        $event->setProfilePicture($maidProfilePicture);
 
         $event1 = new Event();
         $event1->setName('"Gourmetama × Woo ~ Mu Cafe" Collaboration ★');
@@ -445,7 +445,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $event1->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-24 15:00:00'));
         $event1->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-24 18:00:00'));
         $event1->setRestaurant($restaurant);
-        $event1->setProfilePicture('event.jpg');
+        $event1->setProfilePicture($maidProfilePicture);
 
         $event2 = new Event();
         $event2->setName('We held a press conference of a new costume of cafe (new maid clothes)!');
@@ -453,7 +453,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $event2->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-24 15:00:00'));
         $event2->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-24 18:00:00'));
         $event2->setRestaurant($restaurant);
-        $event2->setProfilePicture('event.jpg');
+        $event2->setProfilePicture($maidProfilePicture);
 
         $event3 = new Event();
         $event3->setName('Wow ~ Mu cafe \'s visual book with a worldview of the world (photo collection) "The Maid in Wonder Land" has been completed ☆');
@@ -461,7 +461,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $event3->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-24 15:00:00'));
         $event3->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-24 18:00:00'));
         $event3->setRestaurant($restaurant);
-        $event3->setProfilePicture('event.jpg');
+        $event3->setProfilePicture($maidProfilePicture);
 
         $event4 = new Event();
         $event4->setName('☆ A new single by "@ Ho - Mu Cafe" by luxury creators of Anison world is completed!');
@@ -469,7 +469,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $event4->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-24 15:00:00'));
         $event4->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-24 18:00:00'));
         $event4->setRestaurant($restaurant);
-        $event4->setProfilePicture('event.jpg');
+        $event4->setProfilePicture($maidProfilePicture);
 
         $event5 = new Event();
         $event5->setName('★ Shop exclusive new operation maid will be born ★');
@@ -477,7 +477,7 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $event5->setStart(date_create_from_format('Y-m-d H:i:s', '2017-02-24 15:00:00'));
         $event5->setEnd(date_create_from_format('Y-m-d H:i:s', '2017-02-24 18:00:00'));
         $event5->setRestaurant($restaurant);
-        $event5->setProfilePicture('event.jpg');
+        $event5->setProfilePicture($maidProfilePicture);
 
         $em->persist($maidProfilePicture);
         $em->persist($maidProfilePicture1);
@@ -528,6 +528,12 @@ class InitialiseDBCommand extends ContainerAwareCommand
         $em->persist($review5);
         $em->persist($review6);
         $em->persist($review7);
+        $em->persist($event);
+        $em->persist($event1);
+        $em->persist($event2);
+        $em->persist($event3);
+        $em->persist($event4);
+        $em->persist($event5);
         $em->flush();
 
         $output->writeln('<info> Database successfully generated!</info>');

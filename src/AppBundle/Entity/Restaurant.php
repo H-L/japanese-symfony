@@ -34,8 +34,8 @@ class Restaurant extends CoffeeShopItem
     private $timeslot;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image")
-     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image", inversedBy="event")
+     * @ORM\JoinColumn(name="profilePicture_id", referencedColumnName="id")
      */
     private $profilePicture;
 
@@ -44,7 +44,7 @@ class Restaurant extends CoffeeShopItem
      * @ORM\JoinColumn(name="gallery_id", referencedColumnName="id")
      */
     private $gallery;
-    
+
     /**
      * Set maids
      *
