@@ -21,7 +21,7 @@ class Restaurant extends CoffeeShopItem
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Event", mappedBy="restaurant")
      */
-    private $events;
+    private $event;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="restaurant")
@@ -72,31 +72,31 @@ class Restaurant extends CoffeeShopItem
      */
     public function removeMaid($maid)
     {
-        $this->events->removeElement($maid);
+        $this->event->removeElement($maid);
 
         return $this;
     }
     
 
     /**
-     * Get events
+     * Get event
      *
      * @return mixed
      */
-    public function getEvents()
+    public function getEvent()
     {
-        return $this->events;
+        return $this->event;
     }
 
     /**
-     * Set events
+     * Set event
      *
-     * @param mixed $events
+     * @param mixed $event
      * @return Restaurant
      */
-    public function setEvents($events)
+    public function setEvent($event)
     {
-        $this->events = $events;
+        $this->event = $event;
 
         return $this;
     }
@@ -109,7 +109,7 @@ class Restaurant extends CoffeeShopItem
      */
     public function addEvent($event)
     {
-        $this->events[] = $event;
+        $this->event[] = $event;
     }
 
     /**
@@ -120,7 +120,7 @@ class Restaurant extends CoffeeShopItem
      */
     public function removeEvent($event)
     {
-        $this->events->removeElement($event);
+        $this->event->removeElement($event);
 
         return $this;
     }
@@ -131,6 +131,6 @@ class Restaurant extends CoffeeShopItem
     public function __construct()
     {
         $this->review = new ArrayCollection();
-        $this->events = new ArrayCollection();
+        $this->event = new ArrayCollection();
     }
 }

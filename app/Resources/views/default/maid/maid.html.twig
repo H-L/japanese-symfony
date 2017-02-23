@@ -39,12 +39,17 @@
 
       <div class="maid__container--icon">
 
+
+
+      {% for maid in maids %}
         <div class="maid__content--icon">
           <p>
-            Maid 1
+            {{ maid.name }}
           </p>
-          <img src="../imgs/icon-maid.png">
+          <a href="{{ path('_maid_show', {'id' : maid.id}) }}"> <img src="{{ maid.profilePicture }}"> </a>
         </div>
+      {% endfor %}
+
 
         <div class="maid__content--icon">
           <p>
