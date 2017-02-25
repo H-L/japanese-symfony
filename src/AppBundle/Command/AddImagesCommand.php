@@ -52,7 +52,7 @@ class AddImagesCommand extends ContainerAwareCommand
         $inDbImages = $em->getRepository('AppBundle:Image')->findAll();
 
         $inDbImagesNames = [];
-        $mimeTypes = ['image/jpeg', 'image/png', 'image/svg+xml', 'image/tiff'];
+        $mimeTypes = ['image/jpeg', 'image/png', 'image/svg+xml', 'image/tiff', 'image/gif'];
 
         foreach ($inDbImages as $inDbImage){
             array_push($inDbImagesNames, $inDbImage->getName());
