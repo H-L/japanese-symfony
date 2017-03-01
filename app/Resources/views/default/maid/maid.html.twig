@@ -31,7 +31,7 @@
           </div>
           <p>SUPER</p>
           <p class="maid__text-japonais">スーパープレミアム </p>
-          <p>PRENIUM</p>
+          <p>PREMIUM</p>
         </div>
         <img src="../imgs/chimu.png" />
       </div>
@@ -44,9 +44,9 @@
       {% for maid in maids %}
         <div class="maid__content--icon">
           <p>
-            {{ maid.name }}
+            {{ maid.maidName }}
           </p>
-          <a href="{{ path('_maid_show', {'id' : maid.id}) }}"> <img src="{{ asset('imgs/maids/maid1.png')}}"> </a>
+          <a href="{{ path('_maid_show', {'id' : maid.id}) }}"> <img src="{{ asset(maid.profilePicture.path)}}"> </a>
         </div>
       {% endfor %}
         
