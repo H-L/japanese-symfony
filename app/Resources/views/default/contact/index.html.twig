@@ -1,11 +1,55 @@
 {% extends 'default/base.html.twig' %}
 
 {% block body %}
-    {% for restaurant in restaurants %}
-        <div class="restaurant">
-            <p>{{ restaurant.name }}</p>
-            <img src="{{ asset(restaurant.profilePicture) }}" alt="">
-        </div>
-    {% endfor %}
 
+	<div class="contact__container">
+
+		<div class="services__title"> ★ Stay in contact with us Master ★ </div>
+
+		<div class="contact__content">
+			<div class="contact__block contact__rest">
+				<div class="rest__title"> ★ Our restaurants ★ </div>
+
+				<div class="rest__content">
+
+					{% for restaurant in restaurants %}
+				        <div class="rest__block">
+				            <div class="rest-name">★ {{ restaurant.name }}</div>
+				            <div class="block__content">
+				            	<img class="resto_img" src="{{ asset('imgs/resto1.png')}}" alt="">
+				            	<div class="block__contact">
+				            		<div class="rest__sous-title"> Adress </div>
+				            		<div>{{ restaurant.address }}</div>
+				            		<div>{{ restaurant.email }}</div>
+
+				            		<div class="rest__sous-title"> Phone </div>
+				            		<div>{{ restaurant.phone }}</div>
+				            	</div>
+				            </div>
+
+				            <div class="rest__sous-title"> Phone </div>
+				            <div>{{ restaurant.description }}</div>
+				        </div>
+		    		{% endfor %}
+					
+				</div>
+			</div>
+
+			<div class="contact__block contact__reviews">
+				<div class="rest__title"> ★ Your thoughts ★ </div>
+				
+				<div class="rest__content">
+
+					{% for review in reviews %}
+                        <div class="review__card">
+                            ★ {{ review.rate }} / 5 ★ <br>
+                            {{ review.comment }}
+                        </div>  
+                    {% endfor %}
+					
+				</div>
+			</div>
+		</div>
+
+	</div>
 {% endblock %}

@@ -26,7 +26,7 @@
                     <td>{{ event.description }}</td>
                     <td>{% if event.start %}{{ event.start|date('Y-m-d H:i') }}{% endif %}</td>
                     <td>{% if event.end %}{{ event.end|date('Y-m-d H:i') }}{% endif %}</td>
-                    <td>{{ event.profilePicture }}</td>
+                    <td>{{ event.profilePicture.path }}</td>
                     <td>
                         <a href="{{ path('back-office_event_show', { 'id': event.id }) }}"><button type="button" class="btn btn-lg btn-primary">show</button></a>
                         <a href="{{ path('back-office_event_edit', { 'id': event.id }) }}"><button type="button" class="btn btn-lg btn-warning">edit</button></a>

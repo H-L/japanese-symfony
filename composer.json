@@ -24,7 +24,10 @@
         "symfony/intl": "^3.2",
         "liip/imagine-bundle": "^1.7",
         "symfony/finder": "^3.2",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "friendsofsymfony/rest-bundle": "^2.1",
+        "jms/serializer-bundle": "^1.2",
+        "nelmio/api-doc-bundle": "^2.13"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

@@ -46,13 +46,7 @@ class MaidService
         $workHours['total'] = array_sum($workHours);
         return $workHours;
     }
-    public function getSchedule(Maid $maid) {
-        $timeslots = $maid->getTimeslots();
-        $byDay = array(
-          0 => 0
 
-        );
-    }
     /**
      * @param Maid $maid
      * @param Timeslot $timeslot
@@ -104,5 +98,106 @@ class MaidService
             }
         }
         return false;
+    }
+
+    public function getSchedule(Maid $maid) {
+        $timeslots = $maid->getTimeslots();
+        $schedule = array(
+            'Monday' => [],
+            'Tuesday' => [],
+            'Wednesday' => [],
+            'Thursday' => [],
+            'Friday' => [],
+            'Saturday' => [],
+            'Sunday' => [],
+        );
+        foreach ($timeslots as $slot) {
+            if ($slot->getDayOfWeek() == 1) {
+                $schedule['Monday'][] = array(
+                    "start" => array(
+                        "hour" => $slot->getStartHour(),
+                        "minute" => $slot->getStartMinute()
+                    ),
+                    "end" => array(
+                        "hour" =>$slot->getEndHour(),
+                        "minute" =>$slot->getStartMinute()
+                    ),
+                );
+            }
+            if ($slot->getDayOfWeek() == 2) {
+                $schedule['Tuesday'][] = array(
+                    "start" => array(
+                        "hour" => $slot->getStartHour(),
+                        "minute" => $slot->getStartMinute()
+                    ),
+                    "end" => array(
+                        "hour" =>$slot->getEndHour(),
+                        "minute" =>$slot->getStartMinute()
+                    ),
+                );
+            }
+            if ($slot->getDayOfWeek() == 3) {
+                $schedule['Wednesday'][] = array(
+                    "start" => array(
+                        "hour" => $slot->getStartHour(),
+                        "minute" => $slot->getStartMinute()
+                    ),
+                    "end" => array(
+                        "hour" =>$slot->getEndHour(),
+                        "minute" =>$slot->getStartMinute()
+                    ),
+                );
+            }
+            if ($slot->getDayOfWeek() == 4) {
+                $schedule['Thursday'][] = array(
+                    "start" => array(
+                        "hour" => $slot->getStartHour(),
+                        "minute" => $slot->getStartMinute()
+                    ),
+                    "end" => array(
+                        "hour" =>$slot->getEndHour(),
+                        "minute" =>$slot->getStartMinute()
+                    ),
+                );
+            }
+            if ($slot->getDayOfWeek() == 5) {
+                $schedule['Friday'][] = array(
+                    "start" => array(
+                        "hour" => $slot->getStartHour(),
+                        "minute" => $slot->getStartMinute()
+                    ),
+                    "end" => array(
+                        "hour" =>$slot->getEndHour(),
+                        "minute" =>$slot->getStartMinute()
+                    ),
+                );
+            }
+            if ($slot->getDayOfWeek() == 6) {
+                $schedule['Saturday'][] = array(
+                    "start" => array(
+                        "hour" => $slot->getStartHour(),
+                        "minute" => $slot->getStartMinute()
+                    ),
+                    "end" => array(
+                        "hour" =>$slot->getEndHour(),
+                        "minute" =>$slot->getStartMinute()
+                    ),
+                );
+            }
+            if ($slot->getDayOfWeek() == 0) {
+                $schedule['Sunday'][] = array(
+                    "start" => array(
+                        "hour" => $slot->getStartHour(),
+                        "minute" => $slot->getStartMinute()
+                    ),
+                    "end" => array(
+                        "hour" =>$slot->getEndHour(),
+                        "minute" =>$slot->getStartMinute()
+                    ),
+                );
+            }
+
+        }
+        return $schedule;
     }
 }

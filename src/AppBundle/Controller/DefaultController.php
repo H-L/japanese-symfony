@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use AppBundle\Entity\Maid;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\ImageType;
-
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Default controller.
@@ -28,11 +28,13 @@ class DefaultController extends Controller
         $maids = $em->getRepository('AppBundle:Maid')->findAll();
         $restaurant = $em->getRepository('AppBundle:Restaurant')->findAll();
         $events = $em->getRepository('AppBundle:Event')->findAll();
+        $reviews = $em->getRepository('AppBundle:Review')->findAll();
 
         return $this->render('default/index.html.twig', array(
             'maids' => $maids,
             'restaurants' => $restaurant,
             'events' => $events,
+            'reviews' => $reviews,
         ));
     }
 
@@ -45,9 +47,11 @@ class DefaultController extends Controller
         $maids = $em->getRepository('AppBundle:Maid')->findAll();
         $characterTraits = $em->getRepository('AppBundle:CharacterTrait')->findAll();
         $reviews = $em->getRepository('AppBundle:Review')->findAll();
+        
 
         return $this->render('default/maid/maid.html.twig', array(
             'maids' => $maids,
+            'reviews' => $reviews,
         ));
     }
 
@@ -61,9 +65,13 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $maid = $em->getRepository('AppBundle:Maid')->find($id);
+        $maids = $em->getRepository('AppBundle:Maid')->findAll();
+        $reviews = $em->getRepository('AppBundle:Review')->findAll();
 
         return $this->render('default/maid/show.html.twig', array(
+            'maids' => $maids,
             'maid' => $maid,
+            'reviews' => $reviews,
         ));
     }
 
@@ -74,9 +82,25 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $events = $em->getRepository('AppBundle:Event')->findAll();
+        $reviews = $em->getRepository('AppBundle:Review')->findAll();
 
         return $this->render('default/event/event.html.twig', array(
             'events' => $events,
+            'reviews' => $reviews,
+        ));
+    }
+
+    /**
+     * Finds and displays a event entity.
+     *
+     * @Route("/event/{id}", name="event_show")
+     * @Method("GET")
+     */
+    public function eventShowAction(Event $event)
+    {
+
+        return $this->render('default/event/show.html.twig', array(
+            'event' => $event,
         ));
     }
 
@@ -102,25 +126,36 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $maids = $em->getRepository('AppBundle:Maid')->findAll();
-        $restaurant = $em->getRepository('AppBundle:Restaurant')->findAll();
+        $restaurants = $em->getRepository('AppBundle:Restaurant')->findAll();
         $events = $em->getRepository('AppBundle:Event')->findAll();
+        $reviews = $em->getRepository('AppBundle:Review')->findAll();
+
+        $indicatorService = $this->get('app.service.indicator_service');
+        $bestRestaurant = $indicatorService->getBestRestaurant($restaurants);
 
         return $this->render('back-office/index.html.twig', array(
             'maids' => $maids,
-            'restaurants' => $restaurant,
+            'restaurants' => $restaurants,
             'events' => $events,
+            'reviews' => $reviews,
+            'bestRestaurant' => $bestRestaurant,
         ));
     }
+
     /**
      * @Route("/contact", name="_contact")
      */
     public function contactAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $maids = $em->getRepository('AppBundle:Maid')->findAll();
         $restaurants = $em->getRepository('AppBundle:Restaurant')->findAll();
+        $reviews = $em->getRepository('AppBundle:Review')->findAll();
 
         return $this->render('default/contact/index.html.twig', array(
             'restaurants' => $restaurants,
+            'reviews' => $reviews,
+            'maids' => $maids,
         ));
     }
 
@@ -129,8 +164,13 @@ class DefaultController extends Controller
      */
     public function serviceAction()
     {
-        return $this->render('default/services/services.html.twig', array(
+        $em = $this->getDoctrine()->getManager();
+        $maids = $em->getRepository('AppBundle:Maid')->findAll();
+        $reviews = $em->getRepository('AppBundle:Review')->findAll();
 
+        return $this->render('default/services/services.html.twig', array(
+            'maids' => $maids,
+            'reviews' => $reviews,
         ));
     }
 

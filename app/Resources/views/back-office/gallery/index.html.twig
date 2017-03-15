@@ -1,0 +1,41 @@
+{% extends 'back-office/base.html.twig' %}
+
+{% block body %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1>Gallery list</h1>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for gallery in galleries %}
+                <tr>
+                    <td><a href="{{ path('galleries_show', { 'id': gallery.id }) }}">{{ gallery.id }}</a></td>
+                    <td>{{ gallery.name }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('galleries_show', { 'id': gallery.id }) }}" class="btn btn-lg btn-primary">show</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('galleries_new') }}" class="btn btn-lg btn-success">Create a new gallery</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -15,8 +15,6 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 class Timeslot
 {
     /**
-     * Id of the Timeslot
-     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -65,9 +63,15 @@ class Timeslot
 
     /**
      * @ORM\ManyToOne(targetEntity="Maid", inversedBy="timeslots")
-     * @ORM\JoinColumn(name="id_maid", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_maid", referencedColumnName="id", nullable=true)
      */
     private $maid;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Restaurant", inversedBy="timeslots")
+     * @ORM\JoinColumn(name="id_restaurant", referencedColumnName="id", nullable=true)
+     */
+    private $restaurant;
     
     /**
      * Get id
@@ -183,6 +187,22 @@ class Timeslot
         $this->maid = $maid;
         
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRestaurant()
+    {
+        return $this->restaurant;
+    }
+
+    /**
+     * @param mixed $restaurant
+     */
+    public function setRestaurant($restaurant)
+    {
+        $this->restaurant = $restaurant;
     }
 
     /**

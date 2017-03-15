@@ -1,0 +1,137 @@
+<?php
+
+namespace AppBundle\Controller;
+
+use AppBundle\Entity\Rank;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+
+/**
+ * Rank controller.
+ *
+ * @Route("back-office/rank")
+ */
+class RankController extends Controller
+{
+    /**
+     * Lists all rank entities.
+     *
+     * @Route("/", name="back-office_rank_index")
+     * @Method("GET")
+     */
+    public function indexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $ranks = $em->getRepository('AppBundle:Rank')->findAll();
+
+        return $this->render('back-office/rank/index.html.twig', array(
+            'ranks' => $ranks,
+        ));
+    }
+
+    /**
+     * Creates a new rank entity.
+     *
+     * @Route("/new", name="back-office_rank_new")
+     * @Method({"GET", "POST"})
+     */
+    public function newAction(Request $request)
+    {
+        $rank = new Rank();
+        $form = $this->createForm('AppBundle\Form\RankType', $rank);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($rank);
+            $em->flush($rank);
+
+            return $this->redirectToRoute('back-office_rank_show', array('id' => $rank->getId()));
+        }
+
+        return $this->render('back-office/rank/new.html.twig', array(
+            'rank' => $rank,
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * Finds and displays a rank entity.
+     *
+     * @Route("/{id}", name="back-office_rank_show")
+     * @Method("GET")
+     */
+    public function showAction(Rank $rank)
+    {
+        $deleteForm = $this->createDeleteForm($rank);
+
+        return $this->render('back-office/rank/show.html.twig', array(
+            'rank' => $rank,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing rank entity.
+     *
+     * @Route("/{id}/edit", name="back-office_rank_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editAction(Request $request, Rank $rank)
+    {
+        $deleteForm = $this->createDeleteForm($rank);
+        $editForm = $this->createForm('AppBundle\Form\RankType', $rank);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('back-office_rank_edit', array('id' => $rank->getId()));
+        }
+
+        return $this->render('back-office/rank/edit.html.twig', array(
+            'rank' => $rank,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Deletes a rank entity.
+     *
+     * @Route("/{id}", name="back-office_rank_delete")
+     * @Method("DELETE")
+     */
+    public function deleteAction(Request $request, Rank $rank)
+    {
+        $form = $this->createDeleteForm($rank);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($rank);
+            $em->flush($rank);
+        }
+
+        return $this->redirectToRoute('back-office/back-office_rank_index');
+    }
+
+    /**z
+     * Creates a form to delete a rank entity.
+     *
+     * @param Rank $rank The rank entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(Rank $rank)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('back-office_rank_delete', array('id' => $rank->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
+    }
+}
+

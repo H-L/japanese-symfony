@@ -23,8 +23,8 @@ class TimeslotType extends AbstractType
             ->add('startMinute', ChoiceType::class, array(
                 'choices'=> array(
                     '00' => 0,
-                    '15' => 1,
-                    '30' => 2,
+                    '15' => 15,
+                    '30' => 30,
                     '45' => 45,
                 )
             ))

@@ -38,21 +38,24 @@ class AddImagesCommand extends ContainerAwareCommand
     {
         $helper = $this->getHelper('question');
 
-        $question = new Question('Path Image directory you want to import<fg=yellow>[./web/assets/images]</> :', $this->getContainer()->getParameter('load_images'));
+        $question = new Question('Path Image directory you want to import<fg=yellow>[./web/imgs]</> :', $this->getContainer()->getParameter('load_images'));
 
         $path = $helper->ask($input, $output, $question);
 
         // Looking for all files in the specified directory.
         $finder = new Finder();
-        $finder->files()->in($path);
         $fs = new FS();
+
+        // Deleting files from last Importation.
+        $finder->files()->in($this->getContainer()->getParameter('images_directory'));
+        $finder->files()->in($path);
 
         // Get all Images Names registered in the DB.
         $em = $this->getContainer()->get('doctrine.orm.default_entity_manager');
         $inDbImages = $em->getRepository('AppBundle:Image')->findAll();
 
         $inDbImagesNames = [];
-        $mimeTypes = ['image/jpeg', 'image/png', 'image/svg+xml', 'image/tiff'];
+        $mimeTypes = ['image/jpeg', 'image/png', 'image/svg+xml', 'image/gif'];
 
         foreach ($inDbImages as $inDbImage){
             array_push($inDbImagesNames, $inDbImage->getName());
@@ -61,9 +64,9 @@ class AddImagesCommand extends ContainerAwareCommand
         foreach ($finder as $file) {
 
             $testedFile = new File($file->getRealPath());
-//            $output->writeln(dump($testedFile->getMimeType()));
+            $output->writeln(dump($testedFile->getMimeType()));
             if (!in_array($testedFile->getMimeType(), $mimeTypes)){
-                $output->writeln('<error>Not an Image (jpeg, png, svg, tiff) :</error> '.$testedFile->getFilename());
+                $output->writeln('<error>Not an Image (jpeg, png, svg, gif) :</error> '.$testedFile->getFilename());
                 continue;
             }
 

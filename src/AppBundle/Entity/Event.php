@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Event
@@ -44,6 +45,12 @@ class Event
     private $restaurant;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image", inversedBy="events")
+     * @ORM\JoinColumn(name="profilePicture_id", referencedColumnName="id")
+     */
+    private $profilePicture;
+
+    /**
      * @var \DateTime
      *
      * @Assert\GreaterThan("today")
@@ -58,13 +65,6 @@ class Event
      * @ORM\Column(name="end", type="datetime")
      */
     private $end;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="profilePicture", type="string", length=255, nullable=true)
-     */
-    private $profilePicture;
 
     /**
      * Get id
@@ -192,7 +192,7 @@ class Event
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getProfilePicture()
     {
@@ -200,7 +200,7 @@ class Event
     }
 
     /**
-     * @param string $profilePicture
+     * @param mixed $profilePicture
      */
     public function setProfilePicture($profilePicture)
     {

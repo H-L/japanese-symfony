@@ -28,7 +28,12 @@ class EventType extends AbstractType
                 'with_seconds' => false,
                 'years' => range($todayYear, 2100)
             ))
-            ->add('profilePicture')
+            ->add('profilePicture', EntityType::class, array(
+                'class' => 'AppBundle\Entity\Image',
+                'choice_label' => 'name',
+                'multiple' => true,
+                'required' => false,
+            ))
             ->add('restaurant', EntityType::class, array(
                 'class' => 'AppBundle:Restaurant',
                 'choice_label' => 'name',

@@ -2,7 +2,7 @@
 {% block body %}
 
     <div class="maid__header">
-      <h1 class="cafe-name"> Our maids </h1>
+      <h1 class="cafe-name"> ★ Our maids ★</h1>
         <h1 class="cafe-jap"> 私たちの家 </h1>
     </div>
 
@@ -31,7 +31,7 @@
           </div>
           <p>SUPER</p>
           <p class="maid__text-japonais">スーパープレミアム </p>
-          <p>PRENIUM</p>
+          <p>PREMIUM</p>
         </div>
         <img src="../imgs/chimu.png" />
       </div>
@@ -39,47 +39,16 @@
 
       <div class="maid__container--icon">
 
-        <div class="maid__content--icon">
-          <p>
-            Maid 1
-          </p>
-          <img src="../imgs/icon-maid.png">
-        </div>
 
-        <div class="maid__content--icon">
-          <p>
-            Maid 1
-          </p>
-          <img src="../imgs/icon-maid.png">
-        </div>
 
+      {% for maid in maids %}
         <div class="maid__content--icon">
           <p>
-            Maid 1
+            {{ maid.maidName }}
           </p>
-          <img src="../imgs/icon-maid.png">
+          <a href="{{ path('_maid_show', {'id' : maid.id}) }}"> <img src="{{ asset(maid.profilePicture.path)}}"> </a>
         </div>
-
-        <div class="maid__content--icon">
-          <p>
-            Maid 1
-          </p>
-          <img src="../imgs/icon-maid.png">
-        </div>
-
-        <div class="maid__content--icon">
-          <p>
-            Maid 1
-          </p>
-          <img src="../imgs/icon-maid.png">
-        </div>
-
-        <div class="maid__content--icon">
-          <p>
-            Maid 1
-          </p>
-          <img src="../imgs/icon-maid.png">
-        </div>
+      {% endfor %}
         
       </div>
     </div>
@@ -87,7 +56,7 @@
         {% for maid in maids %}
             {#{{ dump(maid) }}#}
             <li>
-                <img src="{{ maid.profilePicture }}" width="150px "alt="">
+                <img src="{{ maid.profilePicture .path}}" width="150px "alt="">
                 <p>name : {{ maid.name }}</p>
                 {% for review in maid.review %}
                     <p>Review {{ review.id }} : {{ review.comment }}</p>

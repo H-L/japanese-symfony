@@ -1,0 +1,59 @@
+<?php
+namespace AppBundle\Service;
+
+use Symfony\Component\VarDumper\VarDumper;
+
+/**
+ * Class TimeService
+ * @package AppBundle\Service
+ */
+class TimeService
+{
+
+    /**
+     * @param $startHour
+     * @param $startMinute
+     * @param $endHour
+     * @param $endMinute
+     * @return array
+     */
+    public function getInterval($startHour, $startMinute, $endHour, $endMinute)
+    {
+        if ($startHour == $endHour && $startMinute == $endMinute) {
+            return [0,0];
+        }
+        if ($startMinute == $endMinute) {
+            $hours = 0;
+            while ($startHour != $endHour) {
+                $startHour = ($startHour + 1 )%24;
+                $hours++;
+            }
+            
+            return [$hours, 0];
+        }
+        if ($startHour == $endHour) {
+            $minutes = 0;
+            while ($startMinute != $endMinute) {
+                $startMinute = ($startMinute + 1 )%60;
+                $minutes++;
+            }
+            
+            return [0, $minutes];
+        }
+        $hours = 0;
+        $minutes = 0;
+        if ($startMinute > $endMinute) {
+            $hours--;
+        }
+        while ($startHour != $endHour) {
+            $startHour = ($startHour + 1 )%24;
+            $hours++;
+        }
+        while ($startMinute != $endMinute) {
+            $startMinute = ($startMinute + 1 )%60;
+            $minutes++;
+        }
+        return [$hours, $minutes];
+    }
+}
+

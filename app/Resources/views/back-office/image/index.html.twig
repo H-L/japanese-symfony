@@ -1,0 +1,44 @@
+{% extends 'back-office/base.html.twig' %}
+{% block body %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1>Images list</h1>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Path</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for image in images %}
+                <tr>
+                    <td><a href="{{ path('images_show', { 'id': image.id }) }}">{{ image.id }}</a></td>
+                    <td><img src="{{ asset(image.path) | imagine_filter('my_thumb') }}" alt=""></td>
+                    <td>{{ image.name }}</td>
+                    <td>{{ image.path }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('images_show', { 'id': image.id }) }}" class="btn btn-lg btn-primary">show</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('images_new') }}" class="btn btn-lg btn-success">Upload a new image</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -15,7 +15,7 @@ use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 /**
  * Image controller.
  *
- * @Route("images")
+ * @Route("back-office/images")
  */
 class ImageController extends Controller
 {
@@ -31,7 +31,11 @@ class ImageController extends Controller
 
         $images = $em->getRepository('AppBundle:Image')->findAll();
 
+<<<<<<< HEAD
         return $this->render('default/image/index.html.twig', array(
+=======
+        return $this->render('back-office/image/index.html.twig', array(
+>>>>>>> dev
             'images' => $images,
         ));
     }
@@ -78,7 +82,11 @@ class ImageController extends Controller
             return $this->redirectToRoute('images_show', array('id' => $image->getId()));
         }
 
+<<<<<<< HEAD
         return $this->render('default/image/new.html.twig', array(
+=======
+        return $this->render('back-office/image/new.html.twig', array(
+>>>>>>> dev
             'image' => $image,
             'form' => $form->createView(),
         ));
@@ -95,13 +103,18 @@ class ImageController extends Controller
     {
         $deleteForm = $this->createDeleteForm($image);
 
+<<<<<<< HEAD
         return $this->render('default/image/show.html.twig', array(
+=======
+        return $this->render('back-office/image/show.html.twig', array(
+>>>>>>> dev
             'image' => $image,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
+<<<<<<< HEAD
      * Displays a form to edit an existing image entity.
      *
      * @Route("/{id}/edit", name="images_edit")
@@ -127,6 +140,8 @@ class ImageController extends Controller
     }
 
     /**
+=======
+>>>>>>> dev
      * Deletes a image entity.
      *
      * @Route("/{id}", name="images_delete")

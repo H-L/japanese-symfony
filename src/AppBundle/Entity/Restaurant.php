@@ -19,20 +19,32 @@ class Restaurant extends CoffeeShopItem
     private $maids;
 
     /**
-     * @ORM\OneToMany(targetEntity="Timeslot", mappedBy="restaurant")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Timeslot", mappedBy="restaurant")
      */
     private $timeslots;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Event", mappedBy="restaurant")
      */
-    private $events;
+    private $event;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="restaurant")
      */
-    private $review;
-    
+    private $reviews;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image", inversedBy="restaurants")
+     * @ORM\JoinColumn(name="profilePicture_id", referencedColumnName="id")
+     */
+    private $profilePicture;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Gallery")
+     * @ORM\JoinColumn(name="gallery_id", referencedColumnName="id")
+     */
+    private $gallery;
+
     /**
      * Set maids
      *
@@ -77,31 +89,31 @@ class Restaurant extends CoffeeShopItem
      */
     public function removeMaid($maid)
     {
-        $this->events->removeElement($maid);
+        $this->event->removeElement($maid);
 
         return $this;
     }
-    
+
 
     /**
-     * Get events
+     * Get event
      *
      * @return mixed
      */
-    public function getEvents()
+    public function getEvent()
     {
-        return $this->events;
+        return $this->event;
     }
 
     /**
-     * Set events
+     * Set event
      *
-     * @param mixed $events
+     * @param mixed $event
      * @return Restaurant
      */
-    public function setEvents($events)
+    public function setEvent($event)
     {
-        $this->events = $events;
+        $this->event = $event;
 
         return $this;
     }
@@ -114,7 +126,7 @@ class Restaurant extends CoffeeShopItem
      */
     public function addEvent($event)
     {
-        $this->events[] = $event;
+        $this->event[] = $event;
     }
 
     /**
@@ -125,18 +137,105 @@ class Restaurant extends CoffeeShopItem
      */
     public function removeEvent($event)
     {
-        $this->events->removeElement($event);
+        $this->event->removeElement($event);
 
         return $this;
     }
-    
+
+    /**
+     * @return mixed
+     */
+    public function getReviews()
+    {
+        return $this->reviews;
+    }
+
+    /**
+     * @param mixed $reviews
+     */
+    public function setReviews($reviews)
+    {
+        $this->reviews = $reviews;
+    }
+
+    /**
+     * Add review
+     *
+     * @param mixed $review
+     * @return Restaurant
+     */
+    public function addReview($review)
+    {
+        $this->reviews[] = $review;
+    }
+
+    /**
+     * Remove event
+     *
+     * @param mixed $review
+     * @return Restaurant
+     */
+    public function removeReview($review)
+    {
+       $this->reviews->removeElement($review);
+       return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTimeslot()
+    {
+        return $this->timeslots;
+    }
+
+    /**
+     * @param mixed $timeslots
+     */
+    public function setTimeslot($timeslots)
+    {
+        $this->timeslots = $timeslots;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProfilePicture()
+    {
+        return $this->profilePicture;
+    }
+
+    /**
+     * @param mixed $profilePicture
+     */
+    public function setProfilePicture($profilePicture)
+    {
+        $this->profilePicture = $profilePicture;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
+
+    /**
+     * @param mixed $gallery
+     */
+    public function setGallery($gallery)
+    {
+        $this->gallery = $gallery;
+    }
+
     /**
      * Restaurant constructor.
      */
     public function __construct()
     {
+        $this->reviews = new ArrayCollection();
+        $this->event = new ArrayCollection();
         $this->timeslots = new ArrayCollection();
-        $this->review = new ArrayCollection();
-        $this->events = new ArrayCollection();
     }
 }

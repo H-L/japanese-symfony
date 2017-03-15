@@ -11,6 +11,7 @@ header {
 
 .header__nav {
   height: 90px;
+  z-index: 1;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -26,9 +27,9 @@ header {
     position: absolute;
     @include bg-img('../imgs/logoTei.png');
     left: -70px;
-    top: -5px;
-    width: 70px;
-    height: 35px;
+    top: -19px;
+    width: 119px;
+    height: 69px;
 
   }
 }

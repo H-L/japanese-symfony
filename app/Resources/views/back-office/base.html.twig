@@ -27,7 +27,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-fw fa-sign-language"></i> Events<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-fw fa-sign-language"></i>Events<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li class="dropdown-header">Manage events by restaurant</li>
                         <li><a href="{{ path('back-office_event_index') }}">List of all your events</a></li>
@@ -40,8 +40,23 @@
                         <li class="dropdown-header">Manage your maids</li>
                         <li><a href="{{ path('back-office_maid_index') }}">See all Maids</a></li>
                         <li><a href="{{ path('back-office_maid_new') }}">Create a new maid</a></li>
-                        <li><a href="#">Weekly schedules</a></li>
-                        <li><a href="#">Holidays and days off</a></li>
+                        <li class="dropdown-header">Character Traits</li>
+                        <li><a href="{{ path('back-office_charactertrait_index') }}">See existant traits</a></li>
+                        <li><a href="{{ path('back-office_charactertrait_new') }}">Add new Trait</a></li>
+                        <li class="dropdown-header">Ranks</li>
+                        <li><a href="{{ path('back-office_rank_index') }}">See all ranks</a></li>
+                        <li><a href="{{ path('back-office_rank_new') }}">Add new rank</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-fw fa-picture-o"></i>Galleries & Images<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="dropdown-header">Galleries</li>
+                        <li><a href="{{ path('galleries_index') }}">See galleries</a></li>
+                        <li><a href="{{ path('galleries_new') }}">Create a new gallery</a></li>
+                        <li class="dropdown-header">Images</li>
+                        <li><a href="{{ path('images_index') }}">See all images</a></li>
+                        <li><a href="{{ path('images_new') }}">Upload an image</a></li>
                     </ul>
                 </li>
                 <li>

@@ -20,7 +20,11 @@ class GalleryType extends AbstractType
                 'class' => 'AppBundle\Entity\Image',
                 'choice_label' => 'path',
                 'multiple' => true,
+<<<<<<< HEAD
                 'expanded' => true,
+=======
+                'required' => false,
+>>>>>>> dev
             ))
         ;
     }

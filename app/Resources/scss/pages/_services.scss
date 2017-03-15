@@ -93,7 +93,8 @@
 
 .fd__header {
 	@include bg-img('../imgs/food-drinks.png');
-	width: 65%;
+	background-size: 110%;
+	width: 80%;
 	height: 500px;
 	margin: 30px auto 10px;
 	position: relative;
@@ -142,7 +143,7 @@
 
 .karaoke__header {
 	@include bg-img('../imgs/karaoke.png');
-	width: 65%;
+	width: 80%;
 	height: 400px;
 	margin: 0px auto 20px;
 	font-family: LilyScriptOne;
@@ -165,13 +166,13 @@
 
 .karaoke__events-container {
 	display: flex;
-	width: 64%;
+	width: 80%;
 	margin: 20px auto 50px;
 	justify-content: space-between;
 	font-family: LilyScriptOne;
 	.karaoke__event {
 		background-color: $pink-bg;
-		width: 520px;
+		width: 49%;
 		border-radius: 10px;
 	}
 	.event__title {
@@ -211,8 +212,8 @@
 
 .moe__header {
 	@include bg-img('../imgs/moe.png');
-	width: 65%;
-	height: 900px;
+	width: 80%;
+	height: 800px;
 	margin: 0px auto 20px;
 	font-family: LilyScriptOne;
 	color: #fefefe;
@@ -265,7 +266,7 @@
 
 .gp__header {
 	@include bg-img('../imgs/gamephotos.png');
-	width: 65%;
+	width: 80%;
 	height: 400px;
 	margin: 0px auto 20px;
 	color: #fefefe;
@@ -338,7 +339,7 @@
 
 .ls__header {
 	@include bg-img('../imgs/liveshows.png');
-	width: 65%;
+	width: 80%;
 	height: 400px;
 	margin: 0px auto 20px;
 	font-family: LilyScriptOne;

@@ -1,0 +1,21 @@
+{% extends 'back-office/base.html.twig' %}
+
+{% block body %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1>Image creation</h1>
+    </div>
+    <div class="panel-body">
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <input type="submit" value="Add new Image" class="btn btn-lg btn-success" />
+        {{ form_end(form) }}
+
+        <ul>
+            <li>
+                <a href="{{ path('images_index') }}" class="btn btn-lg btn-primary">Back to the list</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
