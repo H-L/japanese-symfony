@@ -25,10 +25,10 @@
                     <div class="info__title"> Restaurant </div>
                     <div class="info__content"> {{ maid.restaurant.name }} </div>
                 </div>
-                <div class="pres__info">
+                <!-- <div class="pres__info">
                     <div class="info__title"> Favorite things </div>
                     <div class="info__content"> {{ maid.favoriteThings }}</div>
-                </div>
+                </div> -->
                 <div class="pres__info">
                     <div class="info__title"> Blood type </div>
                     <div class="info__content"> {{ maid.bloodType }} </div>
@@ -44,14 +44,6 @@
                 <div class="pres__info">
                     <div class="info__title"> Caractère</div>
                     <div class="info__content"> {{ maid.characterTrait.name }} </div>
-                </div>
-                <div class="pres_reviews">
-                    Reviews :
-                    {% for review in maid.review %}
-                        <div class="pres_review">
-                            {{ dump(review) }}
-                        </div>
-                    {% endfor %}
                 </div>
             </div>
 
