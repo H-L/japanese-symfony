@@ -99,7 +99,7 @@ Our team is called カワイイTV (KAWAII TV ).
 It is composed of 6 members:
 - Blas ALVIZ
 - Alexandre CHICHPORTICH
-- Alexandra COSSID (with the wrong usermane)
+- Alexandra COSSID (with wrong usermane)
 - Hadrien LEPOUTRE
 - Marie-Alix LESELLIER
 - Raphaëlle LIMOGES
