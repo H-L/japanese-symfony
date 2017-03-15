@@ -30,12 +30,7 @@ class ImageController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $images = $em->getRepository('AppBundle:Image')->findAll();
-
-<<<<<<< HEAD
-        return $this->render('default/image/index.html.twig', array(
-=======
         return $this->render('back-office/image/index.html.twig', array(
->>>>>>> dev
             'images' => $images,
         ));
     }
@@ -82,11 +77,8 @@ class ImageController extends Controller
             return $this->redirectToRoute('images_show', array('id' => $image->getId()));
         }
 
-<<<<<<< HEAD
-        return $this->render('default/image/new.html.twig', array(
-=======
         return $this->render('back-office/image/new.html.twig', array(
->>>>>>> dev
+
             'image' => $image,
             'form' => $form->createView(),
         ));
@@ -102,12 +94,7 @@ class ImageController extends Controller
     public function showAction(Image $image)
     {
         $deleteForm = $this->createDeleteForm($image);
-
-<<<<<<< HEAD
-        return $this->render('default/image/show.html.twig', array(
-=======
         return $this->render('back-office/image/show.html.twig', array(
->>>>>>> dev
             'image' => $image,
             'delete_form' => $deleteForm->createView(),
         ));

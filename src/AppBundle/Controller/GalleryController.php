@@ -25,12 +25,7 @@ class GalleryController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $galleries = $em->getRepository('AppBundle:Gallery')->findAll();
-
-<<<<<<< HEAD
-        return $this->render('default/gallery/index.html.twig', array(
-=======
         return $this->render('back-office/gallery/index.html.twig', array(
->>>>>>> dev
             'galleries' => $galleries,
         ));
     }
@@ -54,12 +49,8 @@ class GalleryController extends Controller
 
             return $this->redirectToRoute('galleries_show', array('id' => $gallery->getId()));
         }
-
-<<<<<<< HEAD
-        return $this->render('default/gallery/new.html.twig', array(
-=======
         return $this->render('back-office/gallery/new.html.twig', array(
->>>>>>> dev
+
             'gallery' => $gallery,
             'form' => $form->createView(),
         ));
@@ -74,14 +65,10 @@ class GalleryController extends Controller
     public function showAction(Gallery $gallery)
     {
         $deleteForm = $this->createDeleteForm($gallery);
-
-<<<<<<< HEAD
-        return $this->render('default/gallery/show.html.twig', array(
-=======
 //        $images = $gallery->getImages();
 
         return $this->render('back-office/gallery/show.html.twig', array(
->>>>>>> dev
+
             'gallery' => $gallery,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -105,11 +92,8 @@ class GalleryController extends Controller
             return $this->redirectToRoute('galleries_edit', array('id' => $gallery->getId()));
         }
 
-<<<<<<< HEAD
-        return $this->render('default/gallery/edit.html.twig', array(
-=======
         return $this->render('back-office/gallery/edit.html.twig', array(
->>>>>>> dev
+
             'gallery' => $gallery,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
