@@ -3,6 +3,9 @@ japanese-symfony
 
 ![Build Status](https://travis-ci.com/H-L/japanese-symfony.svg?token=shXpjoDpc1SDKZQqur1f&branch=master)
 
+This is a school project @hetic. The subject was creating a Japanese-like website with Symfony.
+Thanks to our teacher @Bunkermaster.
+
 # Installation
 
 Requirements:
@@ -97,9 +100,9 @@ php app/console app:timeslot:add
 
 Our team is called カワイイTV (KAWAII TV ).
 It is composed of 6 members:
-- Blas ALVIZ
-- Alexandre CHICHPORTICH
-- Alexandra COSSID
-- Hadrien LEPOUTRE
-- Marie-Alix LESELLIER
-- Raphaëlle LIMOGES
+- Marie-Alix LESELLIER    | Developper Back-end [@m-a-l](https://github.com/m-a-l)
+- Hadrien LEPOUTRE        | Developper Back-end [@H-L](https://github.com/H-L/)
+- Alexandra COSSID        | Developper Front-end [@acossid](https://github.com/acossid)
+- Alexandre CHICHPORTICH  | Developper Front-end [@alexandrechich](https://github.com/alexandrechich)
+- Blas ALVIZ              | Designer [@BlasAlviz](https://github.com/BlasAlviz)
+- Raphaëlle LIMOGES       | Designer [@lraphy](https://github.com/lraphy)
