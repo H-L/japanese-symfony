@@ -68,7 +68,7 @@ class Timeslot
     private $maid;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Restaurant", inversedBy="timeslot")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Restaurant", inversedBy="timeslots")
      * @ORM\JoinColumn(name="id_restaurant", referencedColumnName="id", nullable=true)
      */
     private $restaurant;

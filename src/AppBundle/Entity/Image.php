@@ -40,17 +40,17 @@ class Image
     private $path;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Event", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Event", mappedBy="profilePicture")
      */
     private $events;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Restaurant", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Restaurant", mappedBy="profilePicture")
      */
     private $restaurants;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Restaurant", mappedBy="image")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Maid", mappedBy="profilePicture")
      */
     private $maids;
 

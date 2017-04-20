@@ -22,11 +22,13 @@ class ImageType extends AbstractType
         $builder
             ->add('name', FileType::class, array(
                 'label' => 'Image File',
+                'multiple' => true,
             ))
             ->add('galleries', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Gallery',
                 'choice_label' => 'name',
                 'multiple' => true,
+                'expanded' => true,
             ))
         ;
     }

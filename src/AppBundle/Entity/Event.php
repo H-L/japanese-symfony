@@ -45,7 +45,7 @@ class Event
     private $restaurant;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image", inversedBy="event")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image", inversedBy="events")
      * @ORM\JoinColumn(name="profilePicture_id", referencedColumnName="id")
      */
     private $profilePicture;

@@ -30,7 +30,6 @@ class ImageController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $images = $em->getRepository('AppBundle:Image')->findAll();
-
         return $this->render('back-office/image/index.html.twig', array(
             'images' => $images,
         ));
@@ -79,6 +78,7 @@ class ImageController extends Controller
         }
 
         return $this->render('back-office/image/new.html.twig', array(
+
             'image' => $image,
             'form' => $form->createView(),
         ));
@@ -94,7 +94,6 @@ class ImageController extends Controller
     public function showAction(Image $image)
     {
         $deleteForm = $this->createDeleteForm($image);
-
         return $this->render('back-office/image/show.html.twig', array(
             'image' => $image,
             'delete_form' => $deleteForm->createView(),
@@ -102,6 +101,34 @@ class ImageController extends Controller
     }
 
     /**
+<<<<<<< HEAD
+     * Displays a form to edit an existing image entity.
+     *
+     * @Route("/{id}/edit", name="images_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editAction(Request $request, Image $image)
+    {
+        $deleteForm = $this->createDeleteForm($image);
+        $editForm = $this->createForm('AppBundle\Form\ImageType', $image);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('images_edit', array('id' => $image->getId()));
+        }
+
+        return $this->render('default/image/edit.html.twig', array(
+            'image' => $image,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+=======
+>>>>>>> dev
      * Deletes a image entity.
      *
      * @Route("/{id}", name="images_delete")
